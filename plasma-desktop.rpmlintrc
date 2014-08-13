@@ -1,0 +1,9 @@
+# Semantically correct, but false positive considering the use of the
+# "libraries" packaged here. Those guys should really be linked in
+# statically, nothing else uses them and they don't even install
+# headers...
+addFilter("E: executable-in-library-package")
+addFilter("E: incoherent-version-in-name")
+# *.so files for plugins
+addFilter("E: devel-file-in-non-devel-package")
+addFilter("E: invalid-soname")
