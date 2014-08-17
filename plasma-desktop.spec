@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name: plasma-desktop
-Version: 5.0.0
+Version: 5.0.1
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -39,6 +39,7 @@ BuildRequires: cmake(Freetype)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
+BuildRequires: pkgconfig(libcanberra)
 BuildRequires: ninja
 
 %description
@@ -87,7 +88,6 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 %find_lang krdb
 %find_lang ksplashthemes
 %find_lang ktouchpadenabler
-%find_lang kxkb
 %find_lang libkonq
 %find_lang plasma_applet_org.kde.plasma.folder
 %find_lang plasma_applet_org.kde.plasma.kicker
