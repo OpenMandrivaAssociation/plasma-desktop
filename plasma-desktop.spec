@@ -1,9 +1,10 @@
 %define debug_package %{nil}
+%define plasmaver %(echo %{version} |cut -d. -f1-3)
 
 Name: plasma-desktop
-Version: 5.0.1
+Version: 5.1.0.1
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{version}/%{name}-%{version}.tar.xz
+Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
@@ -40,12 +41,13 @@ BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: ninja
+BuildRequires: plasma-workspace
 
 %description
 KDE Frameworks 5 Plasma-desktop framework
 
 %prep
-%setup -q
+%setup -qn %{name}-%{plasmaver}
 %cmake -G Ninja
 
 %build
@@ -76,6 +78,7 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 %find_lang kcmkeyboard
 %find_lang kcmkeys
 %find_lang kcmlaunch
+%find_lang kcm_lookandfeel
 %find_lang kcmnotify
 %find_lang kcm_search
 %find_lang kcmsmserver
@@ -87,7 +90,7 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 %find_lang krdb
 %find_lang ksplashthemes
 %find_lang ktouchpadenabler
-%find_lang libkonq
+%find_lang libkonq || touch libkonq.lang
 %find_lang plasma_applet_org.kde.plasma.folder
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
@@ -111,6 +114,7 @@ cat *.lang >%{name}.lang
 %{_sysconfdir}/xdg/kfontinst.knsrc
 %{_sysconfdir}/xdg/plasma-themes.knsrc
 %{_sysconfdir}/xdg/xcursor.knsrc
+%{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
 %{_bindir}/kapplymousetheme
 %{_bindir}/kfontinst
@@ -150,6 +154,7 @@ cat *.lang >%{name}.lang
 %{_datadir}/kcminput
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
+%{_datadir}/kcmsolidactions
 %{_datadir}/kconf_update/*
 %{_datadir}/kcontrol
 %{_datadir}/kdisplay
@@ -157,10 +162,10 @@ cat *.lang >%{name}.lang
 # a more SDDM friendly location?
 %{_datadir}/kdm
 %{_datadir}/kfontinst
-%{_datadir}/kfontview
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
 %{_datadir}/kservices5/*.desktop
+%{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/ksmserver/windowmanagers
 %{_datadir}/ksmserver/windowmanagers/*.desktop
 %dir %{_datadir}/kthememanager
@@ -180,6 +185,10 @@ cat *.lang >%{name}.lang
 %{_datadir}/kservices5/ServiceMenus/installfont.desktop
 %{_datadir}/kservices5/fonts.protocol
 %{_datadir}/kservices5/kded/keyboard.desktop
+%{_datadir}/kxmlgui5/kfontinst
+%{_datadir}/kxmlgui5/kfontview
+%{_datadir}/plasma/kcms/kcm_lookandfeel
+%{_datadir}/plasma/layout-templates
 %dir %{_datadir}/plasma/packages
 %{_datadir}/plasma/packages/org.kde.desktoptoolbox
 %{_datadir}/plasma/packages/org.kde.paneltoolbox
@@ -196,6 +205,7 @@ cat *.lang >%{name}.lang
 %{_datadir}/plasma/shells
 %{_datadir}/polkit-1/actions/org.kde.fontinst.policy
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
+%{_datadir}/solid/devices
 %doc %{_docdir}/HTML/en/kcontrol
 %doc %{_docdir}/HTML/en/kfontview
 %doc %{_docdir}/HTML/en/knetattach
