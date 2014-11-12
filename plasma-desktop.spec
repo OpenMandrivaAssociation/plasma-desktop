@@ -50,6 +50,9 @@ BuildRequires: cmake(packagekitqt5)
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xi)
+BuildRequires: pkgconfig(xft)
+BuildRequires: pkgconfig(libusb-1.0)
+BuildRequires: pkgconfig(libusb)
 BuildRequires: ninja
 BuildRequires: plasma-workspace
 
