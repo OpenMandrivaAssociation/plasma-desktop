@@ -48,6 +48,8 @@ BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
 BuildRequires: cmake(packagekitqt5)
 BuildRequires: pkgconfig(libcanberra)
+BuildRequires: pkgconfig(xkbfile)
+BuildRequires: pkgconfig(xi)
 BuildRequires: ninja
 BuildRequires: plasma-workspace
 
