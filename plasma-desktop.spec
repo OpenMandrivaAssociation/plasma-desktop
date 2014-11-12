@@ -46,6 +46,7 @@ BuildRequires: cmake(Freetype)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
+BuildRequires: cmake(packagekitqt5)
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: ninja
 BuildRequires: plasma-workspace
