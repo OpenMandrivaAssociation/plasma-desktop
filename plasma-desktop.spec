@@ -61,7 +61,8 @@ KDE Frameworks 5 Plasma-desktop framework
 
 %prep
 %setup -qn %{name}-%{plasmaver}
-%cmake -G Ninja
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %build
 ninja -C build
@@ -146,13 +147,13 @@ cat *.lang >%{name}.lang
 # packages are useless.
 %{_libdir}/libkfontinst.so*
 %{_libdir}/libkfontinstui.so*
-%{_libdir}/plugins/*.so
-%{_libdir}/qml/org/kde/plasma/private/folder
-%{_libdir}/qml/org/kde/plasma/private/kicker
-%{_libdir}/qml/org/kde/plasma/private/kickoff
-%{_libdir}/qml/org/kde/plasma/private/pager
-%{_libdir}/qml/org/kde/plasma/private/taskmanager
-%{_libdir}/qml/org/kde/plasma/private/trash
+%{_libdir}/qt5/plugins/*.so
+%{_libdir}/qt5/qml/org/kde/plasma/private/folder
+%{_libdir}/qt5/qml/org/kde/plasma/private/kicker
+%{_libdir}/qt5/qml/org/kde/plasma/private/kickoff
+%{_libdir}/qt5/qml/org/kde/plasma/private/pager
+%{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
+%{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_datadir}/applications/kfontview.desktop
 %{_datadir}/applications/knetattach.desktop
 %{_datadir}/color-schemes
