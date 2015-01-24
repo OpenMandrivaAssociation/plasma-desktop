@@ -1,11 +1,13 @@
 %define debug_package %{nil}
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.1.2
+Version: 5.1.95
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/stable/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
+Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
+Patch0: plasma-desktop-5.1.95-clang.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
@@ -18,7 +20,7 @@ BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(KDecorations)
+BuildRequires: cmake(KDecoration2)
 BuildRequires: cmake(LibKWorkspace)
 BuildRequires: cmake(LibTaskManager)
 BuildRequires: cmake(KWinDBusInterface)
@@ -61,6 +63,9 @@ KDE Frameworks 5 Plasma-desktop framework
 
 %prep
 %setup -qn %{name}-%{plasmaver}
+%apply_patches
+# We need to increase template depth to make Boost happy
+export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
 %cmake -G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
@@ -73,11 +78,13 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 %find_lang joystick
 %find_lang kaccess
 %find_lang kcm_autostart
+%find_lang kcm_baloofile
 %find_lang kcm_desktoppaths
 %find_lang kcm_desktopthemedetails
 %find_lang kcm_emoticons
 %find_lang kcm_phonon
 %find_lang kcm_solid_actions
+%find_lang kcm_splashscreen
 %find_lang kcm_standard_actions
 %find_lang kcmaccess
 %find_lang kcmbell
@@ -102,9 +109,9 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 %find_lang kfontinst
 %find_lang knetattach
 %find_lang krdb
-%find_lang ksplashthemes
 %find_lang ktouchpadenabler
 %find_lang libkonq || touch libkonq.lang
+%find_lang plasma_applet_org.kde.desktopcontainment
 %find_lang plasma_applet_org.kde.plasma.folder
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
@@ -155,7 +162,7 @@ cat *.lang >%{name}.lang
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_datadir}/applications/kfontview.desktop
-%{_datadir}/applications/knetattach.desktop
+%{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/color-schemes
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/services/*
@@ -179,29 +186,16 @@ cat *.lang >%{name}.lang
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
 %{_datadir}/kservices5/*.desktop
+%{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/ksmserver/windowmanagers
 %{_datadir}/ksmserver/windowmanagers/*.desktop
-%dir %{_datadir}/kthememanager
-%dir %{_datadir}/kthememanager/themes
-%{_datadir}/kthememanager/themes/HighContrastDark-big
-%{_datadir}/kthememanager/themes/HighContrastDark
-%{_datadir}/kthememanager/themes/HighContrastLight-big
-%{_datadir}/kthememanager/themes/HighContrastLight
-%{_datadir}/kthememanager/themes/KDE_Classic
-%{_datadir}/kthememanager/themes/Keramik
-%{_datadir}/kthememanager/themes/Plastik
-%{_datadir}/kthememanager/themes/Platinum
-%{_datadir}/kthememanager/themes/Redmond
-%{_datadir}/kthememanager/themes/Sunshine
-%{_datadir}/kthememanager/themes/YellowOnBlue-big
-%{_datadir}/kthememanager/themes/YellowOnBlue
 %{_datadir}/kservices5/ServiceMenus/installfont.desktop
 %{_datadir}/kservices5/fonts.protocol
-%{_datadir}/kservices5/kded/keyboard.desktop
 %{_datadir}/kxmlgui5/kfontinst
 %{_datadir}/kxmlgui5/kfontview
 %{_datadir}/plasma/kcms/kcm_lookandfeel
+%{_datadir}/plasma/kcms/kcm_splashscreen
 %{_datadir}/plasma/layout-templates
 %dir %{_datadir}/plasma/packages
 %{_datadir}/plasma/packages/org.kde.desktoptoolbox

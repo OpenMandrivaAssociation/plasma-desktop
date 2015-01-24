@@ -1,0 +1,31 @@
+--- plasma-desktop-5.1.95/kcms/keyboard/preview/kbpreviewframe.cpp.omv~	2015-01-24 20:47:41.713365188 +0100
++++ plasma-desktop-5.1.95/kcms/keyboard/preview/kbpreviewframe.cpp	2015-01-24 21:05:42.095403646 +0100
+@@ -181,7 +181,7 @@ void KbPreviewFrame::drawShape(QPainter
+ 
+             drawKeySymbols(painter, temp, s, name);
+         } else {
+-            QPoint temp[cordi_count];
++            QPoint *temp=new QPoint[cordi_count];
+ 
+             for (int i = 0; i < cordi_count; i++) {
+                 temp[i].setX(scaleFactor * (s.getCordii(i).x() + x + 1));
+@@ -190,9 +190,10 @@ void KbPreviewFrame::drawShape(QPainter
+ 
+             painter.drawPolygon(temp, cordi_count);
+             drawKeySymbols(painter, temp, s, name);
++            delete[] temp;
+         }
+     } else {
+-        QPoint temp[cordi_count == 1 ? 4 : cordi_count];
++        QPoint *temp = new QPoint[cordi_count == 1 ? 4 : cordi_count];
+         int size;
+ 
+         if (cordi_count == 1) {
+@@ -241,6 +242,7 @@ void KbPreviewFrame::drawShape(QPainter
+ 
+         painter.drawPolygon(temp, size);
+         drawKeySymbols(painter, temp, s, name);
++        delete[] temp;
+     }
+ 
+ }
