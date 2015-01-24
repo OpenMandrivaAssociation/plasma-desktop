@@ -27,6 +27,7 @@ BuildRequires: cmake(KWinDBusInterface)
 BuildRequires: cmake(ScreenSaverDBusInterface)
 BuildRequires: cmake(KRunnerAppDBusInterface)
 BuildRequires: cmake(KSMServerDBusInterface)
+BuildRequires: cmake(KF5Baloo)
 BuildRequires: cmake(KF5ItemModels)
 BuildRequires: cmake(KF5Emoticons)
 BuildRequires: cmake(KF5Activities)
@@ -57,6 +58,7 @@ BuildRequires: pkgconfig(libusb-1.0)
 BuildRequires: pkgconfig(libusb)
 BuildRequires: ninja
 BuildRequires: plasma-workspace
+BuildRequires: boost-devel
 
 %description
 KDE Frameworks 5 Plasma-desktop framework
