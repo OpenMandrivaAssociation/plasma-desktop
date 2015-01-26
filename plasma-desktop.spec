@@ -68,6 +68,10 @@ KDE Frameworks 5 Plasma-desktop framework
 %apply_patches
 # We need to increase template depth to make Boost happy
 export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
+%ifarch %arm
+export C=gcc
+export CXX=g++
+%endif
 %cmake -G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
