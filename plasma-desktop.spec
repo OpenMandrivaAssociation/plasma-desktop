@@ -3,7 +3,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.2.1
+Version: 5.2.2
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -15,10 +15,8 @@ Group: System/Libraries
 BuildRequires: cmake
 BuildRequires: qmake5
 BuildRequires: extra-cmake-modules5
-BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(Qt5)
 BuildRequires: cmake(KF5)
 BuildRequires: cmake(KDecoration2)
 BuildRequires: cmake(LibKWorkspace)
@@ -39,29 +37,47 @@ BuildRequires: cmake(KF5NotifyConfig)
 BuildRequires: cmake(KF5Attica)
 BuildRequires: cmake(KF5Wallet)
 BuildRequires: cmake(KF5Runner)
-BuildRequires: cmake(Fontconfig)
-BuildRequires: cmake(XCB)
-BuildRequires: cmake(OpenGL)
-BuildRequires: cmake(Freetype)
-BuildRequires: cmake(Fontconfig)
 BuildRequires: cmake(Strigi)
-BuildRequires: cmake(Freetype)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
 BuildRequires: cmake(packagekitqt5)
 BuildRequires: pkgconfig(libcanberra)
+BuildRequires: pkgconfig(fontconfig)
+BuildRequires: pkgconfig(freetype2)
+BuildRequires: pkgconfig(gl)
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(libcanberra)
+BuildRequires: pkgconfig(libpulse)
+BuildRequires: pkgconfig(libusb)
+BuildRequires: pkgconfig(phonon4qt5)
+BuildRequires: pkgconfig(Qt5Concurrent)
+BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: pkgconfig(Qt5Network)
+BuildRequires: pkgconfig(Qt5Qml)
+BuildRequires: pkgconfig(Qt5Quick)
+BuildRequires: pkgconfig(Qt5QuickWidgets)
+BuildRequires: pkgconfig(Qt5Svg)
+BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(Qt5X11Extras)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(xcb)
+BuildRequires: pkgconfig(xcb-image)
+BuildRequires: pkgconfig(xcb-shm)
+BuildRequires: pkgconfig(xkbfile)
+BuildRequires: pkgconfig(xcb-xinput)
+BuildRequires: pkgconfig(xcb-xkb)
+BuildRequires: pkgconfig(xft)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xi)
-BuildRequires: pkgconfig(xft)
-BuildRequires: pkgconfig(libusb-1.0)
-BuildRequires: pkgconfig(libusb)
 BuildRequires: ninja
 BuildRequires: plasma-workspace
 BuildRequires: boost-devel
 
 %description
-KDE Frameworks 5 Plasma-desktop framework
+KDE Frameworks 5 Plasma-desktop framework.
 
 %prep
 %setup -qn %{name}-%{plasmaver}
@@ -220,7 +236,7 @@ cat *.lang >%{name}.lang
 %{_datadir}/polkit-1/actions/org.kde.fontinst.policy
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/solid/devices
-%doc %{_docdir}/HTML/en/kcontrol
-%doc %{_docdir}/HTML/en/kfontview
-%doc %{_docdir}/HTML/en/knetattach
-%doc %{_docdir}/HTML/en/plasma-desktop
+%doc %{_docdir}/HTML/*/kcontrol
+%doc %{_docdir}/HTML/*/kfontview
+%doc %{_docdir}/HTML/*/knetattach
+%doc %{_docdir}/HTML/*/plasma-desktop
