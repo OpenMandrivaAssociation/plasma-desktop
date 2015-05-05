@@ -5,16 +5,13 @@
 Name: plasma-desktop
 Version: 5.3.0
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Patch0: plasma-desktop-5.1.95-clang.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
-BuildRequires: cmake
-BuildRequires: qmake5
-BuildRequires: extra-cmake-modules5
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
@@ -72,7 +69,6 @@ BuildRequires: pkgconfig(xcb-xkb)
 BuildRequires: pkgconfig(xft)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xi)
-BuildRequires: ninja
 BuildRequires: plasma-workspace
 BuildRequires: boost-devel
 
@@ -88,14 +84,18 @@ export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
 export C=gcc
 export CXX=g++
 %endif
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+%cmake_kde5
 
 %build
-ninja -C build
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
+%ninja_install -C build
+
+# We don't have headers
+rm -f %{buildroot}%{_libdir}/libkfontinst.so
+rm -f %{buildroot}%{_libdir}/libkfontinstui.so
+
 %find_lang attica_kde
 %find_lang joystick
 %find_lang kaccess
