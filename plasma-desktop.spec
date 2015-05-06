@@ -70,6 +70,7 @@ BuildRequires: pkgconfig(xcb-xkb)
 BuildRequires: pkgconfig(xft)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xi)
+BuildRequires: pkgconfig(xorg-synaptics)
 BuildRequires: plasma-workspace
 BuildRequires: boost-devel
 
@@ -110,7 +111,6 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcm_splashscreen
 %find_lang kcm_standard_actions
 %find_lang kcmaccess
-%find_lang kcmbell
 %find_lang kcmcolors
 %find_lang kcmcomponentchooser
 %find_lang kcmfonts
