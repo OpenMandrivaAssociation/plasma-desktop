@@ -7,7 +7,7 @@ Version: 5.3.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
-Patch0: plasma-desktop-5.1.95-clang.patch
+#Patch0: plasma-desktop-5.1.95-clang.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
