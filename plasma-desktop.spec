@@ -72,6 +72,7 @@ BuildRequires: pkgconfig(xft)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xi)
 BuildRequires: pkgconfig(xorg-synaptics)
+BuildRequires: pkgconfig(xorg-server)
 BuildRequires: plasma-workspace
 BuildRequires: boost-devel
 
