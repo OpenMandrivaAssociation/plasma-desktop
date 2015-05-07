@@ -125,6 +125,7 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcmkeys
 %find_lang kcmlaunch
 %find_lang kcm_lookandfeel
+%find_lang kcm_touchpad
 %find_lang kcmnotify
 %find_lang kcm_search
 %find_lang kcmsmserver
@@ -146,6 +147,7 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang plasma_runner_plasma-desktop
 %find_lang plasma_shell_org.kde.plasma.desktop
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
+%find_lang plasma_applet_touchpad
 %find_lang useraccount
 cat *.lang >%{name}.lang
 
@@ -161,6 +163,7 @@ cat *.lang >%{name}.lang
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
 %{_bindir}/kapplymousetheme
+%{_bindir}/kcm-touchpad-list-devices
 %{_bindir}/kfontinst
 %{_bindir}/kfontview
 %{_bindir}/knetattach
@@ -178,21 +181,23 @@ cat *.lang >%{name}.lang
 %{_libdir}/libkfontinst.so*
 %{_libdir}/libkfontinstui.so*
 %{_libdir}/qt5/plugins/*.so
-%{_libdir}/qt5/qml/org/kde/plasma/private/folder
+%{_libdir}/qt5/plugins/kcms/*.so
+%{_libdir}/qt5/plugins/plasma/dataengine/*.so
 %{_libdir}/qt5/qml/org/kde/plasma/private/kicker
 %{_libdir}/qt5/qml/org/kde/plasma/private/kickoff
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
+%{_libdir}/qt5/qml/org/kde/plasma/activityswitcher
+%{_libdir}/qt5/qml/org/kde/private/desktopcontainment
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/color-schemes
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/services/*
+%{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
-%{_datadir}/icons/*/*/*/kfontview.*
-%{_datadir}/icons/*/*/*/fonts-package.*
-%{_datadir}/icons/*/*/*/preferences-desktop-font-installer.*
+%{_iconsdir}/hicolor/*/*/*.*g
 %{_datadir}/kcm_componentchooser
 %{_datadir}/kcm_phonon
 %{_datadir}/kcminput
@@ -208,6 +213,8 @@ cat *.lang >%{name}.lang
 %{_datadir}/kfontinst
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
+%{_datadir}/kpackage/kcms/kcm_lookandfeel
+%{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
@@ -217,10 +224,10 @@ cat *.lang >%{name}.lang
 %{_datadir}/kservices5/fonts.protocol
 %{_datadir}/kxmlgui5/kfontinst
 %{_datadir}/kxmlgui5/kfontview
-%{_datadir}/plasma/kcms/kcm_lookandfeel
-%{_datadir}/plasma/kcms/kcm_splashscreen
 %{_datadir}/plasma/layout-templates
+%{_datadir}/plasma/desktoptheme
 %dir %{_datadir}/plasma/packages
+%{_datadir}/plasma/plasmoids/touchpad
 %{_datadir}/plasma/packages/org.kde.desktoptoolbox
 %{_datadir}/plasma/packages/org.kde.paneltoolbox
 %{_datadir}/plasma/plasmoids/org.kde.desktopcontainment
@@ -228,15 +235,18 @@ cat *.lang >%{name}.lang
 %{_datadir}/plasma/plasmoids/org.kde.plasma.folder
 %{_datadir}/plasma/plasmoids/org.kde.plasma.kicker
 %{_datadir}/plasma/plasmoids/org.kde.plasma.kickoff
+%{_datadir}/plasma/plasmoids/org.kde.plasma.icontasks
 %{_datadir}/plasma/plasmoids/org.kde.plasma.pager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showActivityManager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.taskmanager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.trash
 %{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
 %{_datadir}/plasma/shells
+%{_datadir}/plasma/services/touchpad.operations
 %{_datadir}/polkit-1/actions/org.kde.fontinst.policy
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/solid/devices
+
 %doc %{_docdir}/HTML/*/kcontrol
 %doc %{_docdir}/HTML/*/kfontview
 %doc %{_docdir}/HTML/*/knetattach
