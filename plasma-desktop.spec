@@ -136,7 +136,6 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang krdb
 %find_lang libkonq || touch libkonq.lang
 %find_lang plasma_applet_org.kde.desktopcontainment
-%find_lang plasma_applet_org.kde.plasma.folder
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
 %find_lang plasma_applet_org.kde.plasma.pager
