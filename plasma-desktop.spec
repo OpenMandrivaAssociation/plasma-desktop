@@ -106,7 +106,7 @@ Group:		System/Libraries
 Plasma 5 desktop shared library.
 
 %files -n %{libkfontinst}
-%{_kde5_libdir}/libkfontinst.so.%{kfontinst_major}*
+%{_libdir}/libkfontinst.so.%{kfontinst_major}*
 
 #----------------------------------------------------------------------------
 
