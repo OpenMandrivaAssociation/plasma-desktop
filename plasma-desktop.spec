@@ -79,6 +79,50 @@ BuildRequires: boost-devel
 %description
 KDE Frameworks 5 Plasma-desktop framework.
 
+%define KF5ActivitiesExperimentalStats_major 1
+%define libKF5ActivitiesExperimentalStats %mklibname KF5ActivitiesExperimentalStats %{KF5ActivitiesExperimentalStats_major}
+
+%package -n %{libKF5ActivitiesExperimentalStats}
+Summary:	Plasma 5 desktop shared library
+Group:		System/Libraries
+
+%description -n %{libKF5ActivitiesExperimentalStats}
+Plasma 5 desktop shared library.
+
+%files -n %{libKF5ActivitiesExperimentalStats}
+%{_libdir}/libKF5ActivitiesExperimentalStats.so.%{KF5ActivitiesExperimentalStats_major}*
+%{_libdir}/libKF5ActivitiesExperimentalStats.so.0.0.1
+
+#----------------------------------------------------------------------------
+
+%define kfontinst_major 5
+%define libkfontinst %mklibname kfontinst %{kfontinst_major}
+
+%package -n %{libkfontinst}
+Summary:	Plasma 5 desktop shared library
+Group:		System/Libraries
+
+%description -n %{libkfontinst}
+Plasma 5 desktop shared library.
+
+%files -n %{libkfontinst}
+%{_kde5_libdir}/libkfontinst.so.%{kfontinst_major}*
+
+#----------------------------------------------------------------------------
+
+%define kfontinstui_major 5
+%define libkfontinstui %mklibname kfontinstui %{kfontinstui_major}
+
+%package -n %{libkfontinstui}
+Summary:	Plasma 5 desktop shared library
+Group:		System/Libraries
+
+%description -n %{libkfontinstui}
+Plasma 5 desktop shared library.
+
+%files -n %{libkfontinstui}
+%{_libdir}/libkfontinstui.so.%{kfontinstui_major}*
+
 %prep
 %setup -qn %{name}-%{plasmaver}
 %apply_patches
@@ -178,8 +222,6 @@ cat *.lang >%{name}.lang
 # Technically the following 2 should be library packages, but given
 # nothing uses them and nothing CAN use them, the separate library
 # packages are useless.
-%{_libdir}/libkfontinst.so*
-%{_libdir}/libkfontinstui.so*
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
@@ -197,7 +239,7 @@ cat *.lang >%{name}.lang
 %{_datadir}/dbus-1/services/*
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
-%{_iconsdir}/hicolor/*/*/*.*g
+%{_iconsdir}/hicolor/*/*/*.*[g-z]
 %{_datadir}/kcm_componentchooser
 %{_datadir}/kcm_phonon
 %{_datadir}/kcminput
