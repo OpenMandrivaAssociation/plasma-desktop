@@ -1,10 +1,11 @@
+%define _disable_lto 1
 %define debug_package %{nil}
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
 Version: 5.3.2
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -36,7 +37,6 @@ BuildRequires: cmake(KF5Wallet)
 BuildRequires: cmake(KF5Runner)
 BuildRequires: cmake(KF5People)
 BuildRequires: cmake(KDED)
-BuildRequires: cmake(Strigi)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
