@@ -1,0 +1,502 @@
+From: Eike Hein <hein@kde.org>
+Date: Mon, 11 May 2015 20:02:28 +0000
+Subject: Support custom menu layouts and menu separator items.
+X-Git-Url: http://quickgit.kde.org/?p=plasma-desktop.git&a=commitdiff&h=8304f377ad865bdd9329c462e8734ea6c2a2ab4a
+---
+Support custom menu layouts and menu separator items.
+
+If menu flattening is enabled and a group actually has subgroups
+that get flattened in, separators are ignored and entriees are
+collated alphabetically.
+
+Leading or trailing separators are always ignored, and multiple
+consecutive separators are collapsed into one.
+
+BUG:347412
+---
+
+diff -urN plasma-desktop-5.3.1/applets/kicker/package/contents/ui/FullRepresentation.qml plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/FullRepresentation.qml
+--- plasma-desktop-5.3.1/applets/kicker/package/contents/ui/FullRepresentation.qml	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/FullRepresentation.qml	2015-05-27 17:03:57.395077016 +1000
+@@ -30,14 +30,16 @@
+     Layout.minimumWidth: sideBar.width + mainRow.spacing + Math.max(rootList.width, runnerColumns.width)
+     Layout.maximumWidth: sideBar.width + mainRow.spacing + Math.max(rootList.width, runnerColumns.width)
+ 
+-    Layout.minimumHeight: Math.max(((rootModel.count - (rootList.hasDivider ? 1 : 0)) * rootList.itemHeight)
++    Layout.minimumHeight: Math.max(((rootModel.count - rootModel.separatorCount) * rootList.itemHeight)
++        + (rootModel.separatorCount * rootList.separatorHeight)
+         + searchField.height + (2 * units.smallSpacing), sideBar.margins.top + sideBar.margins.bottom
+         + favoriteApps.contentHeight + favoriteSystemActions.contentHeight + sidebarSeparator.height
+-        + (4 * units.smallSpacing)) + (rootList.hasDivider ? rootList.dividerHeight : 0)
+-    Layout.maximumHeight: Math.max(((rootModel.count - (rootList.hasDivider ? 1 : 0)) * rootList.itemHeight)
++        + (4 * units.smallSpacing))
++    Layout.maximumHeight: Math.max(((rootModel.count - rootModel.separatorCount) * rootList.itemHeight)
++        + (rootModel.separatorCount * rootList.separatorHeight)
+         + searchField.height + (2 * units.smallSpacing), sideBar.margins.top + sideBar.margins.bottom
+         + favoriteApps.contentHeight + favoriteSystemActions.contentHeight + sidebarSeparator.height
+-        + (4 * units.smallSpacing)) + (rootList.hasDivider ? rootList.dividerHeight : 0)
++        + (4 * units.smallSpacing))
+ 
+     signal appendSearchText(string text)
+ 
+@@ -164,13 +166,10 @@
+ 
+             anchors.top: parent.top
+ 
+-            height: ((rootModel.count - (hasDivider ? 1 : 0)) * itemHeight) + (hasDivider ? dividerHeight : 0)
++            height: ((rootModel.count - rootModel.separatorCount) * itemHeight) + (rootModel.separatorCount * separatorHeight)
+ 
+             visible: (searchField.text == "")
+ 
+-            property bool hasDivider: (rootModel.showRecentApps
+-                || rootModel.showRecentDocs || rootModel.showRecentContacts)
+-
+             iconsEnabled: false
+ 
+             model: rootModel
+diff -urN plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListDelegate.qml plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListDelegate.qml
+--- plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListDelegate.qml	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListDelegate.qml	2015-05-27 17:03:57.396077016 +1000
+@@ -28,22 +28,22 @@
+ Item {
+     id: item
+ 
+-    height: isDivider ? dividerHeight : itemHeight
++    height: isSeparator ? separatorHeight : itemHeight
+     width: ListView.view.width
+ 
+-    enabled: !isDivider
++    enabled: !isSeparator
+ 
+     signal actionTriggered(string actionId, variant actionArgument)
+     signal aboutToShowActionMenu(variant actionMenu)
+ 
+-    property bool isDivider: (model.isDivider == true)
++    property bool isSeparator: (model.isSeparator == true)
+     property bool hasChildren: (model.hasChildren == true)
+     property bool hasActionList: ((model.favoriteId != null)
+         || (("hasActionList" in model) && (model.hasActionList == true)))
+     property QtObject childDialog: null
+     property Item menu: actionMenu
+ 
+-    Accessible.role: isDivider ? Accessible.Separator: Accessible.MenuItem
++    Accessible.role: isSeparator ? Accessible.Separator: Accessible.MenuItem
+     Accessible.name: label.text
+ 
+     onHasChildrenChanged: {
+@@ -234,7 +234,7 @@
+     }
+ 
+     Component {
+-        id: dividerComponent
++        id: separatorComponent
+ 
+         PlasmaCore.SvgItem {
+             width: parent.width
+@@ -246,7 +246,7 @@
+     }
+ 
+     Loader {
+-        id: dividerLoader
++        id: separatorLoader
+ 
+         anchors.left: parent.left
+         anchors.leftMargin: highlightItemSvg.margins.left
+@@ -254,10 +254,10 @@
+         anchors.rightMargin: highlightItemSvg.margins.right
+         anchors.verticalCenter: parent.verticalCenter
+ 
+-        active: isDivider
++        active: isSeparator
+ 
+         asynchronous: false
+-        sourceComponent: dividerComponent
++        sourceComponent: separatorComponent
+     }
+ 
+     Keys.onPressed: {
+diff -urN plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListDialog.qml plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListDialog.qml
+--- plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListDialog.qml	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListDialog.qml	2015-05-27 17:03:57.396077016 +1000
+@@ -46,7 +46,8 @@
+ 
+         height: model != undefined ? Math.min(((Math.floor((itemDialog.availableScreenRectForItem(itemListView).height
+             - itemDialog.margins.top - itemDialog.margins.bottom) / itemHeight) - 1)
+-            * itemHeight), model.count * itemHeight) : 0
++            * itemHeight) - (model.separatorCount * itemHeight) + (model.separatorCount * separatorHeight),
++            ((model.count - model.separatorCount) * itemHeight) + (model.separatorCount * separatorHeight)) : 0
+ 
+         iconsEnabled: true
+ 
+diff -urN plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListView.qml plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListView.qml
+--- plasma-desktop-5.3.1/applets/kicker/package/contents/ui/ItemListView.qml	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/package/contents/ui/ItemListView.qml	2015-05-27 17:03:57.396077016 +1000
+@@ -41,7 +41,7 @@
+     property int itemHeight: Math.ceil((Math.max(theme.mSize(theme.defaultFont).height, units.iconSizes.small)
+         + Math.max(highlightItemSvg.margins.top + highlightItemSvg.margins.bottom,
+         listItemSvg.margins.top + listItemSvg.margins.bottom)) / 2) * 2
+-    property int dividerHeight: lineSvg.horLineHeight + (2 * units.smallSpacing)
++    property int separatorHeight: lineSvg.horLineHeight + (2 * units.smallSpacing)
+ 
+     property alias currentIndex: listView.currentIndex
+     property alias currentItem: listView.currentItem
+@@ -152,7 +152,7 @@
+                 highlight: PlasmaComponents.Highlight {
+                     anchors.fill: listView.currentItem;
+ 
+-                    visible: listView.currentItem && !listView.currentItem.isDivider
++                    visible: listView.currentItem && !listView.currentItem.isSeparator
+                 }
+ 
+                 onCountChanged: {
+@@ -211,7 +211,7 @@
+                         showChildDialogs = false;
+                         decrementCurrentIndex();
+ 
+-                        if (currentItem.isDivider) {
++                        if (currentItem.isSeparator) {
+                             decrementCurrentIndex();
+                         }
+ 
+@@ -228,7 +228,7 @@
+                         showChildDialogs = false;
+                         incrementCurrentIndex();
+ 
+-                        if (currentItem.isDivider) {
++                        if (currentItem.isSeparator) {
+                             incrementCurrentIndex();
+                         }
+ 
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/abstractentry.h plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractentry.h
+--- plasma-desktop-5.3.1/applets/kicker/plugin/abstractentry.h	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractentry.h	2015-05-27 17:03:57.397077016 +1000
+@@ -30,7 +30,7 @@
+ class AbstractEntry
+ {
+     public:
+-        enum EntryType { RunnableType, GroupType, DividerType };
++        enum EntryType { RunnableType, GroupType, SeparatorType };
+ 
+         virtual ~AbstractEntry();
+ 
+@@ -56,10 +56,10 @@
+         QPointer<AbstractModel> m_model;
+ };
+ 
+-class DividerEntry : public AbstractEntry
++class SeparatorEntry : public AbstractEntry
+ {
+     public:
+-        EntryType type() const { return DividerType; }
++        EntryType type() const { return SeparatorType; }
+ };
+ 
+ #endif
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/abstractmodel.cpp plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractmodel.cpp
+--- plasma-desktop-5.3.1/applets/kicker/plugin/abstractmodel.cpp	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractmodel.cpp	2015-05-27 17:03:57.397077016 +1000
+@@ -26,7 +26,7 @@
+     roles.insert(Qt::DisplayRole, "display");
+     roles.insert(Qt::DecorationRole, "decoration");
+     roles.insert(Kicker::IsParentRole, "isParent");
+-    roles.insert(Kicker::IsDividerRole, "isDivider");
++    roles.insert(Kicker::IsSeparatorRole, "isSeparator");
+     roles.insert(Kicker::HasChildrenRole, "hasChildren");
+     roles.insert(Kicker::FavoriteIdRole, "favoriteId");
+     roles.insert(Kicker::HasActionListRole, "hasActionList");
+@@ -45,6 +45,11 @@
+     return rowCount();
+ }
+ 
++int AbstractModel::separatorCount() const
++{
++    return 0;
++}
++
+ int AbstractModel::columnCount(const QModelIndex &parent) const
+ {
+     if (parent.isValid()) {
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/abstractmodel.h plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractmodel.h
+--- plasma-desktop-5.3.1/applets/kicker/plugin/abstractmodel.h	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/abstractmodel.h	2015-05-27 17:03:57.397077016 +1000
+@@ -27,12 +27,14 @@
+     Q_OBJECT
+ 
+     Q_PROPERTY(int count READ count NOTIFY countChanged)
++    Q_PROPERTY(int separatorCount READ separatorCount NOTIFY separatorCountChanged)
+ 
+     public:
+         explicit AbstractModel(QObject *parent = 0);
+         ~AbstractModel();
+ 
+         int count() const;
++        virtual int separatorCount() const;
+ 
+         int columnCount(const QModelIndex &parent = QModelIndex()) const;
+ 
+@@ -44,6 +46,7 @@
+ 
+     Q_SIGNALS:
+         void countChanged() const;
++        void separatorCountChanged() const;
+ };
+ 
+ #endif
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/actionlist.h plasma-desktop-5.3.1-patched/applets/kicker/plugin/actionlist.h
+--- plasma-desktop-5.3.1/applets/kicker/plugin/actionlist.h	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/actionlist.h	2015-05-27 17:03:57.397077016 +1000
+@@ -29,7 +29,7 @@
+ 
+ enum {
+     IsParentRole = Qt::UserRole + 1,
+-    IsDividerRole,
++    IsSeparatorRole,
+     HasChildrenRole,
+     FavoriteIdRole,
+     HasActionListRole,
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/appsmodel.cpp plasma-desktop-5.3.1-patched/applets/kicker/plugin/appsmodel.cpp
+--- plasma-desktop-5.3.1/applets/kicker/plugin/appsmodel.cpp	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/appsmodel.cpp	2015-05-27 17:03:57.398077016 +1000
+@@ -72,9 +72,11 @@
+ 
+ AppsModel::AppsModel(const QString &entryPath, bool flat, QObject *parent)
+ : AbstractModel(parent)
++, m_separatorCount(0)
+ , m_entryPath(entryPath)
+ , m_changeTimer(0)
+ , m_flat(flat)
++, m_sortNeeded(false)
+ , m_appNameFormat(NameOnly)
+ , m_appletInterface(0)
+ {
+@@ -102,8 +104,8 @@
+         return entry->icon();
+     } else if (role == Kicker::IsParentRole) {
+         return (entry->type() == AbstractEntry::GroupType);
+-    } else if (role == Kicker::IsDividerRole) {
+-        return (entry->type() == AbstractEntry::DividerType);
++    } else if (role == Kicker::IsSeparatorRole) {
++        return (entry->type() == AbstractEntry::SeparatorType);
+     } else if (role == Kicker::HasChildrenRole) {
+         if (entry->type() == AbstractEntry::GroupType) {
+             const AbstractGroupEntry *groupEntry = static_cast<const AbstractGroupEntry *>(entry);
+@@ -352,6 +354,11 @@
+     return static_cast<AbstractGroupEntry *>(m_entryList.at(row))->model();
+ }
+ 
++int AppsModel::separatorCount() const
++{
++    return m_separatorCount;
++}
++
+ bool AppsModel::flat() const
+ {
+     return m_flat;
+@@ -434,10 +441,16 @@
+     qDeleteAll(m_entryList);
+     m_entryList.clear();
+     m_hiddenEntries.clear();
++    m_separatorCount = 0;
++    m_sortNeeded = false;
+ 
+     if (m_entryPath.isEmpty()) {
+         KServiceGroup::Ptr group = KServiceGroup::root();
+-        KServiceGroup::List list = group->entries(true);
++
++        bool sortByGenericName = (appNameFormat() == GenericNameOnly || appNameFormat() == GenericNameAndName);
++
++        KServiceGroup::List list = group->entries(true /* sorted */, true /* excludeNoDisplay */,
++            true /* allowSeparators */, sortByGenericName /* sortByGenericName */);
+ 
+         for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); it++) {
+             const KSycocaEntry::Ptr p = (*it);
+@@ -463,21 +476,29 @@
+         KServiceGroup::Ptr group = KServiceGroup::group(m_entryPath);
+         processServiceGroup(group);
+ 
+-        QCollator c;
+-
+-        std::sort(m_entryList.begin(), m_entryList.end(),
+-            [&c](AbstractEntry* a, AbstractEntry* b) {
+-                if (a->type() != b->type()) {
+-                    return a->type() > b->type();
+-                } else {
+-                    return c.compare(a->name(), b->name()) < 0;
+-                }
+-            });
++        while (m_entryList.last()->type() == AbstractEntry::SeparatorType) {
++            m_entryList.removeLast();
++            --m_separatorCount;
++        }
++
++        if (m_sortNeeded) {
++            QCollator c;
++
++            std::sort(m_entryList.begin(), m_entryList.end(),
++                [&c](AbstractEntry* a, AbstractEntry* b) {
++                    if (a->type() != b->type()) {
++                        return a->type() > b->type();
++                    } else {
++                        return c.compare(a->name(), b->name()) < 0;
++                    }
++                });
++        }
+     }
+ 
+     endResetModel();
+ 
+     emit countChanged();
++    emit separatorCountChanged();
+ }
+ 
+ void AppsModel::processServiceGroup(KServiceGroup::Ptr group)
+@@ -486,7 +507,20 @@
+         return;
+     }
+ 
+-    KServiceGroup::List list = group->entries(true);
++    bool sortByGenericName = (appNameFormat() == GenericNameOnly || appNameFormat() == GenericNameAndName);
++
++    KServiceGroup::List list = group->entries(true /* sorted */, true /* excludeNoDisplay */,
++        true /* allowSeparators */, sortByGenericName /* sortByGenericName */);
++
++    bool hasSubGroups = false;
++
++    foreach(KServiceGroup::Ptr grp, group->groupEntries(KServiceGroup::ExcludeNoDisplay)) {
++        if (grp->childCount() > 0) {
++            hasSubGroups = true;
++
++            break;
++        }
++    }
+ 
+     QStringList hiddenApps;
+ 
+@@ -523,19 +557,33 @@
+             if (!found) {
+                 m_entryList << new AppEntry(service, nameFromService(service, m_appNameFormat));
+             }
++        } else if (p->isType(KST_KServiceSeparator) && (!m_flat || (m_flat && !hasSubGroups))) {
++            if (!m_entryList.count()) {
++                continue;
++            }
++
++            if (m_entryList.last()->type() == AbstractEntry::SeparatorType) {
++                continue;
++            }
++
++            m_entryList << new SeparatorEntry();
++            ++m_separatorCount;
+         } else if (p->isType(KST_KServiceGroup)) {
++            const KServiceGroup::Ptr subGroup(static_cast<KServiceGroup*>(p.data()));
++
++            if (subGroup->childCount() == 0) {
++                continue;
++            }
++
+             if (m_flat) {
++                m_sortNeeded = true;
+                 const KServiceGroup::Ptr serviceGroup(static_cast<KServiceGroup*>(p.data()));
+                 processServiceGroup(serviceGroup);
+             } else {
+-                const KServiceGroup::Ptr subGroup(static_cast<KServiceGroup*>(p.data()));
+-
+-                if (!subGroup->noDisplay() && subGroup->childCount() > 0) {
+-                    AppGroupEntry *groupEntry = new AppGroupEntry(subGroup, this, m_flat, m_appNameFormat);
+-                    connect(groupEntry->model(), SIGNAL(countChanged()), this, SLOT(refresh()));
+-                    connect(groupEntry->model(), SIGNAL(hiddenEntriesChanged()), this, SLOT(childHiddenEntriesChanged()));
+-                    m_entryList << groupEntry;
+-                }
++                AppGroupEntry *groupEntry = new AppGroupEntry(subGroup, this, m_flat, m_appNameFormat);
++                connect(groupEntry->model(), SIGNAL(countChanged()), this, SLOT(refresh()));
++                connect(groupEntry->model(), SIGNAL(hiddenEntriesChanged()), this, SLOT(childHiddenEntriesChanged()));
++                m_entryList << groupEntry;
+             }
+         }
+     }
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/appsmodel.h plasma-desktop-5.3.1-patched/applets/kicker/plugin/appsmodel.h
+--- plasma-desktop-5.3.1/applets/kicker/plugin/appsmodel.h	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/appsmodel.h	2015-05-27 17:03:57.398077016 +1000
+@@ -80,6 +80,8 @@
+ 
+         Q_INVOKABLE AbstractModel *modelForRow(int row);
+ 
++        int separatorCount() const;
++
+         bool flat() const;
+         void setFlat(bool flat);
+ 
+@@ -111,6 +113,7 @@
+ 
+     protected:
+         QList<AbstractEntry *> m_entryList;
++        int m_separatorCount;
+ 
+     private:
+         void processServiceGroup(KServiceGroup::Ptr group);
+@@ -119,6 +122,7 @@
+         QString m_entryPath;
+         QTimer *m_changeTimer;
+         bool m_flat;
++        bool m_sortNeeded;
+         NameFormat m_appNameFormat;
+         QStringList m_hiddenEntries;
+         QObject *m_appletInterface;
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/forwardingmodel.cpp plasma-desktop-5.3.1-patched/applets/kicker/plugin/forwardingmodel.cpp
+--- plasma-desktop-5.3.1/applets/kicker/plugin/forwardingmodel.cpp	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/forwardingmodel.cpp	2015-05-27 17:03:57.399077016 +1000
+@@ -141,6 +141,21 @@
+     return abstractModel->modelForRow(row);
+ }
+ 
++int ForwardingModel::separatorCount() const
++{
++    if (!m_sourceModel) {
++        return 0;
++    }
++
++    AbstractModel *abstractModel = qobject_cast<AbstractModel *>(m_sourceModel);
++
++    if (!abstractModel) {
++        return 0;
++    }
++
++    return abstractModel->separatorCount();
++}
++
+ void ForwardingModel::reset()
+ {
+     emit beginResetModel();
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/forwardingmodel.h plasma-desktop-5.3.1-patched/applets/kicker/plugin/forwardingmodel.h
+--- plasma-desktop-5.3.1/applets/kicker/plugin/forwardingmodel.h	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/forwardingmodel.h	2015-05-27 17:03:57.399077016 +1000
+@@ -51,6 +51,8 @@
+ 
+         Q_INVOKABLE AbstractModel *modelForRow(int row);
+ 
++        int separatorCount() const;
++
+     public Q_SLOTS:
+         void reset();
+ 
+diff -urN plasma-desktop-5.3.1/applets/kicker/plugin/rootmodel.cpp plasma-desktop-5.3.1-patched/applets/kicker/plugin/rootmodel.cpp
+--- plasma-desktop-5.3.1/applets/kicker/plugin/rootmodel.cpp	2015-05-22 02:56:56.000000000 +1000
++++ plasma-desktop-5.3.1-patched/applets/kicker/plugin/rootmodel.cpp	2015-05-27 17:03:57.399077016 +1000
+@@ -211,7 +211,8 @@
+ 
+         GroupEntry *entry = 0;
+ 
+-        m_entryList.prepend(new DividerEntry());
++        m_entryList.prepend(new SeparatorEntry());
++        ++m_separatorCount;
+ 
+         if (m_recentContactsModel) {
+             entry = new GroupEntry(i18n("Recent Contacts"), QString(), m_recentContactsModel, this);
+@@ -236,6 +237,7 @@
+     endInsertRows();
+ 
+     emit countChanged();
++    emit separatorCountChanged();
+ }
+ 
+ void RootModel::childModelChanged()
