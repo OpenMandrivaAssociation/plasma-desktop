@@ -10,9 +10,6 @@ Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
 Patch1: plasma-desktop-5.2.2-add-autohint.patch
-# Backport from upstream to fix layout support in kicker
-# See https://bugs.kde.org/show_bug.cgi?id=347412
-Patch2: plasma-desktop-5.3.1-kicker-layout.patch
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
