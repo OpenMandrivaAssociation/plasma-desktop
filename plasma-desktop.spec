@@ -40,6 +40,9 @@ BuildRequires: cmake(KF5Wallet)
 BuildRequires: cmake(KF5Runner)
 BuildRequires: cmake(KF5People)
 BuildRequires: cmake(KDED)
+BuildRequires: cmake(KF5DBusAddons)
+BuildRequires: cmake(KF5GlobalAccel)
+BuildRequires: cmake(KF5Notifications)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
@@ -78,7 +81,7 @@ BuildRequires: pkgconfig(xorg-evdev)
 BuildRequires: pkgconfig(xorg-synaptics)
 BuildRequires: pkgconfig(xorg-server)
 BuildRequires: pkgconfig(xcursor)
-BuildRequires: plasma-workspace
+BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
 
@@ -151,6 +154,26 @@ rm -f %{buildroot}%{_libdir}/libkfontinst.so
 rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 
 %find_lang attica_kde
+%find_lang autostart
+%find_lang baloo
+%find_lang bell
+%find_lang bookmarks
+%find_lang cache
+%find_lang clock
+%find_lang colors
+%find_lang componentchooser
+%find_lang cookies
+%find_lang cursortheme
+%find_lang desktopthemedetails
+%find_lang ebrowsing
+%find_lang emoticons
+%find_lang filemanager
+%find_lang filetypes
+%find_lang fontinst
+%find_lang fonts
+%find_lang formats
+%find_lang history
+%find_lang icons
 %find_lang joystick
 %find_lang kaccess
 %find_lang kcm_autostart
@@ -158,13 +181,17 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcm_desktoppaths
 %find_lang kcm_desktopthemedetails
 %find_lang kcm_emoticons
+%find_lang kcm_lookandfeel
 %find_lang kcm_phonon
+%find_lang kcm_search
 %find_lang kcm_solid_actions
 %find_lang kcm_splashscreen
 %find_lang kcm_standard_actions
+%find_lang kcm_touchpad
 %find_lang kcmaccess
 %find_lang kcmcolors
 %find_lang kcmcomponentchooser
+%find_lang kcmcss
 %find_lang kcmfonts
 %find_lang kcmformats
 %find_lang kcmicons
@@ -174,18 +201,25 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcmkeyboard
 %find_lang kcmkeys
 %find_lang kcmlaunch
-%find_lang kcm_lookandfeel
-%find_lang kcm_touchpad
+%find_lang kcmmousetheme
 %find_lang kcmnotify
-%find_lang kcm_search
 %find_lang kcmsmserver
 %find_lang kcmstyle
 %find_lang kcmtranslations
 %find_lang kcmworkspaceoptions
+%find_lang kded
+%find_lang keyboard
+%find_lang keys
 %find_lang kfontinst
+%find_lang kfontview
 %find_lang knetattach
 %find_lang krdb
 %find_lang libkonq || touch libkonq.lang
+%find_lang mouse
+%find_lang netpref
+%find_lang paths
+%find_lang performance
+%find_lang phonon
 %find_lang plasma_applet_org.kde.desktopcontainment
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
@@ -194,10 +228,14 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang plasma_applet_org.kde.plasma.taskmanager
 %find_lang plasma_applet_org.kde.plasma.trash
 %find_lang plasma_applet_org.kde.plasma.windowlist
+%find_lang plasma_applet_touchpad
 %find_lang plasma_runner_plasma-desktop
 %find_lang plasma_shell_org.kde.plasma.desktop
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
-%find_lang plasma_applet_touchpad
+%find_lang proxy
+%find_lang solid-device-automounter
+%find_lang spellchecking
+%find_lang translations
 %find_lang useraccount
 cat *.lang >%{name}.lang
 
