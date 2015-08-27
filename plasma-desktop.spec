@@ -154,26 +154,6 @@ rm -f %{buildroot}%{_libdir}/libkfontinst.so
 rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 
 %find_lang attica_kde
-%find_lang autostart
-%find_lang baloo
-%find_lang bell
-%find_lang bookmarks
-%find_lang cache
-%find_lang clock
-%find_lang colors
-%find_lang componentchooser
-%find_lang cookies
-%find_lang cursortheme
-%find_lang desktopthemedetails
-%find_lang ebrowsing
-%find_lang emoticons
-%find_lang filemanager
-%find_lang filetypes
-%find_lang fontinst
-%find_lang fonts
-%find_lang formats
-%find_lang history
-%find_lang icons
 %find_lang joystick
 %find_lang kaccess
 %find_lang kcm_autostart
@@ -191,7 +171,6 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcmaccess
 %find_lang kcmcolors
 %find_lang kcmcomponentchooser
-%find_lang kcmcss
 %find_lang kcmfonts
 %find_lang kcmformats
 %find_lang kcmicons
@@ -207,19 +186,9 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang kcmstyle
 %find_lang kcmtranslations
 %find_lang kcmworkspaceoptions
-%find_lang kded
-%find_lang keyboard
-%find_lang keys
 %find_lang kfontinst
-%find_lang kfontview
 %find_lang knetattach
 %find_lang krdb
-%find_lang libkonq || touch libkonq.lang
-%find_lang mouse
-%find_lang netpref
-%find_lang paths
-%find_lang performance
-%find_lang phonon
 %find_lang plasma_applet_org.kde.desktopcontainment
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
@@ -232,11 +201,8 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 %find_lang plasma_runner_plasma-desktop
 %find_lang plasma_shell_org.kde.plasma.desktop
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
-%find_lang proxy
-%find_lang solid-device-automounter
-%find_lang spellchecking
-%find_lang translations
 %find_lang useraccount
+
 cat *.lang >%{name}.lang
 
 %files -f %{name}.lang
