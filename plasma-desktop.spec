@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.4.0
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -152,6 +152,9 @@ export CXX=g++
 # We don't have headers
 rm -f %{buildroot}%{_libdir}/libkfontinst.so
 rm -f %{buildroot}%{_libdir}/libkfontinstui.so
+
+# (tpg) use layout.js from distro-plasma-config
+rm -f %{__datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
 %find_lang attica_kde
 %find_lang joystick
