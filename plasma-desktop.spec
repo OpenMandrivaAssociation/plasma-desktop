@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.4.0
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -84,6 +84,7 @@ BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
+Suggests: distro-plasma-config
 
 %description
 KDE Frameworks 5 Plasma-desktop framework.
@@ -154,7 +155,7 @@ rm -f %{buildroot}%{_libdir}/libkfontinst.so
 rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 
 # (tpg) use layout.js from distro-plasma-config
-rm -f %{__datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
 %find_lang attica_kde
 %find_lang joystick
