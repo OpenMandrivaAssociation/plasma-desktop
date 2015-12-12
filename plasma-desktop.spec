@@ -160,6 +160,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang attica_kde
 %find_lang joystick
 %find_lang kaccess
+%find_lang kcm_device_automounter
 %find_lang kcm_autostart
 %find_lang kcm_baloofile
 %find_lang kcm_desktoppaths
@@ -237,10 +238,10 @@ cat *.lang >%{name}.lang
 # nothing uses them and nothing CAN use them, the separate library
 # packages are useless.
 %{_libdir}/qt5/plugins/*.so
+%{_libdir}/qt5/plugins/kf5/kded/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
 %{_libdir}/qt5/qml/org/kde/plasma/private/kicker
-%{_libdir}/qt5/qml/org/kde/plasma/private/kickoff
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
