@@ -125,6 +125,12 @@ Provides: plasma-desktoptheme-slim-glow = 1:15.08.3-3
 Obsoletes: plasma-desktoptheme-tibanna < 1:15.08.3-3
 Provides: plasma-desktoptheme-tibanna = 1:15.08.3-3
 
+Obsoletes: plasma-applet-touchpad < 1.2
+Provides: plasma-applet-touchpad = 1.2
+
+Obsoletes: kcm-touchpad < 1.2
+Provides: kcm-touchpad = 1.2
+
 %description
 KDE Frameworks 5 Plasma-desktop framework.
 
