@@ -131,6 +131,9 @@ Provides: plasma-applet-touchpad = 1.2
 Obsoletes: kcm-touchpad < 1.2
 Provides: kcm-touchpad = 1.2
 
+Obsoletes: kcm-touchpad5 < 5.1.95-3
+Provides: kcm-touchpad5 = 5.1.95-3
+
 %description
 KDE Frameworks 5 Plasma-desktop framework.
 
