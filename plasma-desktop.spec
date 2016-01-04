@@ -85,6 +85,45 @@ BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
 Suggests: distro-plasma-config
+Obsoletes: kdeartwork-emoticons < 1:15.08.3-3
+Obsoletes: kdeartwork4-emoticons < 1:4.14.3-3
+Provides: kdeartwork-emoticons = 1:15.08.3-3
+Provides: kdeartwork4-emoticons = 1:4.14.3-3
+
+Obsoletes: kdeartwork-color-schemes < 1:15.08.3-3
+Obsoletes: kdeartwork4-color-schemes < 1:4.14.3-3
+Provides: kdeartwork-color-schemes = 1:15.08.3-3
+Provides: kdeartwork4-color-schemes = 1:4.14.3-3
+
+Obsoletes: kdeartwork-kscreensaver < 1:15.08.3-3
+Obsoletes: kdeartwork4-kscreensaver < 1:4.14.3-3
+Provides: kdeartwork-kscreensaver = 1:15.08.3-3
+Provides: kdeartwork4-kscreensaver = 1:4.14.3-3
+
+Obsoletes: kdeartwork-styles < 1:15.08.3-3
+Obsoletes: kdeartwork4-styles < 1:4.14.3-3
+Provides: kdeartwork-styles = 1:15.08.3-3
+Provides: kdeartwork4-styles = 1:4.14.3-3
+
+Obsoletes: kdeartwork < 1:15.08.3-3
+Obsoletes: kdeartwork4 < 1:4.14.3-3
+Provides: kdeartwork = 1:15.08.3-3
+Provides: kdeartwork4 = 1:4.14.3-3
+
+Obsoletes: plasma-desktoptheme-androbit < 1:15.08.3-3
+Provides: plasma-desktoptheme-androbit = 1:15.08.3-3
+
+Obsoletes: plasma-desktoptheme-aya < 1:15.08.3-3
+Provides: plasma-desktoptheme-aya = 1:15.08.3-3
+
+Obsoletes: plasma-desktoptheme-produkt < 1:15.08.3-3
+Provides: plasma-desktoptheme-produkt = 1:15.08.3-3
+
+Obsoletes: plasma-desktoptheme-slim-glow < 1:15.08.3-3
+Provides: plasma-desktoptheme-slim-glow = 1:15.08.3-3
+
+Obsoletes: plasma-desktoptheme-tibanna < 1:15.08.3-3
+Provides: plasma-desktoptheme-tibanna = 1:15.08.3-3
 
 %description
 KDE Frameworks 5 Plasma-desktop framework.
