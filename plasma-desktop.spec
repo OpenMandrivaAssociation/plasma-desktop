@@ -206,10 +206,6 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 # (tpg) use layout.js from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
-# (tpg) this is weird
-# it looks like plasma does not load any layout-template than default one, so remove it and replace with distro-plasma-config
-rm -rf %{buildroot}%{_datadir}/plasma/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js
-
 %find_lang attica_kde
 %find_lang joystick
 %find_lang kaccess
