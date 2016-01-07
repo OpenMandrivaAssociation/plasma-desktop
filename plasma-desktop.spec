@@ -12,6 +12,7 @@ Source100: %{name}.rpmlintrc
 #Patch1: plasma-desktop-5.2.2-add-autohint.patch
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
+Patch4: plasma-desktop-5.5.3-use-openmandriva-icon.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
@@ -204,6 +205,10 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 
 # (tpg) use layout.js from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+
+# (tpg) this is weird
+# it looks like plasma does not load any layout-template than default one, so remove it and replace with distro-plasma-config
+rm -rf %{buildroot}%{_datadir}/plasma/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js
 
 %find_lang attica_kde
 %find_lang joystick
