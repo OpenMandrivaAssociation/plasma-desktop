@@ -5,14 +5,14 @@
 
 Name: plasma-desktop
 Version: 5.5.3
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
 #Patch1: plasma-desktop-5.2.2-add-autohint.patch
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
-Patch4: plasma-desktop-5.5.3-use-openmandriva-icon.patch
+Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
