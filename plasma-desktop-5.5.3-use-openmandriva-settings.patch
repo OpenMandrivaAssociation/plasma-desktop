@@ -1,6 +1,6 @@
 diff -Naur plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml plasma-desktop-5.5.3.tpg/applets/kicker/package/contents/config/main.xml
 --- plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kicker/package/contents/config/main.xml	2016-01-08 11:07:27.135781619 +0000
++++ plasma-desktop-5.5.3.tpg/applets/kicker/package/contents/config/main.xml	2016-01-15 22:27:48.941437819 +0000
 @@ -7,13 +7,13 @@
  
    <group name="General">
@@ -9,8 +9,7 @@ diff -Naur plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml 
 +      <default>openmandriva.svg</default>
      </entry>
      <entry name="useCustomButtonImage" type="Bool">
--      <default>false</default>
-+      <default>true</default>
+       <default>false</default>
      </entry>
      <entry name="customButtonImage" type="Url">
 -      <default></default>
@@ -29,7 +28,7 @@ diff -Naur plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml 
        <default>logout,reboot,shutdown</default>
 diff -Naur plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop plasma-desktop-5.5.3.tpg/applets/kicker/package/metadata.desktop
 --- plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kicker/package/metadata.desktop	2016-01-08 11:04:50.538575318 +0000
++++ plasma-desktop-5.5.3.tpg/applets/kicker/package/metadata.desktop	2016-01-15 22:27:30.771941896 +0000
 @@ -85,7 +85,7 @@
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
@@ -41,13 +40,9 @@ diff -Naur plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop plasma-d
  X-Plasma-API=declarativeappletscript
 diff -Naur plasma-desktop-5.5.3/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.5.3.tpg/applets/kickoff/package/contents/config/main.xml
 --- plasma-desktop-5.5.3/applets/kickoff/package/contents/config/main.xml	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/contents/config/main.xml	2016-01-08 11:06:27.468177787 +0000
-@@ -10,13 +10,13 @@
-       <default>true</default>
-     </entry>
-     <entry name="showAppsByName" type="Bool">
--      <default>false</default>
-+      <default>true</default>
++++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/contents/config/main.xml	2016-01-15 22:28:48.428060848 +0000
+@@ -13,10 +13,10 @@
+       <default>false</default>
      </entry>
      <entry name="icon" type="String">
 -      <default>start-here-kde</default>
@@ -61,7 +56,7 @@ diff -Naur plasma-desktop-5.5.3/applets/kickoff/package/contents/config/main.xml
        <default>systemsettings.desktop</default>
 diff -Naur plasma-desktop-5.5.3/applets/kickoff/package/metadata.desktop plasma-desktop-5.5.3.tpg/applets/kickoff/package/metadata.desktop
 --- plasma-desktop-5.5.3/applets/kickoff/package/metadata.desktop	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/metadata.desktop	2016-01-08 11:04:50.539575345 +0000
++++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/metadata.desktop	2016-01-15 22:27:30.771941896 +0000
 @@ -164,7 +164,7 @@
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
