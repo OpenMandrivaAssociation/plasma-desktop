@@ -209,6 +209,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang attica_kde
 %find_lang joystick
 %find_lang kaccess
+%find_lang kactivities5
 %find_lang kcm_device_automounter
 %find_lang kcm_autostart
 %find_lang kcm_baloofile
@@ -246,6 +247,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang plasma_applet_org.kde.desktopcontainment
 %find_lang plasma_applet_org.kde.plasma.kicker
 %find_lang plasma_applet_org.kde.plasma.kickoff
+%find_lang plasma_applet_org.kde.kimpanel
 %find_lang plasma_applet_org.kde.plasma.pager
 %find_lang plasma_applet_org.kde.plasma.showActivityManager
 %find_lang plasma_applet_org.kde.plasma.taskmanager
@@ -289,8 +291,10 @@ cat *.lang >%{name}.lang
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
+%{_libdir}/qt5/qml/org/kde/activities
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
 %{_libdir}/qt5/qml/org/kde/plasma/private/kicker
+%{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
@@ -324,6 +328,8 @@ cat *.lang >%{name}.lang
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
+%dir %{_datadir}/kf5/kactivitymanagerd
+%{_datadir}/kf5/kactivitymanagerd/workspace
 %dir %{_datadir}/ksmserver/windowmanagers
 %{_datadir}/ksmserver/windowmanagers/*.desktop
 %{_datadir}/kservices5/ServiceMenus/installfont.desktop
