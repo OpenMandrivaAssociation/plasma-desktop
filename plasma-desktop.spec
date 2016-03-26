@@ -285,6 +285,7 @@ cat *.lang >%{name}.lang
 %{_libdir}/libexec/kauth/fontinst_x11
 %{_libdir}/libexec/kauth/kcmdatetimehelper
 %{_libdir}/libexec/kfontprint
+%{_libdir}/libexec/kimpanel-ibus-panel
 %{_libdir}/libkdeinit5_kaccess.so
 # Technically the following 2 should be library packages, but given
 # nothing uses them and nothing CAN use them, the separate library
@@ -354,8 +355,10 @@ cat *.lang >%{name}.lang
 %{_datadir}/plasma/plasmoids/org.kde.plasma.taskmanager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.trash
 %{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
+%{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
 %{_datadir}/plasma/shells
 %{_datadir}/plasma/services/touchpad.operations
+%{_datadir}/plasma/services/kimpanel.operations
 %{_datadir}/polkit-1/actions/org.kde.fontinst.policy
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/solid/devices
