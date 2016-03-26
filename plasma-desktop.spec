@@ -287,6 +287,7 @@ cat *.lang >%{name}.lang
 %{_libdir}/libexec/kauth/kcmdatetimehelper
 %{_libdir}/libexec/kfontprint
 %{_libdir}/libexec/kimpanel-ibus-panel
+%{_libdir}/libexec/kimpanel-scim-panel
 %{_libdir}/libkdeinit5_kaccess.so
 # Technically the following 2 should be library packages, but given
 # nothing uses them and nothing CAN use them, the separate library
