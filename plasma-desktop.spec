@@ -84,6 +84,7 @@ BuildRequires: pkgconfig(xorg-server)
 BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: pkgconfig(ibus-1.0)
+BuildRequires: pkgconfig(scim)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
 Suggests: distro-plasma-config
