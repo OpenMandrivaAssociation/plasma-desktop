@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.6.0
-Release: 5
+Release: 6
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -138,7 +138,7 @@ Obsoletes: kcm-touchpad5 < 5.1.95-3
 Provides: kcm-touchpad5 = 5.1.95-3
 
 Obsoletes: kactivities-workspace < 5.6.0
-Conflicts: kdeplasma-addons < 5.6.0
+Conflicts: kdeplasma-addons <= 5.5.5
 Conflicts: kactivitymanagerd < 5.6.0
 
 %description
