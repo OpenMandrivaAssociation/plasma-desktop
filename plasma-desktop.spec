@@ -4,8 +4,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.6.0
-Release: 6
+Version: 5.6.1
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -215,8 +215,8 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang attica_kde
 %find_lang joystick
 %find_lang kaccess
-%find_lang kactivities5
 %find_lang kcm_device_automounter
+%find_lang kcm_activities
 %find_lang kcm_autostart
 %find_lang kcm_baloofile
 %find_lang kcm_desktoppaths
@@ -263,6 +263,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang plasma_runner_plasma-desktop
 %find_lang plasma_shell_org.kde.plasma.desktop
 %find_lang plasma_toolbox_org.kde.desktoptoolbox
+%find_lang plasmaactivitymanager
 %find_lang useraccount
 
 cat *.lang >%{name}.lang
