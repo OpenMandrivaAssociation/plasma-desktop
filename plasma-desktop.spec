@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.6.5
+Version: 5.7.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -27,6 +27,7 @@ BuildRequires: cmake(KWinDBusInterface)
 BuildRequires: cmake(ScreenSaverDBusInterface)
 BuildRequires: cmake(KRunnerAppDBusInterface)
 BuildRequires: cmake(KSMServerDBusInterface)
+BuildRequires: cmake(KF5ActivitiesStats)
 BuildRequires: cmake(KF5Baloo)
 BuildRequires: cmake(KF5ItemModels)
 BuildRequires: cmake(KF5Emoticons)
@@ -144,20 +145,6 @@ Conflicts: kactivitymanagerd < 5.6.0
 %description
 KDE Frameworks 5 Plasma-desktop framework.
 
-%define KF5ActivitiesExperimentalStats_major 1
-%define libKF5ActivitiesExperimentalStats %mklibname KF5ActivitiesExperimentalStats %{KF5ActivitiesExperimentalStats_major}
-
-%package -n %{libKF5ActivitiesExperimentalStats}
-Summary:	Plasma 5 desktop shared library
-Group:		System/Libraries
-
-%description -n %{libKF5ActivitiesExperimentalStats}
-Plasma 5 desktop shared library.
-
-%files -n %{libKF5ActivitiesExperimentalStats}
-%{_libdir}/libKF5ActivitiesExperimentalStats.so.%{KF5ActivitiesExperimentalStats_major}*
-%{_libdir}/libKF5ActivitiesExperimentalStats.so.0.0.1
-
 #----------------------------------------------------------------------------
 
 %define kfontinst_major 5
@@ -212,59 +199,59 @@ rm -f %{buildroot}%{_libdir}/libkfontinstui.so
 # (tpg) use layout.js from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
-%find_lang attica_kde
-%find_lang joystick
-%find_lang kaccess
-%find_lang kcm_device_automounter
-%find_lang kcm_activities
-%find_lang kcm_autostart
-%find_lang kcm_baloofile
-%find_lang kcm_desktoppaths
-%find_lang kcm_desktopthemedetails
-%find_lang kcm_emoticons
-%find_lang kcm_lookandfeel
-%find_lang kcm_phonon
-%find_lang kcm_search
-%find_lang kcm_solid_actions
-%find_lang kcm_splashscreen
-%find_lang kcm_standard_actions
-%find_lang kcm_touchpad
-%find_lang kcmaccess
-%find_lang kcmcolors
-%find_lang kcmcomponentchooser
-%find_lang kcmfonts
-%find_lang kcmformats
-%find_lang kcmicons
-%find_lang kcminput
-%find_lang kcmkclock
-%find_lang kcmkded
-%find_lang kcmkeyboard
-%find_lang kcmkeys
-%find_lang kcmlaunch
-%find_lang kcmmousetheme
-%find_lang kcmnotify
-%find_lang kcmsmserver
-%find_lang kcmstyle
-%find_lang kcmtranslations
-%find_lang kcmworkspaceoptions
-%find_lang kfontinst
-%find_lang knetattach
-%find_lang krdb
-%find_lang plasma_applet_org.kde.desktopcontainment
-%find_lang plasma_applet_org.kde.plasma.kicker
-%find_lang plasma_applet_org.kde.plasma.kickoff
-%find_lang plasma_applet_org.kde.kimpanel
-%find_lang plasma_applet_org.kde.plasma.pager
-%find_lang plasma_applet_org.kde.plasma.showActivityManager
-%find_lang plasma_applet_org.kde.plasma.taskmanager
-%find_lang plasma_applet_org.kde.plasma.trash
-%find_lang plasma_applet_org.kde.plasma.windowlist
-%find_lang plasma_applet_touchpad
-%find_lang plasma_runner_plasma-desktop
-%find_lang plasma_shell_org.kde.plasma.desktop
-%find_lang plasma_toolbox_org.kde.desktoptoolbox
-%find_lang plasmaactivitymanager
-%find_lang useraccount
+%find_lang attica_kde || touch attica_kde.lang
+%find_lang joystick || touch joystick.lang
+%find_lang kaccess || touch kaccess.lang
+%find_lang kcm_device_automounter || touch kcm_device_automounter.lang
+%find_lang kcm_activities || touch kcm_activities.lang
+%find_lang kcm_autostart || touch kcm_autostart.lang
+%find_lang kcm_baloofile || touch kcm_baloofile.lang
+%find_lang kcm_desktoppaths || touch kcm_desktoppaths.lang
+%find_lang kcm_desktopthemedetails || touch kcm_desktopthemedetails.lang
+%find_lang kcm_emoticons || touch kcm_emoticons.lang
+%find_lang kcm_lookandfeel || touch kcm_lookandfeel.lang
+%find_lang kcm_phonon || touch kcm_phonon.lang
+%find_lang kcm_search || touch kcm_search.lang
+%find_lang kcm_solid_actions || touch kcm_solid_actions.lang
+%find_lang kcm_splashscreen || touch kcm_splashscreen.lang
+%find_lang kcm_standard_actions || touch kcm_standard_actions.lang
+%find_lang kcm_touchpad || touch kcm_touchpad.lang
+%find_lang kcmaccess || touch kcmaccess.lang 
+%find_lang kcmcolors || touch kcmcolors.lang
+%find_lang kcmcomponentchooser || touch kcmcomponentchooser.lang
+%find_lang kcmfonts || touch kcmfonts.lang
+%find_lang kcmformats || touch kcmformats.lang
+%find_lang kcmicons || touch kcmicons.lang
+%find_lang kcminput || touch kcminput.lang
+%find_lang kcmkclock || touch kcmkclock.lang
+%find_lang kcmkded || touch kcmkded.lang
+%find_lang kcmkeyboard || touch kcmkeyboard.lang
+%find_lang kcmkeys || touch kcmkeys.lang
+%find_lang kcmlaunch || touch kcmlaunch.lang
+%find_lang kcmmousetheme || touch kcmmousetheme.lang
+%find_lang kcmnotify || touch kcmnotify.lang
+%find_lang kcmsmserver || touch kcmsmserver.lang
+%find_lang kcmstyle || touch kcmstyle.lang
+%find_lang kcmtranslations || touch kcmtranslations.lang
+%find_lang kcmworkspaceoptions || touch kcmworkspaceoptions.lang
+%find_lang kfontinst || touch kfontinst.lang
+%find_lang knetattach || touch knetattach.lang
+%find_lang krdb || touch krdb.lang
+%find_lang plasma_applet_org.kde.desktopcontainment || touch plasma_applet_org.kde.desktopcontainment.lang
+%find_lang plasma_applet_org.kde.plasma.kicker || touch plasma_applet_org.kde.plasma.kicker.lang
+%find_lang plasma_applet_org.kde.plasma.kickoff || touch plasma_applet_org.kde.plasma.kickoff.lang
+%find_lang plasma_applet_org.kde.kimpanel || touch plasma_applet_org.kde.kimpanel.lang
+%find_lang plasma_applet_org.kde.plasma.pager || touch plasma_applet_org.kde.plasma.pager.lang
+%find_lang plasma_applet_org.kde.plasma.showActivityManager || touch plasma_applet_org.kde.plasma.showActivityManager.lang
+%find_lang plasma_applet_org.kde.plasma.taskmanager || touch plasma_applet_org.kde.plasma.taskmanager.lang
+%find_lang plasma_applet_org.kde.plasma.trash || touch plasma_applet_org.kde.plasma.trash.lang
+%find_lang plasma_applet_org.kde.plasma.windowlist || touch plasma_applet_org.kde.plasma.windowlist.lang
+%find_lang plasma_applet_touchpad || touch plasma_applet_touchpad.lang
+%find_lang plasma_runner_plasma-desktop || touch plasma_runner_plasma-desktop.lang
+%find_lang plasma_shell_org.kde.plasma.desktop || touch plasma_shell_org.kde.plasma.desktop.lang
+%find_lang plasma_toolbox_org.kde.desktoptoolbox || touch plasma_toolbox_org.kde.dekstoptoolbox.lang
+%find_lang plasmaactivitymanager || touch plasmaactivitymanager.lang
+%find_lang useraccount || touch useraccount.lang
 
 cat *.lang >%{name}.lang
 
@@ -309,6 +296,7 @@ cat *.lang >%{name}.lang
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_libdir}/qt5/qml/org/kde/plasma/activityswitcher
 %{_libdir}/qt5/qml/org/kde/private/desktopcontainment
+%{_datadir}/appdata/org.kde.plasmashell.metainfo.xml
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/color-schemes
@@ -332,6 +320,7 @@ cat *.lang >%{name}.lang
 %{_datadir}/kfontinst
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
+%{_datadir}/kpackage/kcms/kcm_desktoptheme
 %{_datadir}/kpackage/kcms/kcm_lookandfeel
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kservices5/*.desktop
@@ -339,8 +328,6 @@ cat *.lang >%{name}.lang
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/kf5/kactivitymanagerd
 %{_datadir}/kf5/kactivitymanagerd/workspace
-%dir %{_datadir}/ksmserver/windowmanagers
-%{_datadir}/ksmserver/windowmanagers/*.desktop
 %{_datadir}/kservices5/ServiceMenus/installfont.desktop
 %{_datadir}/kservices5/fonts.protocol
 %{_datadir}/kxmlgui5/kfontinst
