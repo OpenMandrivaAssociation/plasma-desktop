@@ -202,11 +202,13 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang attica_kde || touch attica_kde.lang
 %find_lang joystick || touch joystick.lang
 %find_lang kaccess || touch kaccess.lang
+%find_lang kcm_activities5 || touch kcm_activities5.lang
 %find_lang kcm_device_automounter || touch kcm_device_automounter.lang
 %find_lang kcm_activities || touch kcm_activities.lang
 %find_lang kcm_autostart || touch kcm_autostart.lang
 %find_lang kcm_baloofile || touch kcm_baloofile.lang
 %find_lang kcm_desktoppaths || touch kcm_desktoppaths.lang
+%find_lang kcm_desktoptheme || touch kcm_desktoptheme.lang
 %find_lang kcm_desktopthemedetails || touch kcm_desktopthemedetails.lang
 %find_lang kcm_emoticons || touch kcm_emoticons.lang
 %find_lang kcm_lookandfeel || touch kcm_lookandfeel.lang
@@ -248,6 +250,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang plasma_applet_org.kde.plasma.windowlist || touch plasma_applet_org.kde.plasma.windowlist.lang
 %find_lang plasma_applet_touchpad || touch plasma_applet_touchpad.lang
 %find_lang plasma_runner_plasma-desktop || touch plasma_runner_plasma-desktop.lang
+%find_lang plasma_runner_kwin || touch plasma_runner_kwin.lang
 %find_lang plasma_shell_org.kde.plasma.desktop || touch plasma_shell_org.kde.plasma.desktop.lang
 %find_lang plasma_toolbox_org.kde.desktoptoolbox || touch plasma_toolbox_org.kde.dekstoptoolbox.lang
 %find_lang plasmaactivitymanager || touch plasmaactivitymanager.lang
