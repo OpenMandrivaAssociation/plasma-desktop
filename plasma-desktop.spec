@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.7.2
+Version: 5.7.4
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -299,7 +299,7 @@ cat *.lang >%{name}.lang
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_libdir}/qt5/qml/org/kde/plasma/activityswitcher
 %{_libdir}/qt5/qml/org/kde/private/desktopcontainment
-%{_datadir}/appdata/org.kde.plasmashell.metainfo.xml
+%{_datadir}/metainfo/org.kde.plasmashell.metainfo.xml
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/color-schemes
