@@ -178,6 +178,7 @@ Plasma 5 desktop shared library.
 %prep
 %setup -qn %{name}-%{plasmaver}
 %apply_patches
+
 # We need to increase template depth to make Boost happy
 export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
 %ifarch %arm

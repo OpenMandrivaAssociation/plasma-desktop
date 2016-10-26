@@ -1,35 +1,37 @@
-diff -Naur plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml plasma-desktop-5.5.3.tpg/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.5.3/applets/kicker/package/contents/config/main.xml	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kicker/package/contents/config/main.xml	2016-01-15 22:27:48.941437819 +0000
-@@ -7,13 +7,13 @@
- 
+diff -Naur plasma-desktop-5.8.2/applets/kicker/package/contents/config/main.xml plasma-desktop-5.8.2.tpg/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.8.2/applets/kicker/package/contents/config/main.xml	2016-10-18 11:42:14.000000000 +0000
++++ plasma-desktop-5.8.2.tpg/applets/kicker/package/contents/config/main.xml	2016-10-26 18:15:03.924611379 +0000
+@@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
+       <label>The name of the icon to use for the compact representation (e.g. on a small panel).</label>
 -      <default>start-here-kde</default>
 +      <default>openmandriva.svg</default>
      </entry>
      <entry name="useCustomButtonImage" type="Bool">
-       <default>false</default>
+       <label>Whether to use a custom image instead of an icon in the compact representation (e.g. on a small panel).</label>
+@@ -16,7 +16,7 @@
      </entry>
      <entry name="customButtonImage" type="Url">
+       <label>The URL of the custtom image to use instead of an icon in the compact representation (e.g. on a small panel).</label>
 -      <default></default>
 +      <default>/usr/share/icons/openmandriva.svg</default>
      </entry>
  
      <entry name="appNameFormat" type="Int">
-@@ -24,7 +24,7 @@
-     </entry>
+@@ -30,7 +30,7 @@
  
      <entry name="favoriteApps" type="StringList">
+       <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
 +      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
-       <default>logout,reboot,shutdown</default>
-diff -Naur plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop plasma-desktop-5.5.3.tpg/applets/kicker/package/metadata.desktop
---- plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kicker/package/metadata.desktop	2016-01-15 22:27:30.771941896 +0000
-@@ -85,7 +85,7 @@
+       <label>List of system action favorites.</label>
+diff -Naur plasma-desktop-5.8.2/applets/kicker/package/metadata.desktop plasma-desktop-5.8.2.tpg/applets/kicker/package/metadata.desktop
+--- plasma-desktop-5.8.2/applets/kicker/package/metadata.desktop	2016-10-18 11:42:14.000000000 +0000
++++ plasma-desktop-5.8.2.tpg/applets/kicker/package/metadata.desktop	2016-10-26 18:15:34.913733427 +0000
+@@ -92,7 +92,7 @@
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
@@ -38,25 +40,26 @@ diff -Naur plasma-desktop-5.5.3/applets/kicker/package/metadata.desktop plasma-d
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
-diff -Naur plasma-desktop-5.5.3/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.5.3.tpg/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.5.3/applets/kickoff/package/contents/config/main.xml	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/contents/config/main.xml	2016-01-15 22:28:48.428060848 +0000
-@@ -13,10 +13,10 @@
-       <default>false</default>
+diff -Naur plasma-desktop-5.8.2/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.8.2.tpg/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.8.2/applets/kickoff/package/contents/config/main.xml	2016-10-18 11:42:14.000000000 +0000
++++ plasma-desktop-5.8.2.tpg/applets/kickoff/package/contents/config/main.xml	2016-10-26 18:16:49.530124089 +0000
+@@ -16,11 +16,11 @@
      </entry>
      <entry name="icon" type="String">
+       <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
 -      <default>start-here-kde</default>
 +      <default>openmandriva.svg</default>
      </entry>
      <entry name="favorites" type="StringList">
+       <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
 +      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="systemApplications" type="StringList">
-       <default>systemsettings.desktop</default>
-diff -Naur plasma-desktop-5.5.3/applets/kickoff/package/metadata.desktop plasma-desktop-5.5.3.tpg/applets/kickoff/package/metadata.desktop
---- plasma-desktop-5.5.3/applets/kickoff/package/metadata.desktop	2016-01-06 12:12:22.000000000 +0000
-+++ plasma-desktop-5.5.3.tpg/applets/kickoff/package/metadata.desktop	2016-01-15 22:27:30.771941896 +0000
+       <label>List of applications at the top of the "Computer" tab.</label>
+diff -Naur plasma-desktop-5.8.2/applets/kickoff/package/metadata.desktop plasma-desktop-5.8.2.tpg/applets/kickoff/package/metadata.desktop
+--- plasma-desktop-5.8.2/applets/kickoff/package/metadata.desktop	2016-10-18 11:42:14.000000000 +0000
++++ plasma-desktop-5.8.2.tpg/applets/kickoff/package/metadata.desktop	2016-10-26 18:17:49.136782869 +0000
 @@ -164,7 +164,7 @@
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
