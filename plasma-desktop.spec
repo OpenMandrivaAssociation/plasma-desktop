@@ -268,9 +268,11 @@ cat *.lang >%{name}.lang
 %{_sysconfdir}/xdg/kfontinst.knsrc
 %{_sysconfdir}/xdg/plasma-themes.knsrc
 %{_sysconfdir}/xdg/xcursor.knsrc
+%{_sysconfdir}/xdg/lookandfeel.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
 %{_bindir}/kapplymousetheme
+%{_bindir}/kcolorschemeeditor
 %{_bindir}/kcm-touchpad-list-devices
 %{_bindir}/kfontinst
 %{_bindir}/kfontview
@@ -300,9 +302,10 @@ cat *.lang >%{name}.lang
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_libdir}/qt5/qml/org/kde/plasma/activityswitcher
 %{_libdir}/qt5/qml/org/kde/private/desktopcontainment
-%{_datadir}/metainfo/org.kde.plasmashell.metainfo.xml
+%{_datadir}/metainfo/*.xml
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
+%{_datadir}/applications/org.kde.kcolorschemeeditor.desktop
 %{_datadir}/color-schemes
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/services/*
