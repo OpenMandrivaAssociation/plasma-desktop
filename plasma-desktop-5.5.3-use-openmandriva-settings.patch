@@ -1,6 +1,6 @@
-diff -Naur plasma-desktop-5.8.5/applets/kicker/package/contents/config/main.xml plasma-desktop-5.8.5.tpg/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.8.5/applets/kicker/package/contents/config/main.xml	2016-12-27 11:31:56.000000000 +0000
-+++ plasma-desktop-5.8.5.tpg/applets/kicker/package/contents/config/main.xml	2016-12-28 18:21:57.983188480 +0000
+diff -Naur plasma-desktop-5.9.0/applets/kicker/package/contents/config/main.xml plasma-desktop-5.9.0.tpg/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.9.0/applets/kicker/package/contents/config/main.xml	2017-01-26 12:23:07.000000000 +0000
++++ plasma-desktop-5.9.0.tpg/applets/kicker/package/contents/config/main.xml	2017-02-02 17:42:12.716633402 +0000
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -19,19 +19,19 @@ diff -Naur plasma-desktop-5.8.5/applets/kicker/package/contents/config/main.xml 
      </entry>
  
      <entry name="appNameFormat" type="Int">
-@@ -30,7 +30,7 @@
+@@ -34,7 +34,7 @@
  
      <entry name="favoriteApps" type="StringList">
        <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
-+      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
++      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
-diff -Naur plasma-desktop-5.8.5/applets/kicker/package/metadata.desktop plasma-desktop-5.8.5.tpg/applets/kicker/package/metadata.desktop
---- plasma-desktop-5.8.5/applets/kicker/package/metadata.desktop	2016-12-27 11:31:56.000000000 +0000
-+++ plasma-desktop-5.8.5.tpg/applets/kicker/package/metadata.desktop	2016-12-28 18:21:57.984188506 +0000
-@@ -92,7 +92,7 @@
+diff -Naur plasma-desktop-5.9.0/applets/kicker/package/metadata.desktop plasma-desktop-5.9.0.tpg/applets/kicker/package/metadata.desktop
+--- plasma-desktop-5.9.0/applets/kicker/package/metadata.desktop	2017-01-26 12:23:07.000000000 +0000
++++ plasma-desktop-5.9.0.tpg/applets/kicker/package/metadata.desktop	2017-02-02 17:42:22.309035004 +0000
+@@ -90,7 +90,7 @@
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
@@ -40,9 +40,9 @@ diff -Naur plasma-desktop-5.8.5/applets/kicker/package/metadata.desktop plasma-d
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
-diff -Naur plasma-desktop-5.8.5/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.8.5.tpg/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.8.5/applets/kickoff/package/contents/config/main.xml	2016-12-27 11:31:56.000000000 +0000
-+++ plasma-desktop-5.8.5.tpg/applets/kickoff/package/contents/config/main.xml	2016-12-28 18:21:57.984188506 +0000
+diff -Naur plasma-desktop-5.9.0/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.9.0.tpg/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.9.0/applets/kickoff/package/contents/config/main.xml	2017-01-26 12:23:07.000000000 +0000
++++ plasma-desktop-5.9.0.tpg/applets/kickoff/package/contents/config/main.xml	2017-02-02 17:43:35.676172340 +0000
 @@ -16,11 +16,11 @@
      </entry>
      <entry name="icon" type="String">
@@ -53,25 +53,25 @@ diff -Naur plasma-desktop-5.8.5/applets/kickoff/package/contents/config/main.xml
      <entry name="favorites" type="StringList">
        <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
-+      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
++      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="systemApplications" type="StringList">
        <label>List of applications at the top of the "Computer" tab.</label>
-diff -Naur plasma-desktop-5.8.5/applets/kickoff/package/metadata.desktop plasma-desktop-5.8.5.tpg/applets/kickoff/package/metadata.desktop
---- plasma-desktop-5.8.5/applets/kickoff/package/metadata.desktop	2016-12-27 11:31:56.000000000 +0000
-+++ plasma-desktop-5.8.5.tpg/applets/kickoff/package/metadata.desktop	2016-12-28 18:21:57.985188533 +0000
-@@ -164,7 +164,7 @@
+diff -Naur plasma-desktop-5.9.0/applets/kickoff/package/metadata.desktop plasma-desktop-5.9.0.tpg/applets/kickoff/package/metadata.desktop
+--- plasma-desktop-5.9.0/applets/kickoff/package/metadata.desktop	2017-01-26 12:23:07.000000000 +0000
++++ plasma-desktop-5.9.0.tpg/applets/kickoff/package/metadata.desktop	2017-02-02 17:42:54.660404484 +0000
+@@ -162,7 +162,7 @@
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
  Comment[zh_TW]=應用程式啟動器
 -Icon=start-here-kde
 +Icon=openmandriva.svg
  Type=Service
- X-KDE-ServiceTypes=Plasma/Applet,Plasma/PopupApplet
+ X-KDE-ServiceTypes=Plasma/Applet
  
-diff -Naur plasma-desktop-5.8.5/desktoppackage/contents/defaults plasma-desktop-5.8.5.tpg/desktoppackage/contents/defaults
---- plasma-desktop-5.8.5/desktoppackage/contents/defaults	2016-12-27 11:31:56.000000000 +0000
-+++ plasma-desktop-5.8.5.tpg/desktoppackage/contents/defaults	2016-12-28 18:22:15.601653229 +0000
+diff -Naur plasma-desktop-5.9.0/desktoppackage/contents/defaults plasma-desktop-5.9.0.tpg/desktoppackage/contents/defaults
+--- plasma-desktop-5.9.0/desktoppackage/contents/defaults	2017-01-26 12:23:07.000000000 +0000
++++ plasma-desktop-5.9.0.tpg/desktoppackage/contents/defaults	2017-02-02 17:44:29.235529832 +0000
 @@ -1,5 +1,5 @@
  [Desktop]
 -Containment=org.kde.desktopcontainment
