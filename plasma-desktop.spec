@@ -18,6 +18,7 @@ URL: http://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF5DocTools)
+BuildRequires: cmake(AppStreamQt)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
 BuildRequires: cmake(KDecoration2)
@@ -321,9 +322,6 @@ cat *.lang >%{name}.lang
 %{_datadir}/kconf_update/*
 %{_datadir}/kcontrol
 %{_datadir}/kdisplay
-# FIXME do we still need this with sddm? Should we move the icons to
-# a more SDDM friendly location?
-%{_datadir}/kdm
 %{_datadir}/kfontinst
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
