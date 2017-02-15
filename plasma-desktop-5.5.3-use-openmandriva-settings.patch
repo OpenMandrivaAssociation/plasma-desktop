@@ -1,6 +1,5 @@
-diff -Naur plasma-desktop-5.9.0/applets/kicker/package/contents/config/main.xml plasma-desktop-5.9.0.tpg/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.9.0/applets/kicker/package/contents/config/main.xml	2017-01-26 12:23:07.000000000 +0000
-+++ plasma-desktop-5.9.0.tpg/applets/kicker/package/contents/config/main.xml	2017-02-02 17:42:12.716633402 +0000
+--- plasma-desktop-5.9.2/applets/kicker/package/contents/config/main.xml.0004~	2017-02-14 14:25:00.000000000 +0100
++++ plasma-desktop-5.9.2/applets/kicker/package/contents/config/main.xml	2017-02-15 01:41:48.810709771 +0100
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -28,10 +27,9 @@ diff -Naur plasma-desktop-5.9.0/applets/kicker/package/contents/config/main.xml 
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
-diff -Naur plasma-desktop-5.9.0/applets/kicker/package/metadata.desktop plasma-desktop-5.9.0.tpg/applets/kicker/package/metadata.desktop
---- plasma-desktop-5.9.0/applets/kicker/package/metadata.desktop	2017-01-26 12:23:07.000000000 +0000
-+++ plasma-desktop-5.9.0.tpg/applets/kicker/package/metadata.desktop	2017-02-02 17:42:22.309035004 +0000
-@@ -90,7 +90,7 @@
+--- plasma-desktop-5.9.2/applets/kicker/package/metadata.desktop.0004~	2017-02-14 14:25:00.000000000 +0100
++++ plasma-desktop-5.9.2/applets/kicker/package/metadata.desktop	2017-02-15 01:41:48.811709779 +0100
+@@ -90,7 +90,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
@@ -40,27 +38,25 @@ diff -Naur plasma-desktop-5.9.0/applets/kicker/package/metadata.desktop plasma-d
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
-diff -Naur plasma-desktop-5.9.0/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.9.0.tpg/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.9.0/applets/kickoff/package/contents/config/main.xml	2017-01-26 12:23:07.000000000 +0000
-+++ plasma-desktop-5.9.0.tpg/applets/kickoff/package/contents/config/main.xml	2017-02-02 17:43:35.676172340 +0000
+--- plasma-desktop-5.9.2/applets/kickoff/package/contents/config/main.xml.0004~	2017-02-15 01:41:48.811709779 +0100
++++ plasma-desktop-5.9.2/applets/kickoff/package/contents/config/main.xml	2017-02-15 02:52:09.978659542 +0100
 @@ -16,11 +16,11 @@
      </entry>
      <entry name="icon" type="String">
        <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
 -      <default>start-here-kde</default>
-+      <default>openmandriva.svg</default>
++      <default>openmandriva</default>
      </entry>
      <entry name="favorites" type="StringList">
        <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
--      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
+-      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop</default>
 +      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="systemApplications" type="StringList">
        <label>List of applications at the top of the "Computer" tab.</label>
-diff -Naur plasma-desktop-5.9.0/applets/kickoff/package/metadata.desktop plasma-desktop-5.9.0.tpg/applets/kickoff/package/metadata.desktop
---- plasma-desktop-5.9.0/applets/kickoff/package/metadata.desktop	2017-01-26 12:23:07.000000000 +0000
-+++ plasma-desktop-5.9.0.tpg/applets/kickoff/package/metadata.desktop	2017-02-02 17:42:54.660404484 +0000
-@@ -162,7 +162,7 @@
+--- plasma-desktop-5.9.2/applets/kickoff/package/metadata.desktop.0004~	2017-02-14 14:25:00.000000000 +0100
++++ plasma-desktop-5.9.2/applets/kickoff/package/metadata.desktop	2017-02-15 01:41:48.811709779 +0100
+@@ -162,7 +162,7 @@ Comment[wa]=Enondeu po lancî des progra
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
  Comment[zh_TW]=應用程式啟動器
@@ -69,9 +65,8 @@ diff -Naur plasma-desktop-5.9.0/applets/kickoff/package/metadata.desktop plasma-
  Type=Service
  X-KDE-ServiceTypes=Plasma/Applet
  
-diff -Naur plasma-desktop-5.9.0/desktoppackage/contents/defaults plasma-desktop-5.9.0.tpg/desktoppackage/contents/defaults
---- plasma-desktop-5.9.0/desktoppackage/contents/defaults	2017-01-26 12:23:07.000000000 +0000
-+++ plasma-desktop-5.9.0.tpg/desktoppackage/contents/defaults	2017-02-02 17:44:29.235529832 +0000
+--- plasma-desktop-5.9.2/desktoppackage/contents/defaults.0004~	2017-02-14 14:25:00.000000000 +0100
++++ plasma-desktop-5.9.2/desktoppackage/contents/defaults	2017-02-15 01:41:48.811709779 +0100
 @@ -1,5 +1,5 @@
  [Desktop]
 -Containment=org.kde.desktopcontainment
