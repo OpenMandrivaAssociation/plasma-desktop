@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.9.3
+Version: 5.9.4
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -366,3 +366,8 @@ cat *.lang >%{name}.lang
 %doc %{_docdir}/HTML/*/kfontview
 %doc %{_docdir}/HTML/*/knetattach
 %doc %{_docdir}/HTML/*/plasma-desktop
+
+%lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst/kfontinst.js
+%lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst/kfontinst.js
+%lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst/kfontinst.js
+%lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst/kfontinst.js
