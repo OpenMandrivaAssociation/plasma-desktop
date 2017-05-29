@@ -1,5 +1,5 @@
---- plasma-desktop-5.9.2/applets/kicker/package/contents/config/main.xml.0004~	2017-02-14 14:25:00.000000000 +0100
-+++ plasma-desktop-5.9.2/applets/kicker/package/contents/config/main.xml	2017-02-15 01:41:48.810709771 +0100
+--- plasma-desktop-5.10.0/applets/kicker/package/contents/config/main.xml.0004~	2017-05-26 11:04:19.000000000 +0200
++++ plasma-desktop-5.10.0/applets/kicker/package/contents/config/main.xml	2017-05-29 10:56:03.966583570 +0200
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -18,18 +18,18 @@
      </entry>
  
      <entry name="appNameFormat" type="Int">
-@@ -34,7 +34,7 @@
- 
+@@ -38,7 +38,7 @@
+     </entry>
      <entry name="favoriteApps" type="StringList">
        <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
-+      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
++      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,org.kde.discover,openmandriva-drakconf.desktop</default>
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
---- plasma-desktop-5.9.2/applets/kicker/package/metadata.desktop.0004~	2017-02-14 14:25:00.000000000 +0100
-+++ plasma-desktop-5.9.2/applets/kicker/package/metadata.desktop	2017-02-15 01:41:48.811709779 +0100
-@@ -90,7 +90,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
+--- plasma-desktop-5.10.0/applets/kicker/package/metadata.desktop.0004~	2017-05-26 11:04:19.000000000 +0200
++++ plasma-desktop-5.10.0/applets/kicker/package/metadata.desktop	2017-05-29 10:50:59.469562238 +0200
+@@ -92,7 +92,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
@@ -38,8 +38,8 @@
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
---- plasma-desktop-5.9.2/applets/kickoff/package/contents/config/main.xml.0004~	2017-02-15 01:41:48.811709779 +0100
-+++ plasma-desktop-5.9.2/applets/kickoff/package/contents/config/main.xml	2017-02-15 02:52:09.978659542 +0100
+--- plasma-desktop-5.10.0/applets/kickoff/package/contents/config/main.xml.0004~	2017-05-26 11:04:19.000000000 +0200
++++ plasma-desktop-5.10.0/applets/kickoff/package/contents/config/main.xml	2017-05-29 10:50:59.469562238 +0200
 @@ -16,11 +16,11 @@
      </entry>
      <entry name="icon" type="String">
@@ -54,8 +54,8 @@
      </entry>
      <entry name="systemApplications" type="StringList">
        <label>List of applications at the top of the "Computer" tab.</label>
---- plasma-desktop-5.9.2/applets/kickoff/package/metadata.desktop.0004~	2017-02-14 14:25:00.000000000 +0100
-+++ plasma-desktop-5.9.2/applets/kickoff/package/metadata.desktop	2017-02-15 01:41:48.811709779 +0100
+--- plasma-desktop-5.10.0/applets/kickoff/package/metadata.desktop.0004~	2017-05-26 11:04:19.000000000 +0200
++++ plasma-desktop-5.10.0/applets/kickoff/package/metadata.desktop	2017-05-29 10:50:59.469562238 +0200
 @@ -162,7 +162,7 @@ Comment[wa]=Enondeu po lancî des progra
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
@@ -64,13 +64,4 @@
 +Icon=openmandriva.svg
  Type=Service
  X-KDE-ServiceTypes=Plasma/Applet
- 
---- plasma-desktop-5.9.2/desktoppackage/contents/defaults.0004~	2017-02-14 14:25:00.000000000 +0100
-+++ plasma-desktop-5.9.2/desktoppackage/contents/defaults	2017-02-15 01:41:48.811709779 +0100
-@@ -1,5 +1,5 @@
- [Desktop]
--Containment=org.kde.desktopcontainment
-+Containment=org.kde.plasma.folder
- ToolBox=org.kde.desktoptoolbox
- RuntimePlatform=Desktop
  
