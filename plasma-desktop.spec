@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.10.0
+Version: 5.10.1
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -13,6 +13,7 @@ Source100: %{name}.rpmlintrc
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
+Patch5: plasma-desktop-5.10.1-scim-old-abi.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
