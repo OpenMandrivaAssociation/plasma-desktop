@@ -183,7 +183,7 @@ Plasma 5 desktop shared library.
 
 # We need to increase template depth to make Boost happy
 export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
-%ifarch %arm
+%ifarch %arm aarch64
 export C=gcc
 export CXX=g++
 %endif
