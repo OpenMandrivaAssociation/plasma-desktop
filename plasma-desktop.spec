@@ -183,9 +183,14 @@ Plasma 5 desktop shared library.
 
 # We need to increase template depth to make Boost happy
 export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
-%ifarch %arm aarch64
+%ifarch %arm
 export C=gcc
 export CXX=g++
+%endif
+%ifarch aarch64
+# For some reason, scim uses the old ABI on x86,
+# but the new ABI on aarch64.
+%patch5 -p1 -R -b .rev0005~
 %endif
 %cmake_kde5
 
