@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.10.2
+Version: 5.10.3
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -13,7 +13,6 @@ Source100: %{name}.rpmlintrc
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
-Patch5: plasma-desktop-5.10.1-scim-old-abi.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
@@ -186,11 +185,6 @@ export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
 %ifarch %arm
 export C=gcc
 export CXX=g++
-%endif
-%ifarch aarch64
-# For some reason, scim uses the old ABI on x86,
-# but the new ABI on aarch64.
-%patch5 -p1 -R -b .rev0005~
 %endif
 %cmake_kde5
 
