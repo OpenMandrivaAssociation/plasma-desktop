@@ -1,5 +1,5 @@
---- plasma-desktop-5.10.0/applets/kicker/package/contents/config/main.xml.0004~	2017-05-26 11:04:19.000000000 +0200
-+++ plasma-desktop-5.10.0/applets/kicker/package/contents/config/main.xml	2017-05-29 10:56:03.966583570 +0200
+--- plasma-desktop-5.11.0/applets/kicker/package/contents/config/main.xml.0004~	2017-10-05 14:47:34.000000000 +0200
++++ plasma-desktop-5.11.0/applets/kicker/package/contents/config/main.xml	2017-10-06 01:31:45.754384604 +0200
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -27,8 +27,8 @@
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
---- plasma-desktop-5.10.0/applets/kicker/package/metadata.desktop.0004~	2017-05-26 11:04:19.000000000 +0200
-+++ plasma-desktop-5.10.0/applets/kicker/package/metadata.desktop	2017-05-29 10:50:59.469562238 +0200
+--- plasma-desktop-5.11.0/applets/kicker/package/metadata.desktop.0004~	2017-10-05 14:47:34.000000000 +0200
++++ plasma-desktop-5.11.0/applets/kicker/package/metadata.desktop	2017-10-06 01:31:45.754384604 +0200
 @@ -92,7 +92,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
@@ -38,8 +38,8 @@
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
---- plasma-desktop-5.10.0/applets/kickoff/package/contents/config/main.xml.0004~	2017-05-26 11:04:19.000000000 +0200
-+++ plasma-desktop-5.10.0/applets/kickoff/package/contents/config/main.xml	2017-05-29 10:50:59.469562238 +0200
+--- plasma-desktop-5.11.0/applets/kickoff/package/contents/config/main.xml.0004~	2017-10-06 01:31:45.754384604 +0200
++++ plasma-desktop-5.11.0/applets/kickoff/package/contents/config/main.xml	2017-10-06 01:34:27.142596924 +0200
 @@ -16,11 +16,11 @@
      </entry>
      <entry name="icon" type="String">
@@ -52,10 +52,10 @@
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop</default>
 +      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,openmandriva-drakconf.desktop</default>
      </entry>
-     <entry name="systemApplications" type="StringList">
-       <label>List of applications at the top of the "Computer" tab.</label>
---- plasma-desktop-5.10.0/applets/kickoff/package/metadata.desktop.0004~	2017-05-26 11:04:19.000000000 +0200
-+++ plasma-desktop-5.10.0/applets/kickoff/package/metadata.desktop	2017-05-29 10:50:59.469562238 +0200
+     <entry name="favoritesPortedToKAstats" type="Bool">
+       <label>Are the favorites ported to use KActivitiesStats to allow per-activity favorites</label>
+--- plasma-desktop-5.11.0/applets/kickoff/package/metadata.desktop.0004~	2017-10-05 14:47:34.000000000 +0200
++++ plasma-desktop-5.11.0/applets/kickoff/package/metadata.desktop	2017-10-06 01:31:45.754384604 +0200
 @@ -162,7 +162,7 @@ Comment[wa]=Enondeu po lancî des progra
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
