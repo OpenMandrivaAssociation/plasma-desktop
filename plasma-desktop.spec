@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.11.5
+Version: 5.12.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -216,13 +216,13 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_sysconfdir}/xdg/lookandfeel.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
-%{_bindir}/kapplymousetheme
 %{_bindir}/kcolorschemeeditor
 %{_bindir}/kcm-touchpad-list-devices
 %{_bindir}/kfontinst
 %{_bindir}/kfontview
 %{_bindir}/knetattach
 %{_bindir}/krdb
+%{_bindir}/lookandfeeltool
 %{_libdir}/kconf_update_bin/*
 %{_libdir}/libexec/kauth/fontinst
 %{_libdir}/libexec/kauth/fontinst_helper
@@ -258,7 +258,6 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
 %{_datadir}/kcm_componentchooser
 %{_datadir}/kcm_phonon
-%{_datadir}/kcminput
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
@@ -270,6 +269,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/konqsidebartng
 %{_datadir}/kpackage/kcms/kcm_desktoptheme
 %{_datadir}/kpackage/kcms/kcm_lookandfeel
+%{_datadir}/kpackage/kcms/kcm_nightcolor
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
