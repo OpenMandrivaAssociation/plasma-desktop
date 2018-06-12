@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.12.3
+Version: 5.13.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -211,6 +211,8 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_sysconfdir}/xdg/emoticons.knsrc
 %{_sysconfdir}/xdg/icons.knsrc
 %{_sysconfdir}/xdg/kfontinst.knsrc
+%{_sysconfdir}/xdg/ksplash.knsrc
+%{_sysconfdir}/xdg/plasma-desktop.categories
 %{_sysconfdir}/xdg/plasma-themes.knsrc
 %{_sysconfdir}/xdg/xcursor.knsrc
 %{_sysconfdir}/xdg/lookandfeel.knsrc
@@ -267,10 +269,16 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kfontinst
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
+%{_datadir}/kpackage/kcms/kcm5_icons
+%{_datadir}/kpackage/kcms/kcm_cursortheme
 %{_datadir}/kpackage/kcms/kcm_desktoptheme
+%{_datadir}/kpackage/kcms/kcm_fonts
+%{_datadir}/kpackage/kcms/kcm_launchfeedback
 %{_datadir}/kpackage/kcms/kcm_lookandfeel
 %{_datadir}/kpackage/kcms/kcm_nightcolor
 %{_datadir}/kpackage/kcms/kcm_splashscreen
+%{_datadir}/kpackage/kcms/kcm_translations
+%{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
