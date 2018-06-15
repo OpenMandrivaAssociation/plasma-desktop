@@ -230,6 +230,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_bindir}/kfontinst
 %{_bindir}/kfontview
 %{_bindir}/knetattach
+%{_bindir}/kapplymousetheme
 %{_bindir}/krdb
 %{_bindir}/lookandfeeltool
 %{_libdir}/kconf_update_bin/*
@@ -270,6 +271,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
+%{_datadir}/kcmmouse
 %{_datadir}/kconf_update/*
 %{_datadir}/kcontrol
 %{_datadir}/kdisplay
