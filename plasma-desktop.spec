@@ -96,6 +96,7 @@ BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
+Requires: plasma-framework
 Suggests: distro-plasma-config
 Obsoletes: kdeartwork-emoticons < 1:15.08.3-3
 Obsoletes: kdeartwork4-emoticons < 1:4.14.3-3
