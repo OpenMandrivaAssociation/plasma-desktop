@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.13.0
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -88,10 +88,12 @@ BuildRequires: pkgconfig(xi)
 BuildRequires: pkgconfig(xorg-evdev)
 BuildRequires: pkgconfig(xorg-synaptics)
 BuildRequires: pkgconfig(xorg-server)
+BuildRequires: pkgconfig(xorg-libinput)
 BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
+BuildRequires: pkgconfig(udev)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
 Suggests: distro-plasma-config
