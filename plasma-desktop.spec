@@ -4,8 +4,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.13.0
-Release: 2
+Version: 5.13.1.1
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -185,8 +185,7 @@ Plasma 5 desktop shared library.
 %{_libdir}/libkfontinstui.so.%{kfontinstui_major}*
 
 %prep
-%setup -qn %{name}-%{plasmaver}
-%apply_patches
+%autosetup -p1
 
 # We need to increase template depth to make Boost happy
 export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
