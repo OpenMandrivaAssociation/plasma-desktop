@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   plasma-desktop-5.12.3.tar.xz: 8334778f08edb08ff034119793c639ad0184e1af
+sources:
+  plasma-desktop-5.12.6.tar.xz: d7bc564cfb935cba6a6d87d945791f6b9c6ec6eb
