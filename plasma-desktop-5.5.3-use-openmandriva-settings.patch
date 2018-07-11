@@ -5,7 +5,7 @@
      <entry name="icon" type="String">
        <label>The name of the icon to use for the compact representation (e.g. on a small panel).</label>
 -      <default>start-here-kde</default>
-+      <default>openmandriva.svg</default>
++      <default>openmandriva</default>
      </entry>
      <entry name="useCustomButtonImage" type="Bool">
        <label>Whether to use a custom image instead of an icon in the compact representation (e.g. on a small panel).</label>
@@ -34,7 +34,7 @@
  
  Type=Service
 -Icon=start-here-kde
-+Icon=openmandriva.svg
++Icon=openmandriva
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
@@ -61,7 +61,7 @@
  Comment[zh_CN]=应用程序的启动器
  Comment[zh_TW]=應用程式啟動器
 -Icon=start-here-kde
-+Icon=openmandriva.svg
++Icon=openmandriva
  Type=Service
  X-KDE-ServiceTypes=Plasma/Applet
  
