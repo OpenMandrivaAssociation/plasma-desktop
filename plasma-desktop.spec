@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.12.6
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -86,6 +86,7 @@ BuildRequires: pkgconfig(xorg-synaptics)
 BuildRequires: pkgconfig(xorg-server)
 BuildRequires: pkgconfig(xcursor)
 BuildRequires: pkgconfig(xkeyboard-config)
+BuildRequires: pkgconfig(xorg-libinput)
 BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
 BuildRequires: boost-devel
@@ -216,6 +217,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_sysconfdir}/xdg/lookandfeel.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
+%{_bindir}/kapplymousetheme
 %{_bindir}/kcolorschemeeditor
 %{_bindir}/kcm-touchpad-list-devices
 %{_bindir}/kfontinst
@@ -258,6 +260,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
 %{_datadir}/kcm_componentchooser
 %{_datadir}/kcm_phonon
+%{_datadir}/kcminput
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
