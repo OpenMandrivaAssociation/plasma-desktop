@@ -21,7 +21,7 @@ BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(AppStreamQt)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(Breeze)
+BuildRequires: cmake(Breeze) >= %{version}
 BuildRequires: cmake(KDecoration2)
 BuildRequires: cmake(LibKWorkspace)
 BuildRequires: cmake(LibColorCorrect)
