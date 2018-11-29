@@ -13,6 +13,7 @@ Source100: %{name}.rpmlintrc
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
+Patch5: https://cgit.kde.org/plasma-desktop.git/patch/?id=9b1f3e7ee80af3c3c09e2752d6c736d56690d53c
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
