@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.14.4
+Version: 5.14.4.1
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -13,7 +13,6 @@ Source100: %{name}.rpmlintrc
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
-Patch5: https://cgit.kde.org/plasma-desktop.git/patch/?id=9b1f3e7ee80af3c3c09e2752d6c736d56690d53c
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
@@ -22,7 +21,7 @@ BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(AppStreamQt)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(Breeze) >= %{version}
+BuildRequires: cmake(Breeze) >= %(echo %{version} |cut -d. -f1-3)
 BuildRequires: cmake(KDecoration2)
 BuildRequires: cmake(LibKWorkspace)
 BuildRequires: cmake(LibColorCorrect)
