@@ -5,7 +5,7 @@
 
 Name: plasma-desktop
 Version: 5.14.5
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -97,7 +97,10 @@ BuildRequires: pkgconfig(udev)
 BuildRequires: boost-devel
 Requires: openmandriva-kde-translation
 Requires: plasma-framework
+# (crazy) crahses without
+Requires: qqc2-desktop-style >= %{version}
 Suggests: distro-plasma-config
+
 Obsoletes: kdeartwork-emoticons < 1:15.08.3-3
 Obsoletes: kdeartwork4-emoticons < 1:4.14.3-3
 Provides: kdeartwork-emoticons = 1:15.08.3-3
