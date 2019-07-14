@@ -3,7 +3,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.15.5
+Version: 5.16.3
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -215,17 +215,15 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
-%{_sysconfdir}/dbus-1/system.d/org.kde.fontinst.conf
-%{_sysconfdir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
-%{_sysconfdir}/xdg/colorschemes.knsrc
-%{_sysconfdir}/xdg/emoticons.knsrc
-%{_sysconfdir}/xdg/icons.knsrc
-%{_sysconfdir}/xdg/kfontinst.knsrc
-%{_sysconfdir}/xdg/ksplash.knsrc
+%{_datadir}/knsrcfiles/colorschemes.knsrc
+%{_datadir}/knsrcfiles/emoticons.knsrc
+%{_datadir}/knsrcfiles/icons.knsrc
+%{_datadir}/knsrcfiles/kfontinst.knsrc
+%{_datadir}/knsrcfiles/ksplash.knsrc
 %{_sysconfdir}/xdg/plasma-desktop.categories
-%{_sysconfdir}/xdg/plasma-themes.knsrc
-%{_sysconfdir}/xdg/xcursor.knsrc
-%{_sysconfdir}/xdg/lookandfeel.knsrc
+%{_datadir}/knsrcfiles/plasma-themes.knsrc
+%{_datadir}/knsrcfiles/xcursor.knsrc
+%{_datadir}/knsrcfiles/lookandfeel.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
 %{_bindir}/kcolorschemeeditor
@@ -327,3 +325,10 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst/kfontinst.js
 %lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst/kfontinst.js
 %lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst/kfontinst.js
+%{_libdir}/qt5/qml/org/kde/plasma/private/showdesktop
+%{_datadir}/dbus-1/system.d/org.kde.fontinst.conf
+%{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
+%{_datadir}/kpackage/kcms/kcm_colors
+%{_datadir}/kpackage/kcms/kcm_notifications
+%{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
+%{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
