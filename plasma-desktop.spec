@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.16.5
+Version: 5.16.90
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -223,7 +223,6 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/knsrcfiles/icons.knsrc
 %{_datadir}/knsrcfiles/kfontinst.knsrc
 %{_datadir}/knsrcfiles/ksplash.knsrc
-%{_sysconfdir}/xdg/plasma-desktop.categories
 %{_datadir}/knsrcfiles/plasma-themes.knsrc
 %{_datadir}/knsrcfiles/xcursor.knsrc
 %{_datadir}/knsrcfiles/lookandfeel.knsrc
@@ -253,7 +252,6 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_libdir}/qt5/plugins/kcms/*.so
 %{_libdir}/qt5/qml/org/kde/activities
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
-%{_libdir}/qt5/qml/org/kde/plasma/private/kicker
 %{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
@@ -264,14 +262,12 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/applications/org.kde.kcolorschemeeditor.desktop
-%{_datadir}/color-schemes
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
 %{_datadir}/kcm_componentchooser
-%{_datadir}/kcm_phonon
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
