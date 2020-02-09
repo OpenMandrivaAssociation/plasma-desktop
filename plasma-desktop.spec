@@ -2,8 +2,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.17.5
-Release: 2
+Version: 5.18.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -220,6 +220,8 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %files -f %{name}.lang
 %{_datadir}/knsrcfiles/colorschemes.knsrc
 %{_datadir}/knsrcfiles/emoticons.knsrc
+%{_datadir}/knsrcfiles/gtk2_themes.knsrc
+%{_datadir}/knsrcfiles/gtk3_themes.knsrc
 %{_datadir}/knsrcfiles/icons.knsrc
 %{_datadir}/knsrcfiles/kfontinst.knsrc
 %{_datadir}/knsrcfiles/ksplash.knsrc
@@ -262,6 +264,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/applications/org.kde.kcolorschemeeditor.desktop
+%{_datadir}/applications/org.kde.plasma.emojier.desktop
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/dbus-1/interfaces/*.xml
@@ -276,9 +279,11 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kcontrol
 %{_datadir}/kdisplay
 %{_datadir}/kfontinst
+%{_datadir}/kglobalaccel/org.kde.plasma.emojier.desktop
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/konqsidebartng
 %{_datadir}/kpackage/kcms/kcm5_icons
+%{_datadir}/kpackage/kcms/kcm_baloofile
 %{_datadir}/kpackage/kcms/kcm_cursortheme
 %{_datadir}/kpackage/kcms/kcm_desktoptheme
 %{_datadir}/kpackage/kcms/kcm_fonts
@@ -286,6 +291,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kpackage/kcms/kcm_lookandfeel
 %{_datadir}/kpackage/kcms/kcm_nightcolor
 %{_datadir}/kpackage/kcms/kcm_splashscreen
+%{_datadir}/kpackage/kcms/kcm_style
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
@@ -331,3 +337,5 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kpackage/kcms/kcm_notifications
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
+%{_bindir}/ibus-ui-emojier-plasma
+%{_bindir}/tastenbrett
