@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.18.1
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -103,6 +103,8 @@ Requires: kirigami2
 # (crazy) crahses without
 Requires: qqc2-desktop-style >= %{version}
 Suggests: distro-plasma-config
+# (tpg) needed for kcm_nightcolor
+Requires: gpsd
 
 Obsoletes: kdeartwork-emoticons < 1:15.08.3-3
 Obsoletes: kdeartwork4-emoticons < 1:4.14.3-3
