@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.18.5
+Version: 5.18.90
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -341,3 +341,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
 %{_bindir}/ibus-ui-emojier-plasma
 %{_bindir}/tastenbrett
+%{_sysconfdir}/xdg/autostart/kaccess.desktop
+%{_datadir}/kpackage/kcms/kcm5_kded
+%{_datadir}/kpackage/kcms/kcm_keys
+%{_datadir}/qlogging-categories5/kcmkeys.categories
