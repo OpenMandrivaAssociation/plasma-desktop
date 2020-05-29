@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.18.90
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -11,6 +11,7 @@ Source100: %{name}.rpmlintrc
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
+Patch5: plasma-desktop-animation-duration.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
@@ -197,7 +198,7 @@ Plasma 5 desktop shared library.
 %autosetup -p1
 
 # We need to increase template depth to make Boost happy
-export CXXFLAGS="%{optflags} -ftemplate-depth=1024"
+export CXXFLAGS="%{optflags} -O3 -ftemplate-depth=1024"
 %ifarch %arm
 export C=gcc
 export CXX=g++
