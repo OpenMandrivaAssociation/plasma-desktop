@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.19.5
+Version: 5.19.90
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -165,34 +165,6 @@ KDE Frameworks 5 Plasma-desktop framework.
 
 #----------------------------------------------------------------------------
 
-%define kfontinst_major 5
-%define libkfontinst %mklibname kfontinst %{kfontinst_major}
-
-%package -n %{libkfontinst}
-Summary:	Plasma 5 desktop shared library
-Group:		System/Libraries
-
-%description -n %{libkfontinst}
-Plasma 5 desktop shared library.
-
-%files -n %{libkfontinst}
-%{_libdir}/libkfontinst.so.%{kfontinst_major}*
-
-#----------------------------------------------------------------------------
-
-%define kfontinstui_major 5
-%define libkfontinstui %mklibname kfontinstui %{kfontinstui_major}
-
-%package -n %{libkfontinstui}
-Summary:	Plasma 5 desktop shared library
-Group:		System/Libraries
-
-%description -n %{libkfontinstui}
-Plasma 5 desktop shared library.
-
-%files -n %{libkfontinstui}
-%{_libdir}/libkfontinstui.so.%{kfontinstui_major}*
-
 %prep
 %autosetup -p1
 
@@ -210,65 +182,34 @@ export CXX=g++
 %install
 %ninja_install -C build
 
-# We don't have headers
-rm -f %{buildroot}%{_libdir}/libkfontinst.so
-rm -f %{buildroot}%{_libdir}/libkfontinstui.so
-
 # (tpg) use layout.js from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
 %find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
-%{_datadir}/knsrcfiles/colorschemes.knsrc
-%{_datadir}/knsrcfiles/emoticons.knsrc
-%{_datadir}/knsrcfiles/gtk2_themes.knsrc
-%{_datadir}/knsrcfiles/gtk3_themes.knsrc
-%{_datadir}/knsrcfiles/icons.knsrc
-%{_datadir}/knsrcfiles/kfontinst.knsrc
 %{_datadir}/knsrcfiles/ksplash.knsrc
-%{_datadir}/knsrcfiles/plasma-themes.knsrc
-%{_datadir}/knsrcfiles/xcursor.knsrc
-%{_datadir}/knsrcfiles/lookandfeel.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
-%{_bindir}/kcolorschemeeditor
 %{_bindir}/kcm-touchpad-list-devices
-%{_bindir}/kfontinst
-%{_bindir}/kfontview
 %{_bindir}/knetattach
 %{_bindir}/kapplymousetheme
-%{_bindir}/krdb
-%{_bindir}/lookandfeeltool
-%{_libdir}/kconf_update_bin/*
-%{_libdir}/libexec/kauth/fontinst
-%{_libdir}/libexec/kauth/fontinst_helper
-%{_libdir}/libexec/kauth/fontinst_x11
 %{_libdir}/libexec/kauth/kcmdatetimehelper
-%{_libdir}/libexec/kfontprint
-%{_libdir}/libexec/kimpanel-ibus-panel
-%{_libdir}/libexec/kimpanel-ibus-panel-launcher
-%{_libdir}/libexec/kimpanel-scim-panel
-%{_libdir}/libexec/plasma-changeicons
 %{_libdir}/libkdeinit5_kaccess.so
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
 %{_libdir}/qt5/qml/org/kde/activities
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
-%{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
 %{_libdir}/qt5/qml/org/kde/plasma/private/taskmanager
 %{_libdir}/qt5/qml/org/kde/plasma/private/trash
 %{_libdir}/qt5/qml/org/kde/plasma/activityswitcher
 %{_libdir}/qt5/qml/org/kde/private/desktopcontainment
 %{_datadir}/metainfo/*.xml
-%{_datadir}/applications/org.kde.kfontview.desktop
 %{_datadir}/applications/org.kde.knetattach.desktop
-%{_datadir}/applications/org.kde.kcolorschemeeditor.desktop
 %{_datadir}/applications/org.kde.plasma.emojier.desktop
 %{_datadir}/config.kcfg/*
-%{_datadir}/dbus-1/services/*
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
@@ -278,32 +219,18 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kcmsolidactions
 %{_datadir}/kcmmouse
 %{_datadir}/kconf_update/*
-%{_datadir}/kcontrol
-%{_datadir}/kdisplay
-%{_datadir}/kfontinst
 %{_datadir}/kglobalaccel/org.kde.plasma.emojier.desktop
 %{_datadir}/knotifications5/*.notifyrc
-%{_datadir}/konqsidebartng
-%{_datadir}/kpackage/kcms/kcm5_icons
 %{_datadir}/kpackage/kcms/kcm_baloofile
-%{_datadir}/kpackage/kcms/kcm_cursortheme
-%{_datadir}/kpackage/kcms/kcm_desktoptheme
-%{_datadir}/kpackage/kcms/kcm_fonts
 %{_datadir}/kpackage/kcms/kcm_launchfeedback
-%{_datadir}/kpackage/kcms/kcm_lookandfeel
 %{_datadir}/kpackage/kcms/kcm_nightcolor
 %{_datadir}/kpackage/kcms/kcm_splashscreen
-%{_datadir}/kpackage/kcms/kcm_style
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
 %{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/kf5/kactivitymanagerd
 %{_datadir}/kf5/kactivitymanagerd/workspace
-%{_datadir}/kservices5/ServiceMenus/installfont.desktop
-%{_datadir}/kservices5/fonts.protocol
-%{_datadir}/kxmlgui5/kfontinst
-%{_datadir}/kxmlgui5/kfontview
 %{_datadir}/plasma/layout-templates
 %{_datadir}/plasma/desktoptheme
 %dir %{_datadir}/plasma/packages
@@ -321,27 +248,30 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/plasma/plasmoids/org.kde.plasma.taskmanager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.trash
 %{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
-%{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
 %{_datadir}/plasma/shells
 %{_datadir}/plasma/services/touchpad.operations
-%{_datadir}/plasma/services/kimpanel.operations
-%{_datadir}/polkit-1/actions/org.kde.fontinst.policy
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/solid/devices
-%lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst/kfontinst.js
-%lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst/kfontinst.js
-%lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst/kfontinst.js
-%lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst/kfontinst.js
 %{_libdir}/qt5/qml/org/kde/plasma/private/showdesktop
-%{_datadir}/dbus-1/system.d/org.kde.fontinst.conf
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
-%{_datadir}/kpackage/kcms/kcm_colors
 %{_datadir}/kpackage/kcms/kcm_notifications
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
 %{_bindir}/ibus-ui-emojier-plasma
 %{_bindir}/tastenbrett
 %{_sysconfdir}/xdg/autostart/kaccess.desktop
+%{_datadir}/kpackage/kcms/kcm_autostart
 %{_datadir}/kpackage/kcms/kcm5_kded
 %{_datadir}/kpackage/kcms/kcm_keys
+%{_datadir}/kpackage/kcms/kcm_users
 %{_datadir}/qlogging-categories5/kcmkeys.categories
+%{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
+%{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
+%{_libdir}/qt5/plugins/kf5/krunner
+%{_libdir}/libexec/kimpanel-ibus-panel
+%{_libdir}/libexec/kimpanel-ibus-panel-launcher
+%{_libdir}/libexec/kimpanel-scim-panel
+%lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst
+%lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst
+%lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst
+%lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst
