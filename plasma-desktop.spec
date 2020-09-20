@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.19.90
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -164,16 +164,19 @@ Conflicts: kdeplasma-addons < 5.16.3
 KDE Frameworks 5 Plasma-desktop framework.
 
 #----------------------------------------------------------------------------
+%package kcm_users
+Summary:	Overly simplistic user manager
+Group:		Graphical desktop/KDE
+
+%description kcm_users
+Overly simplistic user manager
+
+Among other problems, this user manager lacks support for groups.
+It is highly recommended to use om-user-manager, kuser, or command
+line tools instead.
 
 %prep
 %autosetup -p1
-
-# We need to increase template depth to make Boost happy
-export CXXFLAGS="%{optflags} -O3 -ftemplate-depth=1024"
-%ifarch %arm
-export C=gcc
-export CXX=g++
-%endif
 %cmake_kde5
 
 %build
@@ -186,8 +189,15 @@ export CXX=g++
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
 %find_lang %{name} --all-name --with-html
+%find_lang kcm_users
+cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 
-%files -f %{name}.lang
+%files kcm_users -f kcm_users.lang
+%{_libdir}/qt5/plugins/kcms/kcm_users.so
+%{_datadir}/kpackage/kcms/kcm_users
+%{_datadir}/kservices5/kcm_users.desktop
+
+%files -f %{name}-except-users.lang
 %{_datadir}/knsrcfiles/ksplash.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
@@ -199,6 +209,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
+%exclude %{_libdir}/qt5/plugins/kcms/kcm_users.so
 %{_libdir}/qt5/qml/org/kde/activities
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
@@ -227,6 +238,7 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
+%exclude %{_datadir}/kservices5/kcm_users.desktop
 %{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/kf5/kactivitymanagerd
@@ -263,7 +275,6 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kpackage/kcms/kcm_autostart
 %{_datadir}/kpackage/kcms/kcm5_kded
 %{_datadir}/kpackage/kcms/kcm_keys
-%{_datadir}/kpackage/kcms/kcm_users
 %{_datadir}/qlogging-categories5/kcmkeys.categories
 %{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
 %{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
