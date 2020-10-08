@@ -2,8 +2,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.19.90
-Release: 3
+Version: 5.20.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -282,6 +282,9 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_libdir}/libexec/kimpanel-ibus-panel
 %{_libdir}/libexec/kimpanel-ibus-panel-launcher
 %{_libdir}/libexec/kimpanel-scim-panel
+%{_datadir}/accounts/providers/kde/opendesktop.provider
+%{_datadir}/accounts/services/kde/opendesktop-rating.service
+%{_datadir}/qlogging-categories5/kcmusers.categories
 %lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst
