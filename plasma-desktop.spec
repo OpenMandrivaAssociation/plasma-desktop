@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.20.2
+Version: 5.20.3
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -220,6 +220,8 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/metainfo/*.xml
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/applications/org.kde.plasma.emojier.desktop
+%{_datadir}/accounts/providers/kde/opendesktop.provider
+%{_datadir}/accounts/services/kde/opendesktop-rating.service
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
@@ -262,7 +264,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
 %{_datadir}/plasma/shells
 %{_datadir}/plasma/services/touchpad.operations
-%{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/solid/devices
 %{_libdir}/qt5/qml/org/kde/plasma/private/showdesktop
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
