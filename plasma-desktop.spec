@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.20.3
-Release: 3
+Release: 4
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
