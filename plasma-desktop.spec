@@ -52,6 +52,7 @@ BuildRequires: cmake(KF5QQC2DeskopStyle)
 BuildRequires: cmake(KAccounts)
 BuildRequires: cmake(AccountsQt5)
 BuildRequires: pkgconfig(libaccounts-glib)
+BuildRequires: pkgconfig(signon-oauth2plugin)
 BuildRequires: cmake(LibNotificationManager)
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
@@ -100,6 +101,7 @@ BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
 BuildRequires: boost-devel
+BuildRequires: intltool
 Requires: openmandriva-kde-translation
 Requires: plasma-framework
 Requires: kirigami2
