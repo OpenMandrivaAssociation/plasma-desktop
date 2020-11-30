@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.20.3
-Release: 6
+Release: 7
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -272,6 +272,7 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/solid/devices
 %{_libdir}/qt5/qml/org/kde/plasma/private/showdesktop
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
+%{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/kpackage/kcms/kcm_notifications
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
