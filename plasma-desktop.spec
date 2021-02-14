@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.20.5
+Version: 5.21.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -231,7 +231,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
-%{_datadir}/kcm_componentchooser
 %{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
@@ -296,3 +295,11 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst
 %lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst
+%{_bindir}/krunner-plugininstaller
+%{_datadir}/knsrcfiles/krunner.knsrc
+%{_datadir}/kpackage/kcms/kcm_componentchooser
+%{_datadir}/kpackage/kcms/kcm_smserver
+%{_datadir}/kpackage/kcms/kcmaccess
+%{_datadir}/plasma/avatars
+%{_datadir}/plasma/plasmoids/org.kde.plasma.keyboardlayout
+%{_datadir}/plasma/plasmoids/org.kde.plasma.marginsseparator
