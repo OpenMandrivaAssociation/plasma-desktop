@@ -1,8 +1,10 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+# FIXME workaround for clang 12 failing at kded_touchpad.so link time
+%define _disable_lto 1
 
 Name: plasma-desktop
-Version: 5.21.2
+Version: 5.21.3
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
