@@ -48,7 +48,7 @@ diff -up plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml.
          <entry name="icon" type="String">
              <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
 -            <default>start-here-kde</default>
-+            <default>openmandriva</default>
++            <default>om-start-kde</default>
          </entry>
          <entry name="favorites" type="StringList">
              <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
@@ -65,7 +65,7 @@ diff -up plasma-desktop-5.21.0/applets/kickoff/package/metadata.desktop.2~ plasm
  Comment[zh_CN]=应用程序的启动器
  Comment[zh_TW]=應用程式啟動器
 -Icon=start-here-kde
-+Icon=openmandriva.svg
++Icon=om-start-kde
  Type=Service
  X-KDE-ServiceTypes=Plasma/Applet
  
