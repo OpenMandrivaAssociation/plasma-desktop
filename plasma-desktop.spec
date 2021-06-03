@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.21.5
+Version: 5.22.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -210,7 +210,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_bindir}/knetattach
 %{_bindir}/kapplymousetheme
 %{_libdir}/libexec/kauth/kcmdatetimehelper
-%{_libdir}/libkdeinit5_kaccess.so
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
 %{_libdir}/qt5/plugins/kcms/*.so
@@ -240,7 +239,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/kpackage/kcms/kcm_baloofile
 %{_datadir}/kpackage/kcms/kcm_launchfeedback
-%{_datadir}/kpackage/kcms/kcm_nightcolor
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
@@ -272,13 +270,11 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_libdir}/qt5/qml/org/kde/plasma/private/showdesktop
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
-%{_datadir}/kpackage/kcms/kcm_notifications
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
 %{_bindir}/ibus-ui-emojier-plasma
 %{_bindir}/tastenbrett
 %{_sysconfdir}/xdg/autostart/kaccess.desktop
-%{_datadir}/kpackage/kcms/kcm_autostart
 %{_datadir}/kpackage/kcms/kcm5_kded
 %{_datadir}/kpackage/kcms/kcm_keys
 %{_datadir}/qlogging-categories5/kcmkeys.categories
@@ -303,3 +299,9 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/plasma/avatars
 %{_datadir}/plasma/plasmoids/org.kde.plasma.keyboardlayout
 %{_datadir}/plasma/plasmoids/org.kde.plasma.marginsseparator
+%{_libdir}/qt5/qml/org/kde/plasma/emoji
+%{_datadir}/kpackage/kcms/kcm_landingpage
+%{_datadir}/qlogging-categories5/kcm_kded.categories
+%{_datadir}/qlogging-categories5/kcm_keyboard.categories
+%{_datadir}/qlogging-categories5/kcm_mouse.categories
+

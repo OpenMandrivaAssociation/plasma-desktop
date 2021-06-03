@@ -1,6 +1,6 @@
-diff -up plasma-desktop-5.21.0/applets/kicker/package/contents/config/main.xml.2~ plasma-desktop-5.21.0/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.21.0/applets/kicker/package/contents/config/main.xml.2~	2021-02-11 13:12:48.000000000 +0100
-+++ plasma-desktop-5.21.0/applets/kicker/package/contents/config/main.xml	2021-02-15 00:08:57.097584793 +0100
+diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2~ plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2~	2021-06-03 16:12:09.000000000 +0200
++++ plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml	2021-06-04 01:10:16.944033903 +0200
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -28,10 +28,10 @@ diff -up plasma-desktop-5.21.0/applets/kicker/package/contents/config/main.xml.2
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
-diff -up plasma-desktop-5.21.0/applets/kicker/package/metadata.desktop.2~ plasma-desktop-5.21.0/applets/kicker/package/metadata.desktop
---- plasma-desktop-5.21.0/applets/kicker/package/metadata.desktop.2~	2021-02-11 13:12:48.000000000 +0100
-+++ plasma-desktop-5.21.0/applets/kicker/package/metadata.desktop	2021-02-15 00:08:57.097584793 +0100
-@@ -103,7 +103,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
+diff -up plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop
+--- plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
++++ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
+@@ -104,7 +104,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
  Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
@@ -40,11 +40,11 @@ diff -up plasma-desktop-5.21.0/applets/kicker/package/metadata.desktop.2~ plasma
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
-diff -up plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml.2~ plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml.2~	2021-02-15 00:08:57.097584793 +0100
-+++ plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml	2021-02-15 00:10:26.303519260 +0100
-@@ -11,11 +11,11 @@
-         </entry>
+diff -up plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.2~ plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.2~	2021-06-04 01:10:16.944033903 +0200
++++ plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml	2021-06-04 01:11:38.311118944 +0200
+@@ -7,11 +7,11 @@
+     <group name="General">
          <entry name="icon" type="String">
              <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
 -            <default>start-here-kde</default>
@@ -57,10 +57,10 @@ diff -up plasma-desktop-5.21.0/applets/kickoff/package/contents/config/main.xml.
          </entry>
          <entry name="systemFavorites" type="StringList">
              <label>List of system action favorites.</label>
-diff -up plasma-desktop-5.21.0/applets/kickoff/package/metadata.desktop.2~ plasma-desktop-5.21.0/applets/kickoff/package/metadata.desktop
---- plasma-desktop-5.21.0/applets/kickoff/package/metadata.desktop.2~	2021-02-11 13:12:48.000000000 +0100
-+++ plasma-desktop-5.21.0/applets/kickoff/package/metadata.desktop	2021-02-15 00:08:57.098584803 +0100
-@@ -166,7 +166,7 @@ Comment[wa]=Enondeu po lancî des progra
+diff -up plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop
+--- plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
++++ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
+@@ -165,7 +165,7 @@ Comment[wa]=Enondeu po lancî des progra
  Comment[x-test]=xxLauncher to start applicationsxx
  Comment[zh_CN]=应用程序的启动器
  Comment[zh_TW]=應用程式啟動器
