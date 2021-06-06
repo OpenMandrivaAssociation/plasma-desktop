@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.22.0
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 #Patch0: plasma-desktop-5.1.95-clang.patch
@@ -58,6 +58,7 @@ BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
 BuildRequires: cmake(packagekitqt5)
+BuildRequires: cmake(KUserFeedback)
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(fontconfig)
 BuildRequires: pkgconfig(freetype2)
@@ -102,6 +103,7 @@ BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
 BuildRequires: boost-devel
 BuildRequires: intltool
+BuildRequires: xdg-user-dirs
 Requires: openmandriva-kde-translation
 Requires: plasma-framework
 Requires: kirigami2
