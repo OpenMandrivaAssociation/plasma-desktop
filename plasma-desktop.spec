@@ -2,7 +2,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.22.5
+Version: 5.22.90
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -245,14 +245,11 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservices5/*.desktop
 %exclude %{_datadir}/kservices5/kcm_users.desktop
-%{_datadir}/kservices5/kded/*.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/kf5/kactivitymanagerd
 %{_datadir}/kf5/kactivitymanagerd/workspace
 %{_datadir}/plasma/layout-templates
-%{_datadir}/plasma/desktoptheme
 %dir %{_datadir}/plasma/packages
-%{_datadir}/plasma/plasmoids/touchpad
 %{_datadir}/plasma/packages/org.kde.desktoptoolbox
 %{_datadir}/plasma/packages/org.kde.paneltoolbox
 %{_datadir}/plasma/plasmoids/org.kde.desktopcontainment
