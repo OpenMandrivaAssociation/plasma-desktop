@@ -6,7 +6,7 @@ diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2
      <entry name="icon" type="String">
        <label>The name of the icon to use for the compact representation (e.g. on a small panel).</label>
 -      <default>start-here-kde</default>
-+      <default>openmandriva.svg</default>
++      <default>om-start-kde.svg</default>
      </entry>
      <entry name="useCustomButtonImage" type="Bool">
        <label>Whether to use a custom image instead of an icon in the compact representation (e.g. on a small panel).</label>
@@ -15,7 +15,7 @@ diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2
      <entry name="customButtonImage" type="Url">
        <label>The URL of the custtom image to use instead of an icon in the compact representation (e.g. on a small panel).</label>
 -      <default></default>
-+      <default>/usr/share/icons/openmandriva.svg</default>
++      <default>/usr/share/icons/om-start-kde.svg</default>
      </entry>
  
      <entry name="appNameFormat" type="Int">
@@ -31,12 +31,12 @@ diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2
 diff -up plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop
 --- plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
 +++ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
-@@ -104,7 +104,7 @@ Comment[zh_CN]=基于层叠弹出窗口�
- Comment[zh_TW]=以啟動器為基底的彈出式串連選單
+@@ -104,7 +104,7 @@ Comment[zh_CN]=åŸºäºŽå±‚å å¼¹å‡ºçª—å£ç
+ Comment[zh_TW]=ä»¥å•Ÿå‹•å™¨ç‚ºåŸºåº•çš„å½ˆå‡ºå¼ä¸²é€£é¸å–®
  
  Type=Service
 -Icon=start-here-kde
-+Icon=openmandriva.svg
++Icon=om-start-kde.svg
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
@@ -60,10 +60,10 @@ diff -up plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.
 diff -up plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop
 --- plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
 +++ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
-@@ -165,7 +165,7 @@ Comment[wa]=Enondeu po lancî des progra
+@@ -165,7 +165,7 @@ Comment[wa]=Enondeu po lancÃ® des progra
  Comment[x-test]=xxLauncher to start applicationsxx
- Comment[zh_CN]=应用程序的启动器
- Comment[zh_TW]=應用程式啟動器
+ Comment[zh_CN]=åº”ç”¨ç¨‹åºçš„å¯åŠ¨å™¨
+ Comment[zh_TW]=æ‡‰ç”¨ç¨‹å¼å•Ÿå‹•å™¨
 -Icon=start-here-kde
 +Icon=om-start-kde
  Type=Service
