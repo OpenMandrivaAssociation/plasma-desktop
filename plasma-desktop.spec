@@ -1,13 +1,11 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
 Version: 5.22.90
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
-#Patch0: plasma-desktop-5.1.95-clang.patch
-#Patch1: plasma-desktop-5.2.2-add-autohint.patch
 # Move date and time to more obvious place in system settings
 Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
@@ -109,7 +107,7 @@ Requires: plasma-framework
 Requires: kirigami2
 # (crazy) crahses without
 Requires: qqc2-desktop-style >= %{version}
-Suggests: distro-plasma-config
+Recommends: distro-release-desktop-Plasma
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 
@@ -172,8 +170,8 @@ KDE Frameworks 5 Plasma-desktop framework.
 
 #----------------------------------------------------------------------------
 %package kcm_users
-Summary:	Overly simplistic user manager
-Group:		Graphical desktop/KDE
+Summary: Overly simplistic user manager
+Group: Graphical desktop/KDE
 
 %description kcm_users
 Overly simplistic user manager

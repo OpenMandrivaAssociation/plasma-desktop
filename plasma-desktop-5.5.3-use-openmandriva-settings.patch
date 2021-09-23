@@ -1,6 +1,6 @@
-diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2~ plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2~	2021-06-03 16:12:09.000000000 +0200
-+++ plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml	2021-06-04 01:10:16.944033903 +0200
+diff -Naur plasma-desktop-5.22.90/applets/kicker/package/contents/config/main.xml plasma-desktop-5.22.90.tpg/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.22.90/applets/kicker/package/contents/config/main.xml	2021-09-16 08:45:13.000000000 +0000
++++ plasma-desktop-5.22.90.tpg/applets/kicker/package/contents/config/main.xml	2021-09-23 16:35:33.543241965 +0000
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -24,15 +24,15 @@ diff -up plasma-desktop-5.22.0/applets/kicker/package/contents/config/main.xml.2
      <entry name="favoriteApps" type="StringList">
        <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
-+      <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,org.kde.discover,openmandriva-drakconf.desktop</default>
++      <default>preferred://browser,org.kde.kmail.desktop,org.kde.neochat.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,org.kde.discover</default>
      </entry>
      <entry name="favoriteSystemActions" type="StringList">
        <label>List of system action favorites.</label>
-diff -up plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop
---- plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
-+++ plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
-@@ -104,7 +104,7 @@ Comment[zh_CN]=åŸºäºŽå±‚å å¼¹å‡ºçª—å£ç
- Comment[zh_TW]=ä»¥å•Ÿå‹•å™¨ç‚ºåŸºåº•çš„å½ˆå‡ºå¼ä¸²é€£é¸å–®
+diff -Naur plasma-desktop-5.22.90/applets/kicker/package/metadata.desktop plasma-desktop-5.22.90.tpg/applets/kicker/package/metadata.desktop
+--- plasma-desktop-5.22.90/applets/kicker/package/metadata.desktop	2021-09-16 08:45:13.000000000 +0000
++++ plasma-desktop-5.22.90.tpg/applets/kicker/package/metadata.desktop	2021-09-23 16:35:45.473186496 +0000
+@@ -105,7 +105,7 @@
+ Comment[zh_TW]=以啟動器為基底的彈出式串連選單
  
  Type=Service
 -Icon=start-here-kde
@@ -40,9 +40,9 @@ diff -up plasma-desktop-5.22.0/applets/kicker/package/metadata.desktop.2~ plasma
  X-KDE-ServiceTypes=Plasma/Applet
  
  X-Plasma-API=declarativeappletscript
-diff -up plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.2~ plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.2~	2021-06-04 01:10:16.944033903 +0200
-+++ plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml	2021-06-04 01:11:38.311118944 +0200
+diff -Naur plasma-desktop-5.22.90/applets/kickoff/package/contents/config/main.xml plasma-desktop-5.22.90.tpg/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.22.90/applets/kickoff/package/contents/config/main.xml	2021-09-16 08:45:13.000000000 +0000
++++ plasma-desktop-5.22.90.tpg/applets/kickoff/package/contents/config/main.xml	2021-09-23 16:38:04.082549169 +0000
 @@ -7,11 +7,11 @@
      <group name="General">
          <entry name="icon" type="String">
@@ -53,17 +53,17 @@ diff -up plasma-desktop-5.22.0/applets/kickoff/package/contents/config/main.xml.
          <entry name="favorites" type="StringList">
              <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -            <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop</default>
-+	    <default>preferred://browser,org.kde.kmail.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,org.kde.discover.desktop</default>
++            <default>preferred://browser,org.kde.kmail.desktop,org.kde.neochat.desktop,org.kde.konversation.desktop,kcm_kdeconnect.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.konsole.desktop,systemsettings.desktop,org.kde.discover.desktop</default>
          </entry>
          <entry name="systemFavorites" type="StringList">
              <label>List of system action favorites.</label>
-diff -up plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop
---- plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop.2~	2021-06-03 16:12:09.000000000 +0200
-+++ plasma-desktop-5.22.0/applets/kickoff/package/metadata.desktop	2021-06-04 01:10:16.944033903 +0200
-@@ -165,7 +165,7 @@ Comment[wa]=Enondeu po lancÃ® des progra
+diff -Naur plasma-desktop-5.22.90/applets/kickoff/package/metadata.desktop plasma-desktop-5.22.90.tpg/applets/kickoff/package/metadata.desktop
+--- plasma-desktop-5.22.90/applets/kickoff/package/metadata.desktop	2021-09-16 08:45:13.000000000 +0000
++++ plasma-desktop-5.22.90.tpg/applets/kickoff/package/metadata.desktop	2021-09-23 16:37:09.422797406 +0000
+@@ -166,7 +166,7 @@
  Comment[x-test]=xxLauncher to start applicationsxx
- Comment[zh_CN]=åº”ç”¨ç¨‹åºçš„å¯åŠ¨å™¨
- Comment[zh_TW]=æ‡‰ç”¨ç¨‹å¼å•Ÿå‹•å™¨
+ Comment[zh_CN]=应用程序的启动器
+ Comment[zh_TW]=應用程式啟動器
 -Icon=start-here-kde
 +Icon=om-start-kde
  Type=Service
