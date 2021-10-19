@@ -2,7 +2,7 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.23.0
+Version: 5.23.1
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -17,7 +17,7 @@ BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(AppStreamQt)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(Breeze) >= %(echo %{version} |cut -d. -f1-3)
+BuildRequires: cmake(Breeze) >= %(echo %{version} |cut -d. -f1-2).0
 BuildRequires: cmake(KDecoration2)
 BuildRequires: cmake(LibKWorkspace)
 BuildRequires: cmake(LibColorCorrect)
