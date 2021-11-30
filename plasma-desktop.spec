@@ -2,7 +2,7 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.23.3
+Version: 5.23.4
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -301,4 +301,5 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/qlogging-categories5/kcm_kded.categories
 %{_datadir}/qlogging-categories5/kcm_keyboard.categories
 %{_datadir}/qlogging-categories5/kcm_mouse.categories
-
+%{_datadir}/plasma/desktoptheme/default/icons/touchpad.svg
+%{_datadir}/plasma/plasmoids/touchpad
