@@ -2,12 +2,10 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.23.5
-Release: 2
+Version: 5.24.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
-# Move date and time to more obvious place in system settings
-Patch3: plasma-desktop-5.3.1-dateandtime-category.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
@@ -168,18 +166,6 @@ Conflicts: kdeplasma-addons < 5.16.3
 %description
 KDE Frameworks 5 Plasma-desktop framework.
 
-#----------------------------------------------------------------------------
-%package kcm_users
-Summary: Overly simplistic user manager
-Group: Graphical desktop/KDE
-
-%description kcm_users
-Overly simplistic user manager
-
-Among other problems, this user manager lacks support for groups.
-It is highly recommended to use om-user-manager, kuser, or command
-line tools instead.
-
 %prep
 %autosetup -p1
 %cmake_kde5
@@ -194,15 +180,8 @@ line tools instead.
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
 %find_lang %{name} --all-name --with-html
-%find_lang kcm_users
-cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 
-%files kcm_users -f kcm_users.lang
-%{_libdir}/qt5/plugins/kcms/kcm_users.so
-%{_datadir}/kpackage/kcms/kcm_users
-%{_datadir}/kservices5/kcm_users.desktop
-
-%files -f %{name}-except-users.lang
+%files -f %{name}.lang
 %{_datadir}/knsrcfiles/ksplash.knsrc
 %{_bindir}/solid-action-desktop-gen
 %{_bindir}/kaccess
@@ -212,8 +191,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_libdir}/libexec/kauth/kcmdatetimehelper
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
-%{_libdir}/qt5/plugins/kcms/*.so
-%exclude %{_libdir}/qt5/plugins/kcms/kcm_users.so
 %{_libdir}/qt5/qml/org/kde/activities
 %{_libdir}/qt5/plugins/plasma/dataengine/*.so
 %{_libdir}/qt5/qml/org/kde/plasma/private/pager
@@ -230,7 +207,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
-%{_datadir}/kcmkeyboard
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
 %{_datadir}/kcmmouse
@@ -241,8 +217,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/kpackage/kcms/kcm_launchfeedback
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kpackage/kcms/kcm_workspace
-%{_datadir}/kservices5/*.desktop
-%exclude %{_datadir}/kservices5/kcm_users.desktop
 %{_datadir}/kservicetypes5/solid-device-type.desktop
 %dir %{_datadir}/kf5/kactivitymanagerd
 %{_datadir}/kf5/kactivitymanagerd/workspace
@@ -283,7 +257,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_libdir}/libexec/kimpanel-scim-panel
 #%{_datadir}/accounts/providers/kde/opendesktop.provider
 #%{_datadir}/accounts/services/kde/opendesktop-rating.service
-%{_datadir}/qlogging-categories5/kcmusers.categories
 %lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst
@@ -292,8 +265,6 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/knsrcfiles/krunner.knsrc
 %{_datadir}/kpackage/kcms/kcm_componentchooser
 %{_datadir}/kpackage/kcms/kcm_smserver
-%{_datadir}/kpackage/kcms/kcmaccess
-%{_datadir}/plasma/avatars
 %{_datadir}/plasma/plasmoids/org.kde.plasma.keyboardlayout
 %{_datadir}/plasma/plasmoids/org.kde.plasma.marginsseparator
 %{_libdir}/qt5/qml/org/kde/plasma/emoji
@@ -303,3 +274,53 @@ cat %{name}.lang kcm_users.lang |sort |uniq >%{name}-except-users.lang
 %{_datadir}/qlogging-categories5/kcm_mouse.categories
 %{_datadir}/plasma/desktoptheme/default/icons/touchpad.svg
 %{_datadir}/plasma/plasmoids/touchpad
+%{_libdir}/qt5/plugins/plasma/kcminit/kcm_mouse_init.so
+%{_libdir}/qt5/plugins/plasma/kcminit/kcm_touchpad_init.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_access.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_baloofile.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_componentchooser.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_kded.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_keyboard.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_keys.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_landingpage.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_launchfeedback.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_mouse.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_smserver.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_splashscreen.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_tablet.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_touchpad.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_workspace.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_activities.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_desktoppaths.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_joystick.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_plasmasearch.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+%{_datadir}/applications/kcm_access.desktop
+%{_datadir}/applications/kcm_activities.desktop
+%{_datadir}/applications/kcm_baloofile.desktop
+%{_datadir}/applications/kcm_clock.desktop
+%{_datadir}/applications/kcm_componentchooser.desktop
+%{_datadir}/applications/kcm_desktoppaths.desktop
+%{_datadir}/applications/kcm_device_automounter.desktop
+%{_datadir}/applications/kcm_joystick.desktop
+%{_datadir}/applications/kcm_kded.desktop
+%{_datadir}/applications/kcm_keyboard.desktop
+%{_datadir}/applications/kcm_keys.desktop
+%{_datadir}/applications/kcm_launchfeedback.desktop
+%{_datadir}/applications/kcm_mouse.desktop
+%{_datadir}/applications/kcm_plasmasearch.desktop
+%{_datadir}/applications/kcm_qtquicksettings.desktop
+%{_datadir}/applications/kcm_smserver.desktop
+%{_datadir}/applications/kcm_solid_actions.desktop
+%{_datadir}/applications/kcm_splashscreen.desktop
+%{_datadir}/applications/kcm_tablet.desktop
+%{_datadir}/applications/kcm_touchpad.desktop
+%{_datadir}/applications/kcm_workspace.desktop
+%{_datadir}/applications/kcmspellchecking.desktop
+%{_datadir}/kpackage/kcms/kcm_access
+%{_datadir}/kpackage/kcms/kcm_tablet
+%{_datadir}/qlogging-categories5/kcm_tablet.categories
