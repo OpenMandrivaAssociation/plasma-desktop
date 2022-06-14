@@ -2,8 +2,8 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.24.5
-Release: 2
+Version: 5.25.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
@@ -324,3 +324,8 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 %{_datadir}/kpackage/kcms/kcm_access
 %{_datadir}/kpackage/kcms/kcm_tablet
 %{_datadir}/qlogging-categories5/kcm_tablet.categories
+%{_libdir}/qt5/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
+%{_libdir}/qt5/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
+%{_datadir}/applications/kcm_krunnersettings.desktop
+%{_datadir}/kpackage/kcms/kcm_krunnersettings
+
