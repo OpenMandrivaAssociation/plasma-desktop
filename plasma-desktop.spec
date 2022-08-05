@@ -3,9 +3,11 @@
 
 Name: plasma-desktop
 Version: 5.25.4
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
+# https://bugs.kde.org/show_bug.cgi?id=457521
+Patch0: plasma-desktop-5.25.4-bug-457521.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
