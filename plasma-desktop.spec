@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.25.4
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 # https://bugs.kde.org/show_bug.cgi?id=457521
@@ -181,6 +181,10 @@ KDE Frameworks 5 Plasma-desktop framework.
 # (tpg) use layout.js from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
 
+desktop-file-install \
+		--set-key="NoDisplay" --set-value="true" \
+		--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/org.kde.plasma.emojier.desktop
+						
 %find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
