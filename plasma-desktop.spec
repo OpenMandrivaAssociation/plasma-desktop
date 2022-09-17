@@ -2,8 +2,8 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.25.5
-Release: 2
+Version: 5.25.90
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
@@ -299,7 +299,6 @@ desktop-file-install \
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_desktoppaths.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_joystick.so
-%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_plasmasearch.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
@@ -309,7 +308,6 @@ desktop-file-install \
 %{_datadir}/applications/kcm_clock.desktop
 %{_datadir}/applications/kcm_componentchooser.desktop
 %{_datadir}/applications/kcm_desktoppaths.desktop
-%{_datadir}/applications/kcm_device_automounter.desktop
 %{_datadir}/applications/kcm_joystick.desktop
 %{_datadir}/applications/kcm_kded.desktop
 %{_datadir}/applications/kcm_keyboard.desktop
@@ -328,8 +326,13 @@ desktop-file-install \
 %{_datadir}/kpackage/kcms/kcm_access
 %{_datadir}/kpackage/kcms/kcm_tablet
 %{_datadir}/qlogging-categories5/kcm_tablet.categories
-%{_libdir}/qt5/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
 %{_libdir}/qt5/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
 %{_datadir}/applications/kcm_krunnersettings.desktop
 %{_datadir}/kpackage/kcms/kcm_krunnersettings
-
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_plasmasearch.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_recentFiles.so
+%{_datadir}/applications/kcm_landingpage.desktop
+%{_datadir}/applications/kcm_recentFiles.desktop
+%{_datadir}/kf5/kcm_recentFiles
+%{_datadir}/kpackage/kcms/kcm_plasmasearch
+%{_datadir}/plasma/plasmoids/org.kde.plasma.activitypager
