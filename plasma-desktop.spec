@@ -97,6 +97,8 @@ BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
+BuildRequires: cmake(KPipeWire)
+BuildRequires: cmake(WaylandProtocols)
 BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
