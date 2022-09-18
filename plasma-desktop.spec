@@ -99,6 +99,8 @@ BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
 BuildRequires: cmake(KPipeWire)
 BuildRequires: cmake(WaylandProtocols)
+BuildRequires: pkgconfig(wayland-protocols)
+BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
