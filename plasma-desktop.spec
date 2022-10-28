@@ -3,10 +3,10 @@
 
 Name: plasma-desktop
 Version: 5.26.2
-Release: 1
+Release: 1a
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
-Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
+#Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
 License: GPL
