@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.26.2
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
