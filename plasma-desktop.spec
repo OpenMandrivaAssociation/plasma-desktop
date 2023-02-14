@@ -2,7 +2,7 @@
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma-desktop
-Version: 5.26.5
+Version: 5.27.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
@@ -189,6 +189,11 @@ desktop-file-install \
 						
 %find_lang %{name} --all-name --with-html
 
+echo '%dir %{_datadir}/plasma/emoji' >>%{name}.lang
+for i in %{buildroot}%{_datadir}/plasma/emoji/*.dict; do
+	echo "%%lang($(basename $i .dict)) %{_datadir}/plasma/emoji/$(basename $i)" >>%{name}.lang
+done
+
 %files -f %{name}.lang
 %{_datadir}/knsrcfiles/ksplash.knsrc
 %{_bindir}/solid-action-desktop-gen
@@ -196,6 +201,7 @@ desktop-file-install \
 %{_bindir}/kcm-touchpad-list-devices
 %{_bindir}/knetattach
 %{_bindir}/kapplymousetheme
+%{_bindir}/plasma-emojier
 %{_libdir}/libexec/kauth/kcmdatetimehelper
 %{_libdir}/qt5/plugins/*.so
 %{_libdir}/qt5/plugins/kf5/kded/*.so
@@ -222,7 +228,6 @@ desktop-file-install \
 %{_datadir}/kglobalaccel/org.kde.plasma.emojier.desktop
 %{_datadir}/knotifications5/*.notifyrc
 %{_datadir}/kpackage/kcms/kcm_baloofile
-%{_datadir}/kpackage/kcms/kcm_launchfeedback
 %{_datadir}/kpackage/kcms/kcm_splashscreen
 %{_datadir}/kpackage/kcms/kcm_workspace
 %{_datadir}/kservicetypes5/solid-device-type.desktop
@@ -251,12 +256,12 @@ desktop-file-install \
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
-%{_bindir}/ibus-ui-emojier-plasma
 %{_bindir}/tastenbrett
 %{_sysconfdir}/xdg/autostart/kaccess.desktop
 %{_datadir}/kpackage/kcms/kcm5_kded
 %{_datadir}/kpackage/kcms/kcm_keys
 %{_datadir}/qlogging-categories5/kcmkeys.categories
+%{_datadir}/qlogging-categories5/kcm_touchscreen.categories
 %{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
 %{_libdir}/qt5/qml/org/kde/plasma/private/kimpanel
 %{_libdir}/qt5/plugins/kf5/krunner
@@ -291,12 +296,12 @@ desktop-file-install \
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_keyboard.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_keys.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_landingpage.so
-%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_launchfeedback.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_mouse.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_smserver.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_splashscreen.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_tablet.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_touchpad.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_touchscreen.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_workspace.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_activities.so
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
@@ -316,7 +321,6 @@ desktop-file-install \
 %{_datadir}/applications/kcm_kded.desktop
 %{_datadir}/applications/kcm_keyboard.desktop
 %{_datadir}/applications/kcm_keys.desktop
-%{_datadir}/applications/kcm_launchfeedback.desktop
 %{_datadir}/applications/kcm_mouse.desktop
 %{_datadir}/applications/kcm_plasmasearch.desktop
 %{_datadir}/applications/kcm_qtquicksettings.desktop
@@ -325,11 +329,13 @@ desktop-file-install \
 %{_datadir}/applications/kcm_splashscreen.desktop
 %{_datadir}/applications/kcm_tablet.desktop
 %{_datadir}/applications/kcm_touchpad.desktop
+%{_datadir}/applications/kcm_touchscreen.desktop
 %{_datadir}/applications/kcm_workspace.desktop
 %{_datadir}/applications/kcmspellchecking.desktop
 %{_datadir}/kpackage/kcms/kcm_access
 %{_datadir}/kpackage/kcms/kcm_tablet
 %{_datadir}/qlogging-categories5/kcm_tablet.categories
+%{_datadir}/kpackage/kcms/kcm_touchscreen
 %{_libdir}/qt5/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
 %{_datadir}/applications/kcm_krunnersettings.desktop
 %{_datadir}/kpackage/kcms/kcm_krunnersettings
