@@ -112,6 +112,7 @@ Requires: qqc2-desktop-style >= %{version}
 Recommends: distro-release-desktop-Plasma
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
+Supplements: task-plasma-minimal
 
 Obsoletes: kdeartwork-emoticons < 1:15.08.3-3
 Obsoletes: kdeartwork4-emoticons < 1:4.14.3-3
