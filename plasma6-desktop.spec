@@ -24,6 +24,7 @@ BuildRequires: cmake(KWinDBusInterface) >= 5.27.80
 BuildRequires: cmake(ScreenSaverDBusInterface) >= 5.27.80
 BuildRequires: cmake(KRunnerAppDBusInterface) >= 5.27.80
 BuildRequires: cmake(KSMServerDBusInterface) >= 5.27.80
+BuildRequires: cmake(KSysGuard) >= 5.27.80
 BuildRequires: cmake(KF6ActivitiesStats)
 BuildRequires: cmake(KF6Baloo)
 BuildRequires: cmake(KF6ItemModels)
