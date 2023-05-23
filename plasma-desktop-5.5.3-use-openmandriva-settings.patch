@@ -1,0 +1,121 @@
+diff -up plasma-desktop-5.27.0/applets/kicker/package/contents/config/main.xml.1~ plasma-desktop-5.27.0/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.27.0/applets/kicker/package/contents/config/main.xml.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kicker/package/contents/config/main.xml	2023-02-14 17:39:54.991742935 +0100
+@@ -8,7 +8,7 @@
+   <group name="General">
+     <entry name="icon" type="String">
+       <label>The name of the icon to use for the compact representation (e.g. on a small panel).</label>
+-      <default>start-here-kde</default>
++      <default>om-start-kde.svg</default>
+     </entry>
+     <entry name="useCustomButtonImage" type="Bool">
+       <label>Whether to use a custom image instead of an icon in the compact representation (e.g. on a small panel).</label>
+@@ -16,7 +16,7 @@
+     </entry>
+     <entry name="customButtonImage" type="Url">
+       <label>The URL of the custom image to use instead of an icon in the compact representation (e.g. on a small panel).</label>
+-      <default></default>
++      <default>/usr/share/icons/om-start-kde.svg</default>
+     </entry>
+ 
+     <entry name="appNameFormat" type="Int">
+diff -up plasma-desktop-5.27.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.1~ plasma-desktop-5.27.0/applets/kicker/package/contents/ui/ConfigGeneral.qml
+--- plasma-desktop-5.27.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kicker/package/contents/ui/ConfigGeneral.qml	2023-02-14 17:37:51.009010566 +0100
+@@ -91,7 +91,7 @@ Kirigami.FormLayout {
+             id: iconDialog
+ 
+             function setCustomButtonImage(image) {
+-                configGeneral.cfg_customButtonImage = image || configGeneral.cfg_icon || "start-here-kde"
++                configGeneral.cfg_customButtonImage = image || configGeneral.cfg_icon || "om-start-kde"
+                 configGeneral.cfg_useCustomButtonImage = true;
+             }
+ 
+@@ -131,7 +131,7 @@ Kirigami.FormLayout {
+                 text: i18nc("@item:inmenu Reset icon to default", "Clear Icon")
+                 icon.name: "edit-clear"
+                 onClicked: {
+-                    configGeneral.cfg_icon = "start-here-kde"
++                    configGeneral.cfg_icon = "om-start-kde"
+                     configGeneral.cfg_useCustomButtonImage = false
+                 }
+             }
+diff -up plasma-desktop-5.27.0/applets/kicker/package/metadata.json.1~ plasma-desktop-5.27.0/applets/kicker/package/metadata.json
+--- plasma-desktop-5.27.0/applets/kicker/package/metadata.json.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kicker/package/metadata.json	2023-02-14 17:37:51.009010566 +0100
+@@ -94,7 +94,7 @@
+         "Description[zh_CN]": "基于层叠弹出菜单设计的启动器",
+         "Description[zh_TW]": "基於彈出式串連選單的啟動器",
+         "EnabledByDefault": true,
+-        "Icon": "start-here-kde",
++        "Icon": "om-start-kde",
+         "Id": "org.kde.plasma.kicker",
+         "License": "GPL-2.0+",
+         "Name": "Application Menu",
+diff -up plasma-desktop-5.27.0/applets/kickoff/package/contents/config/main.xml.1~ plasma-desktop-5.27.0/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.27.0/applets/kickoff/package/contents/config/main.xml.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kickoff/package/contents/config/main.xml	2023-02-14 17:37:51.009010566 +0100
+@@ -7,7 +7,7 @@
+     <group name="General">
+         <entry name="icon" type="String">
+             <label>The name of the icon used in the compact representation (e.g. on a small panel).</label>
+-            <default>start-here-kde</default>
++            <default>om-start-kde</default>
+         </entry>
+         <entry name="menuLabel" type="string">
+             <label>Text label for the Panel button</label>
+@@ -15,7 +15,7 @@
+         </entry>
+         <entry name="favorites" type="StringList">
+             <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
+-            <default>preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.discover.desktop</default>
++	    <default>preferred://browser,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.konsole.desktop</default>
+         </entry>
+         <entry name="systemFavorites" type="StringList">
+             <label>List of system action favorites.</label>
+diff -up plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/code/tools.js.1~ plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/code/tools.js
+--- plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/code/tools.js.1~	2023-02-14 17:42:33.853690700 +0100
++++ plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/code/tools.js	2023-02-14 17:42:46.102764134 +0100
+@@ -10,7 +10,7 @@
+ .pragma library
+ .import org.kde.plasma.core 2.1 as PlasmaCore
+ 
+-const defaultIconName = "start-here-kde";
++const defaultIconName = "om-start-kde";
+ 
+ function iconOrDefault(formFactor, preferredIconName) {
+     // Vertical panels must have an icon, at least a default one.
+diff -up plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/ConfigGeneral.qml.1~ plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/ConfigGeneral.qml
+diff -up plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.1~ plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml
+--- plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml	2023-02-14 17:37:51.009010566 +0100
+@@ -70,7 +70,7 @@ Item {
+         index: -1
+         text: "asdf"
+         url: ""
+-        decoration: "start-here-kde"
++        decoration: "om-start-kde"
+         description: "asdf"
+         width: implicitHeight
+         action: null
+@@ -85,7 +85,7 @@ Item {
+         index: -1
+         text: "asdf"
+         url: ""
+-        decoration: "start-here-kde"
++        decoration: "om-start-kde"
+         description: "asdf"
+         action: null
+         indicator: null
+diff -up plasma-desktop-5.27.0/applets/kickoff/package/metadata.json.1~ plasma-desktop-5.27.0/applets/kickoff/package/metadata.json
+--- plasma-desktop-5.27.0/applets/kickoff/package/metadata.json.1~	2023-02-13 16:38:05.000000000 +0100
++++ plasma-desktop-5.27.0/applets/kickoff/package/metadata.json	2023-02-14 17:37:51.009010566 +0100
+@@ -142,7 +142,7 @@
+         "Description[zh_CN]": "应用程序启动器",
+         "Description[zh_TW]": "開啟應用程式用的啟動器",
+         "EnabledByDefault": true,
+-        "Icon": "start-here-kde",
++        "Icon": "om-start-kde",
+         "Id": "org.kde.plasma.kickoff",
+         "License": "GPL-2.0+",
+         "Name": "Application Launcher",
