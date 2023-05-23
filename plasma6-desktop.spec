@@ -26,6 +26,7 @@ BuildRequires: cmake(KRunnerAppDBusInterface) >= 5.27.80
 BuildRequires: cmake(KSMServerDBusInterface) >= 5.27.80
 BuildRequires: cmake(KSysGuard) >= 5.27.80
 BuildRequires: cmake(KF6ActivitiesStats)
+BuildRequires: cmake(KF6QQC2DesktopStyle)
 BuildRequires: cmake(KF6Baloo)
 BuildRequires: cmake(KF6ItemModels)
 BuildRequires: cmake(KF6Activities)
@@ -104,7 +105,7 @@ BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
 Requires: openmandriva-kde-translation
-Requires: plasma6-framework
+Requires: kf6-plasma-framework
 Recommends: distro-release-desktop-Plasma
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
