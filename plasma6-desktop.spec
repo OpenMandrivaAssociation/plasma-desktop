@@ -4,7 +4,7 @@
 
 Name: plasma6-desktop
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -106,10 +106,9 @@ BuildRequires: intltool
 BuildRequires: xdg-user-dirs
 Requires: openmandriva-kde-translation
 Requires: kf6-plasma-framework
-Recommends: distro-release-desktop-Plasma
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
-Supplements: task-plasma-minimal
+Supplements: task-plasma6-minimal
 
 %description
 KDE Frameworks 5 Plasma-desktop framework.
