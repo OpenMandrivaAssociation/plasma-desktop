@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230606
+%define git 20230610
 
 Name: plasma6-desktop
 Version: 5.240.0
@@ -169,7 +169,6 @@ done
 %{_datadir}/kconf_update/*
 %{_datadir}/kglobalaccel/org.kde.plasma.emojier.desktop
 %{_datadir}/knotifications6/*.notifyrc
-%{_datadir}/kservicetypes6/solid-device-type.desktop
 %{_datadir}/plasma/layout-templates
 %dir %{_datadir}/plasma/packages
 %{_datadir}/plasma/packages/org.kde.desktoptoolbox
