@@ -21,7 +21,7 @@ BuildRequires: cmake(LibKWorkspace) < 5.27.50
 BuildRequires: cmake(LibColorCorrect) < 5.27.50
 BuildRequires: cmake(LibTaskManager) < 5.27.50
 BuildRequires: cmake(KWinEffects) < 5.27.50
-BuildRequires: cmake(ScreenSaverDBusInterface)
+BuildRequires: cmake(KScreenLocker) < 5.27.50
 BuildRequires: cmake(KF5ActivitiesStats)
 BuildRequires: cmake(KF5Baloo)
 BuildRequires: cmake(KF5ItemModels)
