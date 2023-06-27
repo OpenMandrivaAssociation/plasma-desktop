@@ -12,18 +12,16 @@ URL: http://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF5DocTools)
-BuildRequires: cmake(AppStreamQt)
+BuildRequires: cmake(AppStreamQt) < 1.0.0
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
-BuildRequires: cmake(Breeze) >= %(echo %{version} |cut -d. -f1-2).0
-BuildRequires: cmake(KDecoration2)
-BuildRequires: cmake(LibKWorkspace)
-BuildRequires: cmake(LibColorCorrect)
-BuildRequires: cmake(LibTaskManager)
-BuildRequires: cmake(KWinDBusInterface)
+BuildRequires: cmake(Breeze) < 5.27.50
+BuildRequires: cmake(KDecoration2) = %{version}
+BuildRequires: cmake(LibKWorkspace) < 5.27.50
+BuildRequires: cmake(LibColorCorrect) < 5.27.50
+BuildRequires: cmake(LibTaskManager) < 5.27.50
+BuildRequires: cmake(KWinEffects) < 5.27.50
 BuildRequires: cmake(ScreenSaverDBusInterface)
-BuildRequires: cmake(KRunnerAppDBusInterface)
-BuildRequires: cmake(KSMServerDBusInterface)
 BuildRequires: cmake(KF5ActivitiesStats)
 BuildRequires: cmake(KF5Baloo)
 BuildRequires: cmake(KF5ItemModels)
@@ -49,12 +47,12 @@ BuildRequires: cmake(KAccounts)
 BuildRequires: cmake(AccountsQt5)
 BuildRequires: pkgconfig(libaccounts-glib)
 BuildRequires: pkgconfig(signon-oauth2plugin)
-BuildRequires: cmake(LibNotificationManager)
+BuildRequires: cmake(LibNotificationManager) < 5.27.50
 BuildRequires: cmake(Phonon4Qt5)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(GLIB2)
 BuildRequires: cmake(packagekitqt5)
-BuildRequires: cmake(KUserFeedback)
+BuildRequires: cmake(KUserFeedback) < 5.27.50
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(fontconfig)
 BuildRequires: pkgconfig(freetype2)
@@ -97,7 +95,7 @@ BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
-BuildRequires: cmake(KPipeWire)
+BuildRequires: cmake(KPipeWire) < 5.27.50
 BuildRequires: cmake(WaylandProtocols)
 BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: cmake(PlasmaWaylandProtocols)
