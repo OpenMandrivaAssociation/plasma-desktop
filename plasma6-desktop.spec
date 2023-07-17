@@ -101,6 +101,7 @@ BuildRequires: cmake(KPipeWire)
 BuildRequires: cmake(WaylandProtocols)
 BuildRequires: cmake(KF6Crash)
 BuildRequires: cmake(KF6KIO)
+BuildRequires: %mklibname -d KF6IconWidgets
 BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
