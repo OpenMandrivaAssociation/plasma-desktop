@@ -104,6 +104,8 @@ BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
+# Really just conflicting with the KDE5 version
+BuildRequires: plasma6-xdg-desktop-portal-kde
 Requires: openmandriva-kde-translation
 Requires: kf6-plasma-framework
 # (tpg) needed for kcm_nightcolor
@@ -111,7 +113,7 @@ Requires: gpsd
 Supplements: task-plasma6-minimal
 
 %description
-KDE Frameworks 5 Plasma-desktop framework.
+KDE Frameworks 6 Plasma-desktop framework.
 
 %prep
 %autosetup -p1 -n plasma-desktop-%{?git:master}%{!?git:%{version}}
