@@ -99,6 +99,8 @@ BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
 BuildRequires: cmake(KPipeWire)
 BuildRequires: cmake(WaylandProtocols)
+BuildRequires: cmake(KF6Crash)
+BuildRequires: cmake(KF6KIO)
 BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
