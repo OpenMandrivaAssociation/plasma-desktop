@@ -10,6 +10,7 @@ Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-de
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 %endif
+Patch0: kickoff-qml-warnings.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 6 Plasma-desktop framework
 URL: http://kde.org/
