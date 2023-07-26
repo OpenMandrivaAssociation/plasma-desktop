@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230722
+%define git 20230726
 
 Name: plasma6-desktop
 Version: 5.240.0
