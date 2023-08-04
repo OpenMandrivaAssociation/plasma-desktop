@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230802
+%define git 20230804
 
 Name: plasma6-desktop
 Version: 5.240.0
@@ -58,6 +58,7 @@ BuildRequires: pkgconfig(signon-oauth2plugin)
 BuildRequires: cmake(LibNotificationManager)
 BuildRequires: cmake(Phonon4Qt6)
 BuildRequires: cmake(PulseAudio)
+BuildRequires: cmake(packagekitqt6)
 BuildRequires: cmake(GLIB2)
 BuildRequires: cmake(KUserFeedbackQt6)
 BuildRequires: pkgconfig(libcanberra)
