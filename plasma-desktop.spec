@@ -16,7 +16,7 @@ BuildRequires: cmake(AppStreamQt) < 1.0.0
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
 BuildRequires: cmake(Breeze) < 5.27.50
-BuildRequires: cmake(KDecoration2) = %{version}
+BuildRequires: (cmake(KDecoration2) = %(echo %{version} |cut -d. -f1-3) with cmake(KDecoration2) < %(echo %{version} |cut -d. -f1-3).999)
 BuildRequires: cmake(LibKWorkspace) < 5.27.50
 BuildRequires: cmake(LibColorCorrect) < 5.27.50
 BuildRequires: cmake(LibTaskManager) < 5.27.50
