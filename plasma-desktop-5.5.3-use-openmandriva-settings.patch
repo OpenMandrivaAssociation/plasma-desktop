@@ -69,7 +69,7 @@ diff -up plasma-desktop-master/applets/kickoff/package/contents/config/main.xml.
          <entry name="favorites" type="StringList">
              <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
 -            <default>preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.discover.desktop</default>
-+	    <default>preferred://browser,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.konsole.desktop</default>
++	    <default>preferred://browser,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop</default>
          </entry>
          <entry name="systemFavorites" type="StringList">
              <label>List of system action favorites.</label>
