@@ -4,7 +4,7 @@
 
 Name: plasma6-desktop
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else

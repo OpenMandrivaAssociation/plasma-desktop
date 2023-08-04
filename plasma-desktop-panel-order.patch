@@ -21,10 +21,6 @@ diff -up plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPa
                 "zh_CN", // Simplified Chinese
                 "zh_TW"] // Traditional Chinese
  
-+panel.addWidget("org.kde.plasma.showdesktop")
-+panel.addWidget("org.kde.plasma.digitalclock")
-+panel.addWidget("org.kde.plasma.systemtray")
-+
  if (langIds.indexOf(languageId) != -1) {
      panel.addWidget("org.kde.plasma.kimpanel");
  }
@@ -32,10 +28,14 @@ diff -up plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPa
 -panel.addWidget("org.kde.plasma.systemtray")
 -panel.addWidget("org.kde.plasma.digitalclock")
 -panel.addWidget("org.kde.plasma.showdesktop")
++panel.addWidget("org.kde.plasma.systemtray")
++
 +panel.addWidget("org.kde.plasma.marginsseparator")
 +panel.addWidget("org.kde.plasma.icontasks")
 +panel.addWidget("org.kde.plasma.pager")
 +//panel.addWidget("org.kde.plasma.showActivityManager")
++panel.addWidget("org.kde.plasma.digitalclock")
++panel.addWidget("org.kde.plasma.showdesktop")
 +
  
 +var kickoff = panel.addWidget("org.kde.plasma.kicker")
