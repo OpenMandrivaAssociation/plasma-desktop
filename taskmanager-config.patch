@@ -1,0 +1,16 @@
+--- plasma-desktop/applets/taskmanager/package/contents/config/main.xml~	2023-08-29 22:31:58.970859298 +0200
++++ plasma-desktop/applets/taskmanager/package/contents/config/main.xml	2023-08-29 22:35:43.828311278 +0200
+@@ -81,11 +81,11 @@
+     </entry>
+     <entry name="highlightWindows" type="Bool">
+       <label>Whether to request the window manager highlight windows when hovering corresponding task tooltips.</label>
+-      <default>true</default>
++      <default>false</default>
+     </entry>
+     <entry name="launchers" type="StringList">
+       <label>The list of launcher tasks on the widget. Usually .desktop file or executable URLs. Special URLs such as preferred://browser that expand to default applications are supported.</label>
+-      <default>applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,preferred://browser</default>
++      <default>applications:chromium-browser.desktop,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop</default>
+     </entry>
+     <entry name="middleClickAction" type="Enum">
+       <label>What to do on middle-mouse click on a task button.</label>

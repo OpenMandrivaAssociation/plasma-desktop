@@ -4,7 +4,7 @@
 
 Name: plasma6-desktop
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -12,6 +12,7 @@ Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version
 %endif
 Patch0: kickoff-qml-warnings.patch
 Patch1: plasma-desktop-default-to-kicker.patch
+Patch2: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 6 Plasma-desktop framework
 URL: http://kde.org/
