@@ -3,9 +3,10 @@
 
 Name: plasma-desktop
 Version: 5.27.7.1
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
+Patch0: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
 URL: http://kde.org/
@@ -108,6 +109,7 @@ Requires: kirigami2
 # (crazy) crahses without
 Requires: qqc2-desktop-style >= %{version}
 Recommends: distro-release-desktop-Plasma
+Recommends: kio-admin
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 Supplements: task-plasma-minimal
