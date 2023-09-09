@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230902
+%define git 20230909
 
 Name: plasma6-desktop
 Version: 5.240.0
@@ -158,7 +158,7 @@ done
 %{_bindir}/knetattach
 %{_bindir}/kapplymousetheme
 %{_bindir}/plasma-emojier
-%{_libdir}/libexec/kauth/kcmdatetimehelper
+%{_libdir}/libexec/kf6/kauth/kcmdatetimehelper
 %{_qtdir}/plugins/kf6/kded/*.so
 %{_qtdir}/qml/org/kde/plasma/private/pager
 %{_qtdir}/qml/org/kde/plasma/private/taskmanager
