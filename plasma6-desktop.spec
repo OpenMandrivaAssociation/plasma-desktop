@@ -111,6 +111,8 @@ BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
+# For DBus interface files
+BuildRequires: plasma6-kwin
 # Really just conflicting with the KDE5 version
 BuildRequires: plasma6-xdg-desktop-portal-kde
 Requires: openmandriva-kde-translation
