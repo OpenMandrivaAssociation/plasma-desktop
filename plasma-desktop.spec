@@ -103,6 +103,8 @@ BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
+# For DBus interfaces
+BuildRequires: kwin
 Requires: openmandriva-kde-translation
 Requires: plasma-framework
 Requires: kirigami2
