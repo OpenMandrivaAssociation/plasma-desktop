@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230909
+%define git 20230919
 
 Name: plasma6-desktop
 Version: 5.240.0
@@ -10,7 +10,6 @@ Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-de
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 %endif
-Patch0: kickoff-qml-warnings.patch
 Patch1: plasma-desktop-default-to-kicker.patch
 Patch2: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
