@@ -1,14 +1,14 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
-%define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20231104
+%define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
+#define git 20231104
 
 Name: plasma6-desktop
-Version: 5.240.0
+Version: 5.27.80
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
-Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-desktop-%{version}.tar.xz
 %endif
 Patch1: plasma-desktop-default-to-kicker.patch
 Patch2: taskmanager-config.patch
@@ -245,16 +245,18 @@ done
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_touchscreen.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_workspace.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_joystick.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+%{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_gamecontroller.so
+%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
+%{_datadir}/applications/kcm_clock.desktop
+%{_datadir}/applications/kcm_gamecontroller.desktop
 %{_datadir}/applications/kcm_access.desktop
 %{_datadir}/applications/kcm_activities.desktop
 %{_datadir}/applications/kcm_baloofile.desktop
 %{_datadir}/applications/kcm_componentchooser.desktop
 %{_datadir}/applications/kcm_desktoppaths.desktop
-%{_datadir}/applications/kcm_joystick.desktop
 %{_datadir}/applications/kcm_kded.desktop
 %{_datadir}/applications/kcm_keyboard.desktop
 %{_datadir}/applications/kcm_keys.desktop
@@ -269,6 +271,7 @@ done
 %{_datadir}/applications/kcm_touchscreen.desktop
 %{_datadir}/applications/kcm_workspace.desktop
 %{_datadir}/applications/kcmspellchecking.desktop
+%{_datadir}/qlogging-categories6/kcm_gamecontroller.categories
 %{_datadir}/qlogging-categories6/kcm_tablet.categories
 %{_qtdir}/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
 %{_datadir}/applications/kcm_krunnersettings.desktop
