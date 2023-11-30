@@ -3,8 +3,8 @@
 #define git 20231104
 
 Name: plasma6-desktop
-Version: 5.27.80
-Release: %{?git:0.%{git}.}2
+Version: 5.90.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -19,21 +19,21 @@ License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(LibKWorkspace) >= 5.27.80
-BuildRequires: cmake(LibColorCorrect) >= 5.27.80
-BuildRequires: cmake(LibTaskManager) >= 5.27.80
-BuildRequires: cmake(KWinDBusInterface) >= 5.27.80
-BuildRequires: cmake(ScreenSaverDBusInterface) >= 5.27.80
-BuildRequires: cmake(KRunnerAppDBusInterface) >= 5.27.80
-BuildRequires: cmake(KSMServerDBusInterface) >= 5.27.80
+BuildRequires: cmake(LibKWorkspace) = %{version}
+BuildRequires: cmake(LibColorCorrect) = %{version}
+BuildRequires: cmake(LibTaskManager) = %{version}
+BuildRequires: cmake(KWinDBusInterface) = %{version}
+BuildRequires: cmake(ScreenSaverDBusInterface) = %{version}
+BuildRequires: cmake(KRunnerAppDBusInterface) = %{version}
+BuildRequires: cmake(KSMServerDBusInterface) = %{version}
 BuildRequires: cmake(KSysGuard) >= 5.27.80
-BuildRequires: cmake(KF6ActivitiesStats)
+BuildRequires: cmake(PlasmaActivitiesStats)
 BuildRequires: cmake(KF6QQC2DesktopStyle)
 BuildRequires: cmake(KF6Baloo)
 BuildRequires: cmake(KF6ItemModels)
-BuildRequires: cmake(KF6Activities)
-BuildRequires: cmake(KF6Plasma)
-BuildRequires: cmake(KF6PlasmaQuick)
+BuildRequires: cmake(PlasmaActivities)
+BuildRequires: cmake(Plasma) >= 5.90.0
+BuildRequires: cmake(PlasmaQuick) >= 5.90.0
 BuildRequires: cmake(KF6KCMUtils)
 BuildRequires: cmake(KF6NewStuff)
 BuildRequires: cmake(KF6NotifyConfig)
@@ -59,7 +59,7 @@ BuildRequires: cmake(Phonon4Qt6)
 BuildRequires: cmake(PulseAudio)
 BuildRequires: cmake(packagekitqt6)
 BuildRequires: cmake(GLIB2)
-BuildRequires: cmake(KUserFeedbackQt6)
+BuildRequires: cmake(KF6UserFeedback)
 BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(fontconfig)
 BuildRequires: pkgconfig(freetype2)
@@ -179,7 +179,6 @@ done
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
 %{_datadir}/kcmmouse
-%{_datadir}/kconf_update/*
 %{_datadir}/kglobalaccel/org.kde.plasma.emojier.desktop
 %{_datadir}/knotifications6/*.notifyrc
 %{_datadir}/plasma/layout-templates
