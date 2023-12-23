@@ -1,6 +1,6 @@
-diff -up plasma-desktop-5.90.0/applets/kicker/package/contents/config/main.xml.3~ plasma-desktop-5.90.0/applets/kicker/package/contents/config/main.xml
---- plasma-desktop-5.90.0/applets/kicker/package/contents/config/main.xml.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kicker/package/contents/config/main.xml	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kicker/package/contents/config/main.xml.3~ plasma-desktop-5.91.0/applets/kicker/package/contents/config/main.xml
+--- plasma-desktop-5.91.0/applets/kicker/package/contents/config/main.xml.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kicker/package/contents/config/main.xml	2023-12-23 20:32:26.822061154 +0100
 @@ -8,7 +8,7 @@
    <group name="General">
      <entry name="icon" type="String">
@@ -19,9 +19,9 @@ diff -up plasma-desktop-5.90.0/applets/kicker/package/contents/config/main.xml.3
      </entry>
  
      <entry name="appNameFormat" type="Int">
-diff -up plasma-desktop-5.90.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.3~ plasma-desktop-5.90.0/applets/kicker/package/contents/ui/ConfigGeneral.qml
---- plasma-desktop-5.90.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.3~	2023-11-30 04:37:48.295904284 +0100
-+++ plasma-desktop-5.90.0/applets/kicker/package/contents/ui/ConfigGeneral.qml	2023-11-30 04:39:25.410838849 +0100
+diff -up plasma-desktop-5.91.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.3~ plasma-desktop-5.91.0/applets/kicker/package/contents/ui/ConfigGeneral.qml
+--- plasma-desktop-5.91.0/applets/kicker/package/contents/ui/ConfigGeneral.qml.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kicker/package/contents/ui/ConfigGeneral.qml	2023-12-23 20:32:26.822061154 +0100
 @@ -92,7 +92,7 @@ KCM.SimpleKCM {
                  id: iconDialog
  
@@ -40,9 +40,9 @@ diff -up plasma-desktop-5.90.0/applets/kicker/package/contents/ui/ConfigGeneral.
                          configGeneral.cfg_useCustomButtonImage = false
                      }
                  }
-diff -up plasma-desktop-5.90.0/applets/kicker/package/metadata.json.3~ plasma-desktop-5.90.0/applets/kicker/package/metadata.json
---- plasma-desktop-5.90.0/applets/kicker/package/metadata.json.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kicker/package/metadata.json	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kicker/package/metadata.json.3~ plasma-desktop-5.91.0/applets/kicker/package/metadata.json
+--- plasma-desktop-5.91.0/applets/kicker/package/metadata.json.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kicker/package/metadata.json	2023-12-23 20:32:26.823061178 +0100
 @@ -101,7 +101,7 @@
          "Description[zh_CN]": "基于层叠弹出菜单设计的启动器",
          "Description[zh_TW]": "基於彈出式串連選單的啟動器",
@@ -52,9 +52,9 @@ diff -up plasma-desktop-5.90.0/applets/kicker/package/metadata.json.3~ plasma-de
          "Id": "org.kde.plasma.kicker",
          "License": "GPL-2.0+",
          "Name": "Application Menu",
-diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/config/main.xml.3~ plasma-desktop-5.90.0/applets/kickoff/package/contents/config/main.xml
---- plasma-desktop-5.90.0/applets/kickoff/package/contents/config/main.xml.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kickoff/package/contents/config/main.xml	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kickoff/package/contents/config/main.xml.3~ plasma-desktop-5.91.0/applets/kickoff/package/contents/config/main.xml
+--- plasma-desktop-5.91.0/applets/kickoff/package/contents/config/main.xml.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kickoff/package/contents/config/main.xml	2023-12-23 20:34:13.683607255 +0100
 @@ -7,7 +7,7 @@
      <group name="General">
          <entry name="icon" type="String">
@@ -68,14 +68,14 @@ diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/config/main.xml.
          </entry>
          <entry name="favorites" type="StringList">
              <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
--            <default>preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.discover.desktop</default>
-+	    <default>preferred://browser,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop</default>
+-            <default>preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.discover.desktop</default>
++            <default>preferred://browser,applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop</default>
          </entry>
          <entry name="systemFavorites" type="StringList">
              <label>List of system action favorites.</label>
-diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.3~ plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml
---- plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.3~ plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml
+--- plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/KickoffSingleton.qml	2023-12-23 20:32:26.823061178 +0100
 @@ -65,7 +65,7 @@ Item {
          index: -1
          text: "asdf"
@@ -94,9 +94,9 @@ diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/KickoffSingle
          description: "asdf"
          action: null
          indicator: null
-diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/code/tools.js.3~ plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/code/tools.js
---- plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/code/tools.js.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/code/tools.js	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/code/tools.js.3~ plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/code/tools.js
+--- plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/code/tools.js.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kickoff/package/contents/ui/code/tools.js	2023-12-23 20:32:26.823061178 +0100
 @@ -10,7 +10,7 @@
  .pragma library
  .import org.kde.plasma.core as PlasmaCore
@@ -106,9 +106,9 @@ diff -up plasma-desktop-5.90.0/applets/kickoff/package/contents/ui/code/tools.js
  
  function iconOrDefault(formFactor, preferredIconName) {
      // Vertical panels must have an icon, at least a default one.
-diff -up plasma-desktop-5.90.0/applets/kickoff/package/metadata.json.3~ plasma-desktop-5.90.0/applets/kickoff/package/metadata.json
---- plasma-desktop-5.90.0/applets/kickoff/package/metadata.json.3~	2023-11-29 11:42:48.000000000 +0100
-+++ plasma-desktop-5.90.0/applets/kickoff/package/metadata.json	2023-11-30 04:37:48.295904284 +0100
+diff -up plasma-desktop-5.91.0/applets/kickoff/package/metadata.json.3~ plasma-desktop-5.91.0/applets/kickoff/package/metadata.json
+--- plasma-desktop-5.91.0/applets/kickoff/package/metadata.json.3~	2023-12-20 13:12:05.000000000 +0100
++++ plasma-desktop-5.91.0/applets/kickoff/package/metadata.json	2023-12-23 20:32:26.823061178 +0100
 @@ -151,7 +151,7 @@
          "Description[zh_CN]": "应用程序启动器",
          "Description[zh_TW]": "開啟應用程式用的啟動器",
