@@ -3,7 +3,7 @@
 
 Name: plasma-desktop
 Version: 5.27.10
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Source100: %{name}.rpmlintrc
 Patch0: taskmanager-config.patch
