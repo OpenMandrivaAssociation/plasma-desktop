@@ -3,7 +3,7 @@
 #define git 20231104
 
 Name: plasma6-desktop
-Version: 5.92.0
+Version: 5.93.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -287,3 +287,8 @@ done
 %{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard/qmldir
 %{_datadir}/applications/kaccess.desktop
 %{_datadir}/kcm_recentFiles
+%{_qtdir}/plugins/attica_kde.so
+%dir %{_datadir}/accounts/providers
+%dir %{_datadir}/accounts/providers/kde
+%{_datadir}/accounts/providers/kde/opendesktop.provider
+%{_datadir}/accounts/services/kde/opendesktop-rating.service
