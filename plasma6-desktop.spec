@@ -1,12 +1,14 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20231104
+%define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-desktop
-Version: 5.93.0
+Version: 5.94.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
-Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/master/plasma-desktop-master.tar.bz2#/plasma-desktop-%{git}.tar.bz2
+Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-desktop-%{version}.tar.xz
 %endif
@@ -19,9 +21,9 @@ License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(LibKWorkspace) = %{version}
-BuildRequires: cmake(LibColorCorrect) = %{version}
-BuildRequires: cmake(LibTaskManager) = %{version}
+BuildRequires: cmake(LibKWorkspace) >= 5.94.0
+BuildRequires: cmake(LibColorCorrect) >= 5.94.0
+BuildRequires: cmake(LibTaskManager) >= 5.94.0
 BuildRequires: cmake(KWinDBusInterface) = %{version}
 BuildRequires: cmake(ScreenSaverDBusInterface) = %{version}
 BuildRequires: cmake(KRunnerAppDBusInterface) = %{version}
@@ -127,7 +129,7 @@ Supplements: task-plasma6-minimal
 KDE Frameworks 6 Plasma-desktop framework.
 
 %prep
-%autosetup -p1 -n plasma-desktop-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n plasma-desktop-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
@@ -140,8 +142,9 @@ KDE Frameworks 6 Plasma-desktop framework.
 %install
 %ninja_install -C build
 
-# (tpg) use layout.js from distro-plasma-config
-rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js
+# (tpg) use layout.js and kde-mimeapps.list from distro-plasma-config
+rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js \
+	%{buildroot}%{_datadir}/applications/kde-mimeapps.list
 
 desktop-file-install \
 		--set-key="NoDisplay" --set-value="true" \
