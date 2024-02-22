@@ -1,11 +1,11 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20240217
+%define git 20240222
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-desktop
-Version: 5.94.0
+Version: 6.0.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -200,7 +200,6 @@ done
 %{_datadir}/plasma/plasmoids/org.kde.plasma.trash
 %{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
 %{_datadir}/plasma/shells
-%{_datadir}/plasma/services/touchpad.operations
 %{_datadir}/solid/devices
 %{_qtdir}/qml/org/kde/plasma/private/showdesktop
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
@@ -231,8 +230,6 @@ done
 %{_datadir}/qlogging-categories6/kcm_kded.categories
 %{_datadir}/qlogging-categories6/kcm_keyboard.categories
 %{_datadir}/qlogging-categories6/kcm_mouse.categories
-%{_datadir}/plasma/desktoptheme/default/icons/touchpad.svg
-%{_datadir}/plasma/plasmoids/touchpad
 %{_qtdir}/plugins/plasma/kcminit/kcm_mouse_init.so
 %{_qtdir}/plugins/plasma/kcminit/kcm_touchpad_init.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_access.so
@@ -287,7 +284,6 @@ done
 %{_datadir}/plasma/plasmoids/org.kde.plasma.activitypager
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_activities.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_desktoppaths.so
-%{_qtdir}/plugins/plasma5support/dataengine/plasma_engine_touchpad.so
 %{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard/libkcm_keyboard_declarative.so
 %{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard/qmldir
 %{_datadir}/applications/kaccess.desktop
