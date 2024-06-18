@@ -1,12 +1,12 @@
-diff -up plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js.omv~ plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js
---- plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js.omv~	2023-08-03 15:59:41.960269862 +0200
-+++ plasma-desktop-master/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js	2023-08-03 15:59:55.264395542 +0200
+diff -up plasma-desktop-6.1.0/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js.1~ plasma-desktop-6.1.0/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js
+--- plasma-desktop-6.1.0/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js.1~	2024-06-18 22:40:50.821569964 +0200
++++ plasma-desktop-6.1.0/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js	2024-06-18 22:46:04.613056095 +0200
 @@ -21,7 +21,7 @@ if (panel.formFactor === "horizontal") {
      }
  }
  
--var kickoff = panel.addWidget("org.kde.plasma.kickoff")
-+var kickoff = panel.addWidget("org.kde.plasma.kicker")
- kickoff.currentConfigGroup = ["Shortcuts"]
- kickoff.writeConfig("global", "Alt+F1")
- 
+-panel.addWidget("org.kde.plasma.kickoff")
++panel.addWidget("org.kde.plasma.kicker")
+ //panel.addWidget("org.kde.plasma.showActivityManager")
+ panel.addWidget("org.kde.plasma.pager")
+ panel.addWidget("org.kde.plasma.icontasks")

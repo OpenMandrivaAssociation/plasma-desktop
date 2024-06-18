@@ -5,8 +5,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-desktop
-Version: 6.0.5
-Release: %{?git:0.%{git}.}2
+Version: 6.1.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -124,24 +124,27 @@ Requires: kf6-plasma-framework
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 Supplements: task-plasma6-minimal
+BuildSystem: cmake
+BuildOption: -DBUILD_QCH:BOOL=ON
+BuildOption: -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 KDE Frameworks 6 Plasma-desktop framework.
 
-%prep
-%autosetup -p1 -n plasma-desktop-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
+%package -n plasma6-sddm-theme-breeze
+Summary: KDE Breeze theme for the SDDM display manager
+Group: Graphical desktop/KDE
+Requires: plasma6-sddm
+Requires: qml-org.kde.breeze.components = %{EVRD}
+Requires: qml-org.kde.plasma.private.sessions = %{EVRD}
+Requires: qml-org.kde.plasma.workspace = %{EVRD}
+Requires: qml(org.kde.plasma.plasma5support)
 
-%build
-%ninja -C build
+%description -n plasma6-sddm-theme-breeze
+KDE Breeze theme for the SDDM display manager.
 
-%install
-%ninja_install -C build
 
+%install -a
 # (tpg) use layout.js and kde-mimeapps.list from distro-plasma-config
 rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layout.js \
 	%{buildroot}%{_datadir}/applications/kde-mimeapps.list
@@ -149,13 +152,15 @@ rm -f %{buildroot}%{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/layo
 desktop-file-install \
 		--set-key="NoDisplay" --set-value="true" \
 		--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/org.kde.plasma.emojier.desktop
-						
-%find_lang %{name} --all-name --with-html
 
 echo '%dir %{_datadir}/plasma/emoji' >>%{name}.lang
 for i in %{buildroot}%{_datadir}/plasma/emoji/*.dict; do
 	echo "%%lang($(basename $i .dict)) %{_datadir}/plasma/emoji/$(basename $i)" >>%{name}.lang
 done
+
+# sddm breeze theme background
+sed -i -e "s#^background=.*#background=%{_datadir}/mdk/backgrounds/OpenMandriva-splash.png#" %{buildroot}%{_datadir}/sddm/themes/breeze/theme.conf
+sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/theme.conf
 
 %files -f %{name}.lang
 %{_datadir}/knsrcfiles/ksplash.knsrc
@@ -186,7 +191,6 @@ done
 %{_datadir}/knotifications6/*.notifyrc
 %{_datadir}/plasma/layout-templates
 %dir %{_datadir}/plasma/packages
-%{_datadir}/plasma/packages/org.kde.desktoptoolbox
 %{_datadir}/plasma/packages/org.kde.paneltoolbox
 %{_datadir}/plasma/plasmoids/org.kde.desktopcontainment
 %{_datadir}/plasma/plasmoids/org.kde.panel
@@ -293,3 +297,6 @@ done
 %dir %{_datadir}/accounts/providers/kde
 %{_datadir}/accounts/providers/kde/opendesktop.provider
 %{_datadir}/accounts/services/kde/opendesktop-rating.service
+
+%files -n plasma6-sddm-theme-breeze
+%{_datadir}/sddm/themes/breeze
