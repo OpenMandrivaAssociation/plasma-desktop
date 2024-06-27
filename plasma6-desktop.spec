@@ -6,7 +6,7 @@
 
 Name: plasma6-desktop
 Version: 6.1.1
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -136,9 +136,9 @@ KDE Frameworks 6 Plasma-desktop framework.
 Summary: KDE Breeze theme for the SDDM display manager
 Group: Graphical desktop/KDE
 Requires: plasma6-sddm
-Requires: qml-org.kde.breeze.components = %{EVRD}
-Requires: qml-org.kde.plasma.private.sessions = %{EVRD}
-Requires: qml-org.kde.plasma.workspace = %{EVRD}
+Requires: qml-org.kde.breeze.components >= 6.1.0
+Requires: qml-org.kde.plasma.private.sessions >= 6.1.0
+Requires: qml-org.kde.plasma.workspace >= 6.1.0
 Requires: qml(org.kde.plasma.plasma5support)
 
 %description -n plasma6-sddm-theme-breeze
