@@ -9,7 +9,7 @@ Source100: %{name}.rpmlintrc
 Patch0: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 5 Plasma-desktop framework
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF5DocTools)
