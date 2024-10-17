@@ -16,7 +16,7 @@ Patch1: plasma-desktop-default-to-kicker.patch
 Patch2: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Summary: KDE Frameworks 6 Plasma-desktop framework
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF6DocTools)
