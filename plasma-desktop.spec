@@ -13,7 +13,7 @@ URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF5DocTools)
-BuildRequires: cmake(AppStreamQt) < 1.0.0
+BuildRequires: cmake(AppStreamQt5)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(KF5)
 BuildRequires: cmake(Breeze) < 5.27.50
