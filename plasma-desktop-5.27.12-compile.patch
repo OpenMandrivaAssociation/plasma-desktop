@@ -1,0 +1,12 @@
+diff -up plasma-desktop-5.27.12/kcms/libkwindevices/inputdevice.h.omv~ plasma-desktop-5.27.12/kcms/libkwindevices/inputdevice.h
+--- plasma-desktop-5.27.12/kcms/libkwindevices/inputdevice.h.omv~	2025-01-11 15:51:38.244066736 +0100
++++ plasma-desktop-5.27.12/kcms/libkwindevices/inputdevice.h	2025-01-11 15:51:47.734396378 +0100
+@@ -168,7 +168,7 @@ private:
+         bool changed() const;
+         void set(const Prop<T> &p)
+         {
+-            set(p.value);
++            set(p.value());
+         }
+ 
+         bool isSupported() const
