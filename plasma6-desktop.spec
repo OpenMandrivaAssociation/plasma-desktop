@@ -5,7 +5,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-desktop
-Version: 6.2.5
+Version: 6.3.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -73,6 +73,7 @@ BuildRequires: pkgconfig(libcanberra)
 BuildRequires: pkgconfig(libpulse)
 BuildRequires: pkgconfig(libusb)
 BuildRequires: pkgconfig(phonon4qt6)
+BuildRequires: pkgconfig(libwacom)
 BuildRequires: cmake(Qt6)
 BuildRequires: cmake(Qt6Sql)
 BuildRequires: cmake(Qt6Concurrent)
