@@ -6,7 +6,7 @@
 
 Name: plasma6-desktop
 Version: 6.3.1.1
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -121,6 +121,7 @@ BuildRequires: intltool
 BuildRequires: xdg-user-dirs
 # For DBus interface files
 BuildRequires: plasma6-kwin
+Recommends: (plasma6-kde-gtk-config if %{_lib}gtk3_0)
 Requires: openmandriva-kde-translation
 Requires: kf6-plasma-framework
 # (tpg) needed for kcm_nightcolor
