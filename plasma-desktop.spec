@@ -4,9 +4,9 @@
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
-Name: plasma6-desktop
+Name: plasma-desktop
 Version: 6.3.4
-Release: %{?git:0.%{git}.}2
+Release: %{?git:0.%{git}.}3
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -130,22 +130,25 @@ Supplements: task-plasma6-minimal
 BuildSystem: cmake
 BuildOption: -DBUILD_QCH:BOOL=ON
 BuildOption: -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+# Renamed 2025-05-02 after 6.0
+%rename plasma6-desktop
 
 %description
 KDE Frameworks 6 Plasma-desktop framework.
 
-%package -n plasma6-sddm-theme-breeze
+%package -n sddm-theme-breeze
 Summary: KDE Breeze theme for the SDDM display manager
 Group: Graphical desktop/KDE
-Requires: plasma6-sddm
+Requires: sddm
 Requires: qml-org.kde.breeze.components >= 6.1.0
 Requires: qml-org.kde.plasma.private.sessions >= 6.1.0
 Requires: qml-org.kde.plasma.workspace >= 6.1.0
 Requires: qml(org.kde.plasma.plasma5support)
+# Renamed 2025-05-02 after 6.0
+%rename plasma6-sddm-theme-breeze
 
-%description -n plasma6-sddm-theme-breeze
+%description -n sddm-theme-breeze
 KDE Breeze theme for the SDDM display manager.
-
 
 %install -a
 # (tpg) use layout.js and kde-mimeapps.list from distro-plasma-config
@@ -302,5 +305,5 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/accounts/services/kde/opendesktop-rating.service
 %{_prefix}/lib/systemd/user/plasma-kaccess.service
 
-%files -n plasma6-sddm-theme-breeze
+%files -n sddm-theme-breeze
 %{_datadir}/sddm/themes/breeze
