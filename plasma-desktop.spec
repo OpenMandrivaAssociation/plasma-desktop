@@ -123,7 +123,7 @@ BuildRequires: xdg-user-dirs
 BuildRequires: plasma6-kwin
 Recommends: (plasma6-kde-gtk-config if %{_lib}gtk3_0)
 Requires: openmandriva-kde-translation
-Requires: kf6-plasma-framework
+Requires: libplasma plasma-framework-common
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 Supplements: task-plasma6-minimal
