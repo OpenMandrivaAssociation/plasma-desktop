@@ -5,7 +5,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma-desktop
-Version: 6.3.5
+Version: 6.4.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -226,8 +226,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_libdir}/libexec/kimpanel-ibus-panel
 %{_libdir}/libexec/kimpanel-ibus-panel-launcher
 %{_libdir}/libexec/kimpanel-scim-panel
-#%{_datadir}/accounts/providers/kde/opendesktop.provider
-#%{_datadir}/accounts/services/kde/opendesktop-rating.service
 %lang(sr) %{_datadir}/locale/sr/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavian) %{_datadir}/locale/sr@ijekavian/LC_SCRIPTS/kfontinst
 %lang(sr@ijekavianlatin) %{_datadir}/locale/sr@ijekavianlatin/LC_SCRIPTS/kfontinst
@@ -244,7 +242,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/plasma/kcminit/kcm_touchpad_init.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_access.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_baloofile.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_componentchooser.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_kded.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_keyboard.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_keys.so
@@ -267,7 +264,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/applications/kcm_access.desktop
 %{_datadir}/applications/kcm_activities.desktop
 %{_datadir}/applications/kcm_baloofile.desktop
-%{_datadir}/applications/kcm_componentchooser.desktop
 %{_datadir}/applications/kcm_desktoppaths.desktop
 %{_datadir}/applications/kcm_kded.desktop
 %{_datadir}/applications/kcm_keyboard.desktop
@@ -294,16 +290,16 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/plasma/plasmoids/org.kde.plasma.activitypager
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_activities.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_desktoppaths.so
-%{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard/libkcm_keyboard_declarative.so
-%{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard/qmldir
 %{_datadir}/applications/kaccess.desktop
 %{_datadir}/kcm_recentFiles
 %{_qtdir}/plugins/attica_kde.so
 %dir %{_datadir}/accounts/providers
 %dir %{_datadir}/accounts/providers/kde
+%{_prefix}/lib/systemd/user/plasma-kaccess.service
+%{_qtdir}/qml/org/kde/plasma/private/kcm_keyboard
 %{_datadir}/accounts/providers/kde/opendesktop.provider
 %{_datadir}/accounts/services/kde/opendesktop-rating.service
-%{_prefix}/lib/systemd/user/plasma-kaccess.service
+%{_datadir}/kglobalaccel/org.kde.touchpadshortcuts.desktop
 
 %files -n sddm-theme-breeze
 %{_datadir}/sddm/themes/breeze
