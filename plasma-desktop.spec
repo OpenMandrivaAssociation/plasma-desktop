@@ -120,7 +120,7 @@ BuildRequires: boost-devel
 BuildRequires: intltool
 BuildRequires: xdg-user-dirs
 # For DBus interface files
-BuildRequires: plasma6-kwin
+BuildRequires: plasma6-kwin-wayland
 Recommends: (plasma6-kde-gtk-config if %{_lib}gtk3_0)
 Requires: openmandriva-kde-translation
 Requires: libplasma plasma-framework-common
