@@ -5,8 +5,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma-desktop
-Version: 6.4.5
-Release: %{?git:0.%{git}.}2
+Version: 6.5.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -22,7 +22,6 @@ Group: Graphical desktop/KDE
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(LibKWorkspace) >= 5.94.0
-BuildRequires: cmake(LibColorCorrect) >= 5.94.0
 BuildRequires: cmake(LibTaskManager) >= 5.94.0
 BuildRequires: cmake(KWinDBusInterface) = %{version}
 BuildRequires: cmake(ScreenSaverDBusInterface) = %{version}
@@ -185,9 +184,14 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/kf6/kded/*.so
 %{_qtdir}/qml/org/kde/plasma/private/pager
 %{_qtdir}/qml/org/kde/plasma/private/taskmanager
-%{_qtdir}/qml/org/kde/plasma/private/trash
 %{_qtdir}/qml/org/kde/plasma/activityswitcher
 %{_qtdir}/qml/org/kde/private/desktopcontainment
+%{_libdir}/libkglobalaccelmodel.so.*
+%{_qtdir}/plugins/plasma/applets/org.kde.panel.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.kicker.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.kickoff.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.trash.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.windowlist.so
 %{_datadir}/metainfo/*.xml
 %{_datadir}/applications/org.kde.knetattach.desktop
 %{_datadir}/applications/org.kde.plasma.emojier.desktop
@@ -204,16 +208,11 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %dir %{_datadir}/plasma/packages
 %{_datadir}/plasma/packages/org.kde.paneltoolbox
 %{_datadir}/plasma/plasmoids/org.kde.desktopcontainment
-%{_datadir}/plasma/plasmoids/org.kde.panel
 %{_datadir}/plasma/plasmoids/org.kde.plasma.folder
-%{_datadir}/plasma/plasmoids/org.kde.plasma.kicker
-%{_datadir}/plasma/plasmoids/org.kde.plasma.kickoff
 %{_datadir}/plasma/plasmoids/org.kde.plasma.icontasks
 %{_datadir}/plasma/plasmoids/org.kde.plasma.pager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.showActivityManager
 %{_datadir}/plasma/plasmoids/org.kde.plasma.taskmanager
-%{_datadir}/plasma/plasmoids/org.kde.plasma.trash
-%{_datadir}/plasma/plasmoids/org.kde.plasma.windowlist
 %{_datadir}/plasma/shells
 %{_datadir}/solid/devices
 %{_qtdir}/qml/org/kde/plasma/private/showdesktop
