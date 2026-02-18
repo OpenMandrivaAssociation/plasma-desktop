@@ -5,7 +5,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma-desktop
-Version: 6.5.5
+Version: 6.6.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -184,8 +184,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_bindir}/plasma-emojier
 %{_libdir}/libexec/kf6/kauth/kcmdatetimehelper
 %{_qtdir}/plugins/kf6/kded/*.so
-%{_qtdir}/qml/org/kde/plasma/private/pager
-%{_qtdir}/qml/org/kde/plasma/private/taskmanager
 %{_qtdir}/qml/org/kde/plasma/activityswitcher
 %{_qtdir}/qml/org/kde/private/desktopcontainment
 %{_libdir}/libkglobalaccelmodel.so.*
@@ -212,22 +210,15 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/plasma/plasmoids/org.kde.desktopcontainment
 %{_datadir}/plasma/plasmoids/org.kde.plasma.folder
 %{_datadir}/plasma/plasmoids/org.kde.plasma.icontasks
-%{_datadir}/plasma/plasmoids/org.kde.plasma.pager
-%{_datadir}/plasma/plasmoids/org.kde.plasma.showActivityManager
-%{_datadir}/plasma/plasmoids/org.kde.plasma.taskmanager
 %{_datadir}/plasma/shells
 %{_datadir}/solid/devices
-%{_qtdir}/qml/org/kde/plasma/private/showdesktop
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
-%{_datadir}/plasma/plasmoids/org.kde.plasma.showdesktop
 %{_bindir}/tastenbrett
 %{_sysconfdir}/xdg/autostart/kaccess.desktop
 %{_datadir}/qlogging-categories6/kcmkeys.categories
 %{_datadir}/qlogging-categories6/kcm_touchscreen.categories
-%{_datadir}/plasma/plasmoids/org.kde.plasma.kimpanel
-%{_qtdir}/qml/org/kde/plasma/private/kimpanel
 %{_qtdir}/plugins/kf6/krunner
 %{_libdir}/libexec/kimpanel-ibus-panel
 %{_libdir}/libexec/kimpanel-ibus-panel-launcher
@@ -238,8 +229,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %lang(sr@latin) %{_datadir}/locale/sr@latin/LC_SCRIPTS/kfontinst
 %{_bindir}/krunner-plugininstaller
 %{_datadir}/knsrcfiles/krunner.knsrc
-%{_datadir}/plasma/plasmoids/org.kde.plasma.keyboardlayout
-%{_datadir}/plasma/plasmoids/org.kde.plasma.marginsseparator
 %{_qtdir}/qml/org/kde/plasma/emoji
 %{_datadir}/qlogging-categories6/kcm_kded.categories
 %{_datadir}/qlogging-categories6/kcm_keyboard.categories
@@ -265,6 +254,13 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_gamecontroller.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.keyboardlayout.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.kimpanel.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.pager.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.showActivityManager.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.showdesktop.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.taskmanager.so
 %{_datadir}/applications/kcm_clock.desktop
 %{_datadir}/applications/kcm_gamecontroller.desktop
 %{_datadir}/applications/kcm_access.desktop

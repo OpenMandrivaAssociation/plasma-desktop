@@ -1,6 +1,6 @@
-diff -up plasma-desktop-6.4.1/applets/taskmanager/package/contents/config/main.xml.2~ plasma-desktop-6.4.1/applets/taskmanager/package/contents/config/main.xml
---- plasma-desktop-6.4.1/applets/taskmanager/package/contents/config/main.xml.2~	2025-06-24 11:34:45.000000000 +0200
-+++ plasma-desktop-6.4.1/applets/taskmanager/package/contents/config/main.xml	2025-06-25 00:08:51.969871446 +0200
+diff -up plasma-desktop-6.4.1/applets/taskmanager/main.xml.2~ plasma-desktop-6.4.1/applets/taskmanager/main.xml
+--- plasma-desktop-6.4.1/applets/taskmanager/main.xml.2~	2025-06-24 11:34:45.000000000 +0200
++++ plasma-desktop-6.4.1/applets/taskmanager/main.xml	2025-06-25 00:08:51.969871446 +0200
 @@ -103,7 +103,7 @@
      </entry>
      <entry name="launchers" type="StringList">
