@@ -5,7 +5,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma-desktop
-Version: 6.6.5
+Version: 6.7.1
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
@@ -182,7 +182,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_bindir}/knetattach
 %{_bindir}/kapplymousetheme
 %{_bindir}/plasma-emojier
-%{_libdir}/libexec/kf6/kauth/kcmdatetimehelper
 %{_qtdir}/plugins/kf6/kded/*.so
 %{_qtdir}/qml/org/kde/plasma/activityswitcher
 %{_qtdir}/qml/org/kde/private/desktopcontainment
@@ -197,7 +196,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/applications/org.kde.plasma.emojier.desktop
 %{_datadir}/config.kcfg/*
 %{_datadir}/dbus-1/interfaces/*.xml
-%{_datadir}/dbus-1/system-services/*
 %{_iconsdir}/hicolor/*/*/*.*[g-z]
 %{_datadir}/kcmkeys
 %{_datadir}/kcmsolidactions
@@ -212,8 +210,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/plasma/plasmoids/org.kde.plasma.icontasks
 %{_datadir}/plasma/shells
 %{_datadir}/solid/devices
-%{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmclock.conf
-%{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
 %{_datadir}/plasma/plasmoids/org.kde.plasma.minimizeall
 %{_bindir}/tastenbrett
 %{_sysconfdir}/xdg/autostart/kaccess.desktop
@@ -256,7 +252,6 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.keyboardlayout.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.kimpanel.so
-%{_qtdir}/plugins/plasma/applets/org.kde.plasma.marginsseparator.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.pager.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.showActivityManager.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.showdesktop.so
@@ -281,8 +276,11 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/applications/kcm_touchscreen.desktop
 %{_datadir}/applications/kcm_workspace.desktop
 %{_datadir}/applications/kcmspellchecking.desktop
+%{_datadir}/kconf_update/50-krunner-activate-typing.sh
+%{_datadir}/kconf_update/50-krunner-activate-typing.upd
 %{_datadir}/qlogging-categories6/kcm_gamecontroller.categories
 %{_datadir}/qlogging-categories6/kcm_tablet.categories
+%{_datadir}/qlogging-categories6/kcm_touchpad.categories
 %{_qtdir}/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
 %{_datadir}/applications/kcm_krunnersettings.desktop
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_plasmasearch.so
