@@ -5,13 +5,16 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma-desktop
-Version: 6.7.5
-Release: %{?git:0.%{git}.}2
+Version: 6.8.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-desktop-%{version}.tar.xz
 %endif
+# 6.8 dropped the X11 keyboard, mouse and touchpad backends. This puts them
+# back beside the Wayland ones. X11 kdeds load only on the xcb platform.
+Patch0: plasma-desktop-6.8.0-keep-x11.patch
 Patch1: plasma-desktop-default-to-kicker.patch
 Patch2: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
@@ -21,20 +24,20 @@ License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(LibKWorkspace) >= 5.94.0
-BuildRequires: cmake(LibTaskManager) >= 5.94.0
+BuildRequires: cmake(LibKWorkspace) >= 6.8
+BuildRequires: cmake(LibTaskManager) >= 6.8
 BuildRequires: cmake(KWinDBusInterface) = %{version}
 BuildRequires: cmake(ScreenSaverDBusInterface) = %{version}
 BuildRequires: cmake(KRunnerAppDBusInterface) = %{version}
 BuildRequires: cmake(KSMServerDBusInterface) = %{version}
-BuildRequires: cmake(KSysGuard) >= 5.27.80
-BuildRequires: cmake(PlasmaActivitiesStats)
+BuildRequires: cmake(KSysGuard) >= 6.8
+BuildRequires: cmake(PlasmaActivitiesStats) >= 6.8
 BuildRequires: cmake(KF6QQC2DesktopStyle)
 BuildRequires: cmake(KF6Baloo)
 BuildRequires: cmake(KF6ItemModels)
-BuildRequires: cmake(PlasmaActivities)
-BuildRequires: cmake(Plasma) >= 5.90.0
-BuildRequires: cmake(PlasmaQuick) >= 5.90.0
+BuildRequires: cmake(PlasmaActivities) >= 6.8
+BuildRequires: cmake(Plasma) >= 6.8
+BuildRequires: cmake(PlasmaQuick) >= 6.8
 BuildRequires: cmake(KF6KCMUtils)
 BuildRequires: cmake(KF6NewStuff)
 BuildRequires: cmake(KF6NotifyConfig)
@@ -50,7 +53,7 @@ BuildRequires: cmake(KF6Notifications)
 BuildRequires: cmake(KF6Kirigami2)
 BuildRequires: cmake(KF6Sonnet)
 BuildRequires: cmake(KF6Auth)
-BuildRequires: cmake(Plasma5Support)
+BuildRequires: cmake(Plasma5Support) >= 6.8
 BuildRequires: cmake(KF6Svg)
 BuildRequires: pkgconfig(libaccounts-glib)
 BuildRequires: pkgconfig(signon-oauth2plugin)
@@ -98,6 +101,8 @@ BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xcb-xinput)
 BuildRequires: pkgconfig(xcb-xkb)
 BuildRequires: pkgconfig(xcb-atom)
+BuildRequires: pkgconfig(xcb-record)
+BuildRequires: pkgconfig(x11-xcb)
 BuildRequires: pkgconfig(xft)
 BuildRequires: pkgconfig(xkbfile)
 BuildRequires: pkgconfig(xkbregistry)
@@ -111,7 +116,7 @@ BuildRequires: pkgconfig(xkeyboard-config)
 BuildRequires: pkgconfig(ibus-1.0)
 BuildRequires: pkgconfig(scim)
 BuildRequires: pkgconfig(udev)
-BuildRequires: cmake(KPipeWire)
+BuildRequires: cmake(KPipeWire) >= 6.8
 BuildRequires: cmake(WaylandProtocols)
 BuildRequires: cmake(KF6Crash)
 BuildRequires: cmake(KF6KIO)
