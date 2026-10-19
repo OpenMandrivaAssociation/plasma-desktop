@@ -252,7 +252,7 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_device_automounter.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_spellchecking.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_gamecontroller.so
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.keyboardlayout.so
@@ -261,6 +261,7 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.showActivityManager.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.showdesktop.so
 %{_qtdir}/plugins/plasma/applets/org.kde.plasma.taskmanager.so
+%{_qtdir}/plugins/plasma/applets/org.kde.plasma.dwellclicker.so
 %{_datadir}/applications/kcm_clock.desktop
 %{_datadir}/applications/kcm_gamecontroller.desktop
 %{_datadir}/applications/kcm_access.desktop
@@ -280,10 +281,12 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/applications/kcm_touchpad.desktop
 %{_datadir}/applications/kcm_touchscreen.desktop
 %{_datadir}/applications/kcm_workspace.desktop
-%{_datadir}/applications/kcmspellchecking.desktop
+%{_datadir}/applications/kcm_spellchecking.desktop
 %{_datadir}/kconf_update/50-krunner-activate-typing.sh
 %{_datadir}/kconf_update/50-krunner-activate-typing.upd
+%{_datadir}/qlogging-categories6/kcm_access.categories
 %{_datadir}/qlogging-categories6/kcm_gamecontroller.categories
+%{_datadir}/qlogging-categories6/screenreader.categories
 %{_datadir}/qlogging-categories6/kcm_tablet.categories
 %{_datadir}/qlogging-categories6/kcm_touchpad.categories
 %{_qtdir}/plugins/plasma/kcms/desktop/kcm_krunnersettings.so
@@ -305,6 +308,7 @@ sed -i -e "s#^type=.*#type=image#" %{buildroot}%{_datadir}/sddm/themes/breeze/th
 %{_datadir}/accounts/providers/kde/opendesktop.provider
 %{_datadir}/accounts/services/kde/opendesktop-rating.service
 %{_datadir}/kglobalaccel/org.kde.touchpadshortcuts.desktop
+%{_datadir}/kglobalaccel/org.kde.screenreader.desktop
 
 %files -n sddm-theme-breeze
 %{_datadir}/sddm/themes/breeze
