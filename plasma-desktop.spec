@@ -6,7 +6,7 @@
 
 Name: plasma-desktop
 Version: 6.8.1
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -18,6 +18,9 @@ Patch0: plasma-desktop-6.8.0-keep-x11.patch
 Patch1: plasma-desktop-default-to-kicker.patch
 Patch2: taskmanager-config.patch
 Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
+# X11 paths 6.8 removed: AccessX controls, pager moves, activity drag,
+# magnifier options, desktop panel activation. Wayland paths stay.
+Patch5: plasma-desktop-6.8.1-x11-gaps.patch
 Summary: KDE Frameworks 6 Plasma-desktop framework
 URL: https://kde.org/
 License: GPL
