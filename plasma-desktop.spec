@@ -140,6 +140,9 @@ BuildRequires: plasma6-kwin-wayland
 Recommends: (plasma6-kde-gtk-config if %{_lib}gtk3_0)
 Requires: openmandriva-kde-translation
 Requires: libplasma plasma-framework-common
+# kcm_keys registers this from C++. qmldeps does not see it in the x86_64
+# binary, so the generated require is otherwise unsatisfied.
+Provides: qml(org.kde.private.kcms.keys)
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 Supplements: task-plasma6-minimal
