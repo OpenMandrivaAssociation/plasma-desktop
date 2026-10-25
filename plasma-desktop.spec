@@ -6,7 +6,7 @@
 
 Name: plasma-desktop
 Version: 6.8.1
-Release: %{?git:0.%{git}.}3
+Release: %{?git:0.%{git}.}4
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -140,9 +140,6 @@ BuildRequires: plasma6-kwin-wayland
 Recommends: (plasma6-kde-gtk-config if %{_lib}gtk3_0)
 Requires: openmandriva-kde-translation
 Requires: libplasma plasma-framework-common
-# kcm_keys registers this from C++. qmldeps does not see it in the x86_64
-# binary, so the generated require is otherwise unsatisfied.
-Provides: qml(org.kde.private.kcms.keys)
 # (tpg) needed for kcm_nightcolor
 Requires: gpsd
 Supplements: task-plasma6-minimal
