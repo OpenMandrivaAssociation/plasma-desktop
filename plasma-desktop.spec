@@ -6,7 +6,7 @@
 
 Name: plasma-desktop
 Version: 6.8.2
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-desktop/-/archive/%{gitbranch}/plasma-desktop-%{gitbranchd}.tar.bz2#/plasma-desktop-%{git}.tar.bz2
 %else
@@ -23,6 +23,9 @@ Patch4: plasma-desktop-5.5.3-use-openmandriva-settings.patch
 Patch5: plasma-desktop-6.8.1-x11-gaps.patch
 # X11 touchpad KCM never forwarded needsSaveChanged, so Apply did nothing.
 Patch6: plasma-desktop-6.8.1-x11-touchpad-apply.patch
+# kscreenlocker renamed pamTimeout to inPasswordDelay. The lock screen still
+# listened for the old signal, so a failed login never retried the password.
+Patch7: plasma-desktop-6.8.2-lockscreen-pamtimeout.patch
 Summary: KDE Frameworks 6 Plasma-desktop framework
 URL: https://kde.org/
 License: GPL

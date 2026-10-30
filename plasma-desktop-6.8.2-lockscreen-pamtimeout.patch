@@ -1,0 +1,22 @@
+--- a/desktoppackage/contents/lockscreen/LockScreenUi.qml	2026-10-27 12:29:46.000000000 +0100
++++ b/desktoppackage/contents/lockscreen/LockScreenUi.qml	2026-10-30 18:46:03.814591596 +0100
+@@ -286,8 +286,8 @@
+ 
+         Connections {
+             target: authenticator
+-            function onPamTimeoutChanged(): void {
+-                if (!authenticator.pamTimeout && lockScreenUi.pendingPassword.length > 0) {
++            function onInPasswordDelayChanged(): void {
++                if (!authenticator.inPasswordDelay && lockScreenUi.pendingPassword.length > 0) {
+                     authenticator.respond(lockScreenUi.pendingPassword);
+                     lockScreenUi.pendingPassword = "";
+                     mainBlock.enabled = true;
+@@ -394,7 +394,7 @@
+                 }
+ 
+                 onPasswordResult: password => {
+-                    if (authenticator.pamTimeout) {
++                    if (authenticator.inPasswordDelay) {
+                         lockScreenUi.pendingPassword = password
+                         mainBlock.enabled = false
+                     } else {
