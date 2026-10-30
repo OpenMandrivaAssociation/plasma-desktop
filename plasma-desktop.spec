@@ -91,6 +91,8 @@ BuildRequires: cmake(Qt6Core)
 BuildRequires: cmake(Qt6DBus)
 BuildRequires: cmake(Qt6Network)
 BuildRequires: cmake(Qt6Qml)
+# Qt Qml no longer pulls this in. Without it, rpm emits no qml() dependencies.
+BuildRequires: rpm-provreq-qml
 BuildRequires: cmake(Qt6Quick)
 BuildRequires: cmake(Qt6QuickWidgets)
 BuildRequires: cmake(Qt6Svg)
